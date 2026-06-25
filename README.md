@@ -133,6 +133,25 @@ agar-web/
 
 ---
 
+## Resources
+
+| Resource | Reference |
+|----------|-----------|
+| **AGAR dataset** | Majchrowska et al. 2021 |
+| **Patch preprocessing** | Pawłowski et al. 2022 · [GitHub](https://github.com/jarek-pawlowski/microbial-dataset-generation) |
+
+---
+
+## Acknowledgments
+
+This project was developed as the final applied project within the **LABORLAN 2026: IA & Data Tech (Artificial Intelligence and Technology Project Management)** program.
+
+Special thanks to **Aitor Donado** for his technical guidance and support, and to all my classmates who generously acted as the Spark Worker Nodes to process my thousands of images! ♥️
+
+We also thank the teaching staff, mentors, and organizers of LABORLAN 2026 for their commitment and the learning environment that made this project possible.
+
+---
+
 ## Author
 
 **Eguzkiñe** — [@eguzki-dm](https://github.com/eguzki-dm)
