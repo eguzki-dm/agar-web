@@ -8,6 +8,7 @@ TRANSLATIONS = {
     "nav.about": "About",
     "nav.future": "Future Features",
     "nav.disclaimer": "Disclaimer",
+    "nav.acknowledgments": "Acknowledgments",
 
     # ─── Sidebar ────────────────────────────────────────────────
     "sidebar.language": "Language / Idioma",
@@ -298,4 +299,25 @@ TRANSLATIONS = {
     "charts.metrics.classified": "Classified colonies",
     "charts.metrics.time_kount": "\u03bcKount time",
     "charts.metrics.time_detect": "\u03bcDetect time",
+
+    # ─── Acknowledgments page ─────────────────────────────────────
+    "ack.title": "\U0001f64f Acknowledgments",
+    "ack.program.title": "\U0001f393 Training Program",
+    "ack.program.desc": "This project was developed as the final applied project within the "
+        "**LABORLAN 2026: IA & Data Tech (Artificial Intelligence and Technology Project Management)** program.",
+    "ack.mentor.title": "\U0001f9d1\u200d\U0001f3eb Mentor",
+    "ack.mentor.desc": "Special thanks to **[Aitor Donado](https://github.com/Aitor-Donado)** for his "
+        "technical guidance and continuous support throughout the project development.",
+    "ack.classmates.title": "\U0001f465 Classmates",
+    "ack.classmates.desc": "To all my classmates, who generously acted as Spark Worker Nodes "
+        "to process my thousands of images. Thank you from the bottom of my heart! \u2665\ufe0f",
+    "ack.dataset.title": "\U0001f4ca AGAR Dataset",
+    "ack.dataset.desc": "Thanks to **Majchrowska et al.** and **NeuroSYS Research** for providing the AGAR dataset, "
+        "which has been the fundamental basis for training and validating the detection and classification models.",
+    "ack.patch.title": "\U0001f9e9 Patch Preprocessing",
+    "ack.patch.desc": "To **Jarek Paw\u0142owski** for his [GitHub repository](https://github.com/jarek-pawlowski/microbial-dataset-generation) "
+        "on microbial dataset generation, which served as a reference for implementing colony preprocessing and patching.",
+    "ack.staff.title": "\U0001f3eb Teaching Staff and Organizers",
+    "ack.staff.desc": "We thank the teaching staff, mentors, and organizers of LABORLAN 2026 for their commitment "
+        "and the learning environment that made this project possible.",
 }

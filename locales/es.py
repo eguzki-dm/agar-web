@@ -8,6 +8,7 @@ TRANSLATIONS = {
     "nav.about": "Acerca de",
     "nav.future": "Funcionalidades Futuras",
     "nav.disclaimer": "Aviso Legal",
+    "nav.acknowledgments": "Agradecimientos",
 
     # ─── Sidebar ────────────────────────────────────────────────
     "sidebar.language": "Idioma / Language",
@@ -297,4 +298,25 @@ TRANSLATIONS = {
     "charts.metrics.classified": "Colonias clasificadas",
     "charts.metrics.time_kount": "Tiempo \u03bcKount",
     "charts.metrics.time_detect": "Tiempo \u03bcDetect",
+
+    # ─── Acknowledgments page ─────────────────────────────────────
+    "ack.title": "\U0001f64f Agradecimientos",
+    "ack.program.title": "\U0001f393 Programa de Formaci\u00f3n",
+    "ack.program.desc": "Este proyecto fue desarrollado como proyecto final aplicado dentro del programa "
+        "**LABORLAN 2026: IA & Data Tech (Artificial Intelligence and Technology Project Management)**.",
+    "ack.mentor.title": "\U0001f9d1\u200d\U0001f3eb Tutor",
+    "ack.mentor.desc": "Agradecimiento especial a **[Aitor Donado](https://github.com/Aitor-Donado)** por su "
+        "gu\u00eda t\u00e9cnica y apoyo constante durante todo el desarrollo del proyecto.",
+    "ack.classmates.title": "\U0001f465 Compa\u00f1eros",
+    "ack.classmates.desc": "A todos mis compa\u00f1eros de clase, que generosamente actuaron como Spark Worker Nodes "
+        "para procesar mis miles de im\u00e1genes. \u00a1Gracias de coraz\u00f3n! \u2665\ufe0f",
+    "ack.dataset.title": "\U0001f4ca Dataset AGAR",
+    "ack.dataset.desc": "Agradecimientos a **Majchrowska et al.** y a **NeuroSYS Research** por la cesi\u00f3n del dataset "
+        "AGAR, que ha sido la base fundamental para el entrenamiento y validaci\u00f3n de los modelos de detecci\u00f3n y clasificaci\u00f3n.",
+    "ack.patch.title": "\U0001f9e9 Preprocesamiento de Parches",
+    "ack.patch.desc": "A **Jarek Paw\u0142owski** por su [repositorio en GitHub](https://github.com/jarek-pawlowski/microbial-dataset-generation) "
+        "de generaci\u00f3n de dataset microbiano, que sirvi\u00f3 como referencia para implementar el preprocesamiento y parcheo de colonias.",
+    "ack.staff.title": "\U0001f3eb Equipo Docente y Organizadores",
+    "ack.staff.desc": "Agradecemos al equipo docente, mentores y organizadores de LABORLAN 2026 por su compromiso "
+        "y el entorno de aprendizaje que hizo posible este proyecto.",
 }

@@ -146,7 +146,7 @@ agar-web/
 
 This project was developed as the final applied project within the **LABORLAN 2026: IA & Data Tech (Artificial Intelligence and Technology Project Management)** program.
 
-Special thanks to **Aitor Donado** for his technical guidance and support, and to all my classmates who generously acted as the Spark Worker Nodes to process my thousands of images! ♥️
+Special thanks to **[Aitor Donado](https://github.com/Aitor-Donado)** for his technical guidance and support, and to all my classmates who generously acted as the Spark Worker Nodes to process my thousands of images! ♥️
 
 We also thank the teaching staff, mentors, and organizers of LABORLAN 2026 for their commitment and the learning environment that made this project possible.
 
