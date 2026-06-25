@@ -1,0 +1,177 @@
+{
+  "S. aureus": {
+    "name": "Staphylococcus aureus",
+    "gram": "Gram-positive",
+    "shape": "cocci",
+    "description": {
+      "en": "Staphylococcus aureus is a spherical, Gram-positive, facultative anaerobic bacterium belonging to the family Staphylococcaceae. It is catalase-positive and coagulase-positive. It appears in clusters resembling grapes.",
+      "es": "Staphylococcus aureus es una bacteria esf\u00e9rica, Gram-positiva, anaerobia facultativa, perteneciente a la familia Staphylococcaceae. Es catalasa-positiva y coagulasa-positiva. Se presenta en forma de racimos similares a uvas."
+    },
+    "clinical_significance": {
+      "en": "Causes a wide spectrum of infections, from mild skin infections (furuncles, impetigo) to severe diseases such as pneumonia, endocarditis, osteomyelitis and sepsis. Methicillin-resistant strains (MRSA) represent a global health problem.",
+      "es": "Causa un amplio espectro de infecciones, desde infecciones cut\u00e1neas leves (for\u00fanculos, imp\u00e9tigo) hasta enfermedades graves como neumon\u00eda, endocarditis, osteomielitis y sepsis. Cepas resistentes a meticilina (MRSA) representan un problema sanitario global."
+    },
+    "industrial_relevance": {
+      "en": "Relevant in the food industry as a cause of food poisoning due to production of heat-stable enterotoxins. Also used in production of certain enzymes and in biomedical research.",
+      "es": "Relevante en la industria alimentaria como causa de intoxicaciones alimentarias por producci\u00f3n de enterotoxinas termoestables. Tambi\u00e9n se utiliza en la producci\u00f3n de ciertas enzimas y en investigaci\u00f3n biom\u00e9dica."
+    },
+    "pharmaceutical_applications": {
+      "en": "Production of enterotoxins for research. Model organism for antibiotic resistance studies. Development of vaccines and antimicrobial therapies.",
+      "es": "Producci\u00f3n de enterotoxinas para investigaci\u00f3n. Modelo de estudio para resistencia antibi\u00f3tica. Desarrollo de vacunas y terapias antimicrobianas."
+    },
+    "risk_group": 2,
+    "common_habitats": {
+      "en": ["human skin", "nasal mucosa", "hospital surfaces", "processed foods"],
+      "es": ["piel humana", "mucosas nasales", "superficies hospitalarias", "alimentos procesados"]
+    },
+    "biosafety_notes": {
+      "en": "Handle in biosafety cabinet level 2. Pay special attention to MRSA strains.",
+      "es": "Manipular en cabina de seguridad biol\u00f3gica nivel 2. Prestar especial atenci\u00f3n a cepas MRSA."
+    },
+    "warnings": {
+      "en": ["MRSA strains resistant to multiple antibiotics", "Can survive on surfaces for weeks"],
+      "es": ["Cepas MRSA resistentes a m\u00faltiples antibi\u00f3ticos", "Puede sobrevivir en superficies durante semanas"]
+    },
+    "references": ["https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=1280"]
+  },
+  "B. subtilis": {
+    "name": "Bacillus subtilis",
+    "gram": "Gram-positive",
+    "shape": "bacillus",
+    "description": {
+      "en": "Bacillus subtilis is a Gram-positive, aerobic, spore-forming bacterium with a bacillus shape. It is motile thanks to peritrichous flagella. Known as the 'hay bacillus', it is one of the best genetically characterized organisms.",
+      "es": "Bacillus subtilis es una bacteria Gram-positiva, aerobia, formadora de esporas, con forma de bacilo. Es m\u00f3vil gracias a flagelos peritricos. Conocida como el 'bacilo del heno', es uno de los organismos mejor caracterizados gen\u00e9ticamente."
+    },
+    "clinical_significance": {
+      "en": "Generally non-pathogenic. Occasionally can cause opportunistic infections in immunocompromised patients. Its spores can contaminate food. Widely used as a model organism in research.",
+      "es": "Generalmente no pat\u00f3gena. Ocasionalmente puede causar infecciones oportunistas en pacientes inmunocomprometidos. Sus esporas pueden contaminar alimentos. Ampliamente utilizada como organismo modelo en investigaci\u00f3n."
+    },
+    "industrial_relevance": {
+      "en": "Extremely important in industrial biotechnology. Produces enzymes such as amylases, proteases and cellulases used in detergents, baking and food processing. Model organism for sporulation and cell differentiation studies.",
+      "es": "Extremadamente importante en biotecnolog\u00eda industrial. Produce enzimas como amilasas, proteasas y celulasas utilizadas en detergentes, panader\u00eda y procesamiento de alimentos. Organismo modelo para estudios de esporulaci\u00f3n y diferenciaci\u00f3n celular."
+    },
+    "pharmaceutical_applications": {
+      "en": "Production of antibiotics such as bacitracin. Production of therapeutic enzymes. Vehicle for oral vaccines. Probiotic in commercial preparations.",
+      "es": "Producci\u00f3n de antibi\u00f3ticos como bacitracina. Producci\u00f3n de enzimas terap\u00e9uticas. Veh\u00edculo para vacunas orales. Probi\u00f3tico en preparaciones comerciales."
+    },
+    "risk_group": 1,
+    "common_habitats": {
+      "en": ["soil", "water", "decaying organic matter", "gastrointestinal tract"],
+      "es": ["suelo", "agua", "materia org\u00e1nica en descomposici\u00f3n", "tracto gastrointestinal"]
+    },
+    "biosafety_notes": {
+      "en": "Biosafety level 1 organism. Considered safe for handling in standard laboratory.",
+      "es": "Organismo de nivel de bioseguridad 1. Considerado seguro para manipulaci\u00f3n en laboratorio est\u00e1ndar."
+    },
+    "warnings": {
+      "en": ["Limited toxicity to specific strains", "Spores are resistant to heat and disinfectants"],
+      "es": ["Toxicidad limitada a cepas espec\u00edficas", "Las esporas son resistentes al calor y desinfectantes"]
+    },
+    "references": ["https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=1423"]
+  },
+  "P. aeruginosa": {
+    "name": "Pseudomonas aeruginosa",
+    "gram": "Gram-negative",
+    "shape": "bacillus",
+    "description": {
+      "en": "Pseudomonas aeruginosa is a Gram-negative, aerobic, rod-shaped bacterium belonging to the family Pseudomonadaceae. It is a opportunistic pathogen known for its metabolic versatility and intrinsic resistance to many antibiotics. Produces a characteristic blue-green pigment (pyocyanin).",
+      "es": "Pseudomonas aeruginosa es una bacteria Gram-negativa, aerobia, con forma de bacilo, perteneciente a la familia Pseudomonadaceae. Es un pat\u00f3geno oportunista conocido por su versatilidad metab\u00f3lica y resistencia intr\u00ednseca a muchos antibi\u00f3ticos. Produce un pigmento azul-verde caracter\u00edstico (piocianina)."
+    },
+    "clinical_significance": {
+      "en": "Major cause of nosocomial infections, particularly in immunocompromised patients, burn victims, and individuals with cystic fibrosis. Causes pneumonia, urinary tract infections, bacteremia, and wound infections. Known for multidrug resistance (MDR) strains.",
+      "es": "Causa principal de infecciones nosocomiales, particularmente en pacientes inmunocomprometidos, quemados y personas con fibrosis qu\u00edstica. Causa neumon\u00eda, infecciones del tracto urinario, bacteriemia e infecciones de heridas. Conocida por sus cepas multirresistentes (MDR)."
+    },
+    "industrial_relevance": {
+      "en": "Important in bioremediation due to its ability to degrade hydrocarbons and xenobiotics. Produces biosurfactants (rhamnolipids) used in industry. Also studied for its role in biofilm formation on medical devices and industrial pipelines.",
+      "es": "Importante en biorremediaci\u00f3n por su capacidad de degradar hidrocarburos y xenobi\u00f3ticos. Produce biosurfactantes (ramnol\u00edpidos) utilizados en la industria. Tambi\u00e9n estudiada por su papel en la formaci\u00f3n de biopel\u00edculas en dispositivos m\u00e9dicos y tuber\u00edas industriales."
+    },
+    "pharmaceutical_applications": {
+      "en": "Production of antibiotics such as pseudomonic acid (mupirocin). Source of lipases and proteases for pharmaceutical formulations. Research target for anti-biofilm therapies and phage therapy.",
+      "es": "Producci\u00f3n de antibi\u00f3ticos como el \u00e1cido pseudom\u00f3nico (mupirocina). Fuente de lipasas y proteasas para formulaciones farmac\u00e9uticas. Objetivo de investigaci\u00f3n para terapias anti-biopel\u00edcula y fagoterapia."
+    },
+    "risk_group": 2,
+    "common_habitats": {
+      "en": ["soil", "water", "hospital environments", "medical devices", "skin"],
+      "es": ["suelo", "agua", "entornos hospitalarios", "dispositivos m\u00e9dicos", "piel"]
+    },
+    "biosafety_notes": {
+      "en": "Biosafety level 2. Multidrug-resistant strains require enhanced precautions. Handle in biosafety cabinet for procedures that may generate aerosols.",
+      "es": "Nivel de bioseguridad 2. Las cepas multirresistentes requieren precauciones reforzadas. Manipular en cabina de seguridad biol\u00f3gica para procedimientos que puedan generar aerosoles."
+    },
+    "warnings": {
+      "en": ["Multidrug resistance is a serious clinical concern", "Forms robust biofilms on medical implants", "Can survive in moist hospital environments for months"],
+      "es": ["La multirresistencia es una preocupaci\u00f3n cl\u00ednica grave", "Forma biopel\u00edculas robustas en implantes m\u00e9dicos", "Puede sobrevivir en ambientes hospitalarios h\u00famedos durante meses"]
+    },
+    "references": ["https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=287"]
+  },
+  "E. coli": {
+    "name": "Escherichia coli",
+    "gram": "Gram-negative",
+    "shape": "bacillus",
+    "description": {
+      "en": "Escherichia coli is a Gram-negative, facultative anaerobic, rod-shaped bacterium belonging to the family Enterobacteriaceae. It is a normal inhabitant of the intestinal tract of warm-blooded animals. Most strains are harmless, but some serotypes cause severe food poisoning.",
+      "es": "Escherichia coli es una bacteria Gram-negativa, anaerobia facultativa, con forma de bacilo, perteneciente a la familia Enterobacteriaceae. Es un habitante normal del tracto intestinal de animales de sangre caliente. La mayor\u00eda de las cepas son inofensivas, pero algunos serotipos causan intoxicaciones alimentarias graves."
+    },
+    "clinical_significance": {
+      "en": "Causes urinary tract infections (most common cause), gastroenteritis, neonatal meningitis, and sepsis. Pathogenic strains include enterotoxigenic (ETEC), enteropathogenic (EPEC), enterohemorrhagic (EHEC, e.g. O157:H7), and enteroinvasive (EIEC).",
+      "es": "Causa infecciones del tracto urinario (causa m\u00e1s com\u00fan), gastroenteritis, meningitis neonatal y sepsis. Las cepas pat\u00f3genas incluyen enterotoxig\u00e9nicas (ETEC), enteropat\u00f3genas (EPEC), enterohemorr\u00e1gicas (EHEC, ej. O157:H7) y enteroinvasivas (EIEC)."
+    },
+    "industrial_relevance": {
+      "en": "The most widely used organism in biotechnology and genetic engineering. Used for production of recombinant proteins (insulin, growth hormone, vaccines). Also used in metabolic engineering for production of biofuels, amino acids, and bioplastics.",
+      "es": "El organismo m\u00e1s utilizado en biotecnolog\u00eda e ingenier\u00eda gen\u00e9tica. Se utiliza para la producci\u00f3n de prote\u00ednas recombinantes (insulina, hormona de crecimiento, vacunas). Tambi\u00e9n se usa en ingenier\u00eda metab\u00f3lica para la producci\u00f3n de biocombustibles, amino\u00e1cidos y biopl\u00e1sticos."
+    },
+    "pharmaceutical_applications": {
+      "en": "Principal host for recombinant protein production (insulin, interferons, interleukins, monoclonal antibodies). Used in vaccine development and production. Model organism for synthetic biology and drug discovery.",
+      "es": "Hu\u00e9sped principal para la producci\u00f3n de prote\u00ednas recombinantes (insulina, interferones, interleucinas, anticuerpos monoclonales). Utilizada en el desarrollo y producci\u00f3n de vacunas. Organismo modelo para biolog\u00eda sint\u00e9tica y descubrimiento de f\u00e1rmacos."
+    },
+    "risk_group": 2,
+    "common_habitats": {
+      "en": ["intestinal tract of humans and animals", "water contaminated with feces", "soil", "raw or undercooked meat", "unpasteurized milk"],
+      "es": ["tracto intestinal de humanos y animales", "agua contaminada con heces", "suelo", "carne cruda o poco cocinada", "leche no pasteurizada"]
+    },
+    "biosafety_notes": {
+      "en": "Biosafety level 2 for pathogenic strains. Non-pathogenic laboratory strains (e.g. K-12) are BSL-1. EHEC strains require enhanced precautions.",
+      "es": "Nivel de bioseguridad 2 para cepas pat\u00f3genas. Las cepas de laboratorio no pat\u00f3genas (ej. K-12) son BSL-1. Las cepas EHEC requieren precauciones reforzadas."
+    },
+    "warnings": {
+      "en": ["EHEC O157:H7 can cause hemolytic uremic syndrome (HUS)", "Antibiotic resistance increasing in clinical isolates", "Contamination of water sources indicates fecal pollution"],
+      "es": ["EHEC O157:H7 puede causar s\u00edndrome ur\u00e9mico hemol\u00edtico (SUH)", "La resistencia a antibi\u00f3ticos aumenta en aislados cl\u00ednicos", "La contaminaci\u00f3n de fuentes de agua indica contaminaci\u00f3n fecal"]
+    },
+    "references": ["https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=562"]
+  },
+  "C. albicans": {
+    "name": "Candida albicans",
+    "gram": "Gram-positive (yeast)",
+    "shape": "yeast / pseudohyphae",
+    "description": {
+      "en": "Candida albicans is a dimorphic fungus (yeast) belonging to the family Saccharomycetaceae. It is a normal commensal of the human microbiome, found in the gastrointestinal tract, oral cavity, and vaginal mucosa. Can switch between yeast and hyphal growth forms depending on environmental conditions.",
+      "es": "Candida albicans es un hongo dim\u00f3rfico (levadura) perteneciente a la familia Saccharomycetaceae. Es un comensal normal del microbioma humano, presente en el tracto gastrointestinal, cavidad oral y mucosa vaginal. Puede alternar entre formas de crecimiento levaduriforme e hifal seg\u00fan las condiciones ambientales."
+    },
+    "clinical_significance": {
+      "en": "Most common cause of candidiasis. Causes superficial infections (oral thrush, vaginitis) and systemic infections in immunocompromised patients. Leading cause of invasive fungal infections in hospitalized patients. Associated with high mortality in ICU settings.",
+      "es": "Causa m\u00e1s com\u00fan de candidiasis. Causa infecciones superficiales (candidiasis oral, vaginitis) e infecciones sist\u00e9micas en pacientes inmunocomprometidos. Principal causa de infecciones f\u00fangicas invasivas en pacientes hospitalizados. Asociada con alta mortalidad en entornos de UCI."
+    },
+    "industrial_relevance": {
+      "en": "Significant cause of spoilage in food industry. Used as a model organism for studying fungal pathogenesis and antifungal drug resistance. Important in biotechnology for production of proteins and metabolites.",
+      "es": "Causa significativa de deterioro en la industria alimentaria. Utilizada como organismo modelo para el estudio de patog\u00e9nesis f\u00fangica y resistencia a antif\u00fangicos. Importante en biotecnolog\u00eda para la producci\u00f3n de prote\u00ednas y metabolitos."
+    },
+    "pharmaceutical_applications": {
+      "en": "Target for antifungal drug development (azoles, echinocandins, polyenes). Model organism for studying drug resistance mechanisms. Used in screening of antifungal compounds. Research platform for host-pathogen interaction studies.",
+      "es": "Objetivo para el desarrollo de f\u00e1rmacos antif\u00fangicos (azoles, equinocandinas, polienos). Organismo modelo para el estudio de mecanismos de resistencia a f\u00e1rmacos. Utilizada en el cribado de compuestos antif\u00fangicos. Plataforma de investigaci\u00f3n para estudios de interacci\u00f3n hu\u00e9sped-pat\u00f3geno."
+    },
+    "risk_group": 2,
+    "common_habitats": {
+      "en": ["gastrointestinal tract", "oral cavity", "vaginal mucosa", "skin", "hospital environments"],
+      "es": ["tracto gastrointestinal", "cavidad oral", "mucosa vaginal", "piel", "entornos hospitalarios"]
+    },
+    "biosafety_notes": {
+      "en": "Biosafety level 2. Handle in biosafety cabinet for procedures that may generate aerosols. Antifungal-resistant strains require enhanced precautions.",
+      "es": "Nivel de bioseguridad 2. Manipular en cabina de seguridad biol\u00f3gica para procedimientos que puedan generar aerosoles. Las cepas resistentes a antif\u00fangicos requieren precauciones reforzadas."
+    },
+    "warnings": {
+      "en": ["Increasing antifungal resistance (especially to azoles)", "Can cause severe systemic infections in ICU patients", "Biofilm formation on medical devices is a major clinical challenge"],
+      "es": ["Aumento de la resistencia a antif\u00fangicos (especialmente a azoles)", "Puede causar infecciones sist\u00e9micas graves en pacientes de UCI", "La formaci\u00f3n de biopel\u00edculas en dispositivos m\u00e9dicos es un desaf\u00edo cl\u00ednico importante"]
+    },
+    "references": ["https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=5476"]
+  }
+}
