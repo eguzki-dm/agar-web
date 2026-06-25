@@ -110,7 +110,7 @@ agar-web/
 ## Meet Cuora 🧑‍🔬
 
 <div align="center">
-  <img src="icons/Cuora.png" width="120" alt="Cuora">
+  <img src="icons/Cuora.png" width="240" alt="Cuora">
 </div>
 
 **Cuora** is the virtual microbiologist of AGAR-Web. Soon she will answer your questions about colonies, species, and lab techniques — making the app not just a tool, but a learning companion.
