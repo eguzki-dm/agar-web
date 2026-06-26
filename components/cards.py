@@ -6,7 +6,7 @@ from utils.i18n import t, get_localized_field
 def disclaimer_card():
     st.markdown(
         f"""
-        <div style="
+        <div class="disclaimer-card" style="
             background-color: #fff3cd;
             border: 1px solid #ffc107;
             border-radius: 8px;
@@ -67,7 +67,7 @@ def future_feature_card(title, description, status="planned"):
 
     st.markdown(
         f"""
-        <div style="
+        <div class="feature-card" style="
             background-color: #f8f9fa;
             border: 1px solid #dee2e6;
             border-radius: 8px;

@@ -75,19 +75,19 @@ st.markdown(t("future.phase4.desc"))
 future_feature_card(
     t("future.feature.chatbot_micro"),
     t("future.feature.chatbot_micro.desc"),
-    "planned",
+    "completed",
 )
 
 future_feature_card(
     t("future.feature.chatbot_results"),
     t("future.feature.chatbot_results.desc"),
-    "planned",
+    "completed",
 )
 
 future_feature_card(
     t("future.feature.chatbot_safety"),
     t("future.feature.chatbot_safety.desc"),
-    "planned",
+    "completed",
 )
 
 st.warning(
@@ -105,8 +105,8 @@ roadmap = [
     ("\u2b1c", t("future.roadmap.phase3"), t("future.roadmap.pending")),
     ("\u2b1c", t("future.roadmap.phase4"), t("future.roadmap.pending")),
     ("\u2b1c", t("future.roadmap.phase5"), t("future.roadmap.pending")),
-    ("\u2b1c", t("future.roadmap.phase6"), t("future.roadmap.pending")),
-    ("\u2b1c", t("future.roadmap.phase7"), t("future.roadmap.pending")),
+    ("\u2705", t("future.roadmap.phase6"), t("future.roadmap.completed")),
+    ("\u2705", t("future.roadmap.phase7"), t("future.roadmap.completed")),
 ]
 
 for icon, phase, status in roadmap:

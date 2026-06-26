@@ -25,6 +25,7 @@ Desktop.ini
 # Streamlit secrets
 .streamlit/secrets.toml
 
+
 # Environment variables
 .env
 .env.local
@@ -35,3 +36,11 @@ icons/ogs/
 # OpenCode (AI assistant config)
 .opencode/
 .memory/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Logs
+*.log

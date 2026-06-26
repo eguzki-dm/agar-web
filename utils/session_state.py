@@ -1,4 +1,5 @@
 import streamlit as st
+from datetime import datetime
 
 
 def init_session_state():
@@ -12,6 +13,10 @@ def init_session_state():
         st.session_state.run_metadata = {}
     if "language" not in st.session_state:
         st.session_state.language = "en"
+    if "messages" not in st.session_state:
+        st.session_state.messages = []
+    if "session_id" not in st.session_state:
+        st.session_state.session_id = datetime.now().strftime("%Y%m%d_%H%M%S")
 
 
 def has_detections():
@@ -26,3 +31,28 @@ def clear_pipeline():
     st.session_state.detections = []
     st.session_state.classifications = []
     st.session_state.run_metadata = {}
+
+
+def clear_chat():
+    st.session_state.messages = []
+
+
+def add_message(role: str, content: str):
+    msg = {
+        "role": role,
+        "content": content,
+        "timestamp": datetime.now().strftime("%H:%M"),
+    }
+    st.session_state.messages.append(msg)
+
+
+def export_conversation() -> str:
+    lines = [
+        f"# Cuora — Sesión {st.session_state.get('session_id', 'N/A')}",
+        "---",
+    ]
+    for msg in st.session_state.get("messages", []):
+        role_label = "Tú" if msg["role"] == "user" else "Cuora"
+        lines.append(f"\n[{msg['timestamp']}] {role_label}:")
+        lines.append(msg["content"])
+    return "\n".join(lines)

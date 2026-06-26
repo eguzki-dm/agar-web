@@ -29,7 +29,7 @@ col1, col2, col3, col4, col5 = st.columns(5, gap="small")
 with col1:
     st.markdown(
         f"""
-        <div style="
+        <div class="step-card-1" style="
             background:#e3f2fd;
             border:2px solid #1565c0;
             border-radius:12px;
@@ -51,7 +51,7 @@ with col1:
 with col2:
     st.markdown(
         f"""
-        <div style="
+        <div class="step-card-2" style="
             background:#fff3e0;
             border:2px solid #e65100;
             border-radius:12px;
@@ -73,7 +73,7 @@ with col2:
 with col3:
     st.markdown(
         f"""
-        <div style="
+        <div class="step-card-3" style="
             background:#f3e5f5;
             border:2px solid #6a1b9a;
             border-radius:12px;
@@ -95,7 +95,7 @@ with col3:
 with col4:
     st.markdown(
         f"""
-        <div style="
+        <div class="step-card-4" style="
             background:#e8f5e9;
             border:2px solid #2e7d32;
             border-radius:12px;
@@ -117,7 +117,7 @@ with col4:
 with col5:
     st.markdown(
         f"""
-        <div style="
+        <div class="step-card-5" style="
             background:#fff8e1;
             border:2px solid #f9a825;
             border-radius:12px;

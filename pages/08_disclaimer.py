@@ -6,7 +6,7 @@ st.title(t("disclaimer.title"))
 
 st.markdown(
     f"""
-    <div style="
+    <div class="disclaimer-banner" style="
         background-color: #f8d7da;
         border: 2px solid #dc3545;
         border-radius: 12px;

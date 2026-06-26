@@ -12,7 +12,7 @@ with open("icons/uDetect.png", "rb") as f:
 
 st.markdown(
     f"""
-    <div style="display: flex; justify-content: center;">
+    <div class="logo-wrapper" style="display: flex; justify-content: center;">
         <img src="data:image/png;base64,{img_b64}"
              style="width: 400px; mix-blend-mode: multiply;" />
     </div>

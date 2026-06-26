@@ -5,7 +5,7 @@ MAX_UPLOAD_MB = 20
 SUPPORTED_FORMATS = ["png", "jpg", "jpeg"]
 
 APP_NAME = "μKount & μDetect"
-APP_VERSION = "0.1.0"
+APP_VERSION = "1.0.0"
 
 SPECIES = ["S. aureus", "B. subtilis", "C. albicans", "P. aeruginosa", "E. coli"]
 

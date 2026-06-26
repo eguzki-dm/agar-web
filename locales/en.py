@@ -15,7 +15,7 @@ TRANSLATIONS = {
     "sidebar.restart": "\U0001f504 Restart pipeline",
 
     # ─── Home ───────────────────────────────────────────────────
-    "home.title": "AGAR",
+    "home.title": "\u03bcKount&\u03bcDetect",
     "home.subtitle": "Artificial Intelligence for Agar Plate Analysis",
     "home.intro": "Computer vision system for:",
     "home.bullet.detection": "Colony Detection",
@@ -45,7 +45,7 @@ TRANSLATIONS = {
 
     # ─── Pipeline page ──────────────────────────────────────────
     "pipeline.title": "\U0001f52c Processing Pipeline",
-    "pipeline.subtitle": "Complete AGAR flow diagram, from original image to final classification.",
+    "pipeline.subtitle": "Complete \u03bcKount&\u03bcDetect flow diagram, from original image to final classification.",
     "pipeline.step1.title": "\U0001f4e4 Input Image",
     "pipeline.step1.desc": "The user uploads an agar plate image (PNG, JPG, JPEG). "
         "The image is converted to RGB and stored for processing.",
@@ -144,8 +144,8 @@ TRANSLATIONS = {
     "results.not_available": "N/A",
 
     # ─── About page ────────────────────────────────────────────
-    "about.title": "\u2139\ufe0f About \u2014 About AGAR",
-    "about.subtitle": "AGAR (Artificial Intelligence for Agar Plate Analysis) is a "
+    "about.title": "\u2139\ufe0f About \u2014 About \u03bcKount&\u03bcDetect",
+    "about.subtitle": "\u03bcKount&\u03bcDetect (Artificial Intelligence for Agar Plate Analysis) is a "
         "computer vision system designed for detection, counting and classification of "
         "microbial colonies on agar plates. "
         "This project is the final capstone project of the Laborlan training program in AI, Machine Learning and Deep Learning",
@@ -171,7 +171,7 @@ TRANSLATIONS = {
 
     # ─── Future Features page ───────────────────────────────────
     "future.title": "\U0001f680 Future Features",
-    "future.subtitle": "Planned features for future versions of AGAR.",
+    "future.subtitle": "Implemented and planned features for \u03bcKount&\u03bcDetect.",
     "future.phase2.title": "Phase 2 \u2014 Manual Detection Editing",
     "future.phase2.desc": "After \u03bcKount execution, the user can interact directly with detections:",
     "future.phase3.title": "Phase 3 \u2014 Detailed Microbiological Information",
@@ -224,16 +224,16 @@ TRANSLATIONS = {
 
     # ─── Disclaimer page ────────────────────────────────────────
     "disclaimer.title": "\u26a0\ufe0f Disclaimer \u2014 Ethical and Scientific Notice",
-    "disclaimer.banner.title": "AGAR is a Proof-of-Concept Research System",
+    "disclaimer.banner.title": "\u03bcKount&\u03bcDetect is a Proof-of-Concept Research System",
     "disclaimer.banner.text": "Must NOT be used for clinical diagnosis.",
     "disclaimer.limitations.title": "System Limitations",
     "disclaimer.limitation1.title": "\U0001f52c Purely research purpose",
-    "disclaimer.limitation1.desc": "AGAR is a research and development tool. It is not approved "
+    "disclaimer.limitation1.desc": "\u03bcKount&\u03bcDetect is a research and development tool. It is not approved "
         "by any health authority (FDA, EMA, etc.) for diagnostic use.",
     "disclaimer.limitation2.title": "\U0001f9ea Does not replace gold-standard techniques",
     "disclaimer.limitation2.desc": "Conventional microbiological methods (culture, Gram stain, "
         "biochemical tests, MALDI-TOF) remain the reference standard. "
-        "AGAR does not replace these methods.",
+        "\u03bcKount&\u03bcDetect does not replace these methods.",
     "disclaimer.limitation3.title": "\u26a0\ufe0f Experimental results",
     "disclaimer.limitation3.desc": "Detection and classification models can produce errors. "
         "False positives, false negatives and incorrect classifications are "
@@ -249,23 +249,23 @@ TRANSLATIONS = {
         "contextual patient knowledge. It cannot consider medical history "
         "or other variables relevant to diagnosis.",
     "disclaimer.responsible_use.title": "Responsible Use",
-    "disclaimer.responsible_use.intro": "By using AGAR, the user agrees to:",
+    "disclaimer.responsible_use.intro": "By using \u03bcKount&\u03bcDetect, the user agrees to:",
     "disclaimer.responsible_use.item1": "NOT use the results for clinical diagnosis without prior validation.",
     "disclaimer.responsible_use.item2": "NOT make medical decisions based solely on the system output.",
     "disclaimer.responsible_use.item3": "Verify all detections and classifications through conventional methods.",
-    "disclaimer.responsible_use.item4": "Cite AGAR as a research tool in any publication using its results.",
+    "disclaimer.responsible_use.item4": "Cite \u03bcKount&\u03bcDetect as a research tool in any publication using its results.",
     "disclaimer.responsible_use.footer": "Failure to comply with these conditions may have serious consequences "
-        "in clinical contexts. The developers of AGAR are not responsible "
+        "in clinical contexts. The developers of \u03bcKount&\u03bcDetect are not responsible "
         "for misuse of the system.",
     "disclaimer.version.title": "Current Version",
-    "disclaimer.version.info": "Version 0.1.0 (MVP \u2014 mock services)",
+    "disclaimer.version.info": "Version 1.0.0 \u2014 Cuora is alive! \U0001f9e0",
     "disclaimer.version.desc": "This initial version uses simulated data to demonstrate the architecture "
         "and workflow. Real models (YOLO, CNN) will be integrated in later phases.",
     "disclaimer.version.status": "Status: Proof of Concept / Functional Prototype",
 
     # ─── Cards ──────────────────────────────────────────────────
     "cards.disclaimer.title": "\u26a0\ufe0f IMPORTANT \u2014 ETHICAL AND SCIENTIFIC NOTICE",
-    "cards.disclaimer.poc": "AGAR is currently a Proof of Concept.",
+    "cards.disclaimer.poc": "\u03bcKount&\u03bcDetect is currently a Proof of Concept.",
     "cards.disclaimer.warning": "Results generated by the models:",
     "cards.disclaimer.item1": "Do not constitute clinical diagnosis.",
     "cards.disclaimer.item2": "Do not replace gold-standard microbiological techniques.",
@@ -273,7 +273,7 @@ TRANSLATIONS = {
     "cards.disclaimer.item4": "Must be interpreted by qualified personnel.",
     "cards.disclaimer.footer": "Automatic classification may contain errors and should be considered "
         "solely as a decision support tool.",
-    "cards.disclaimer.short": "\u26a0\ufe0f AGAR is a Proof-of-Concept research system. Results are experimental "
+    "cards.disclaimer.short": "\u26a0\ufe0f \u03bcKount&\u03bcDetect is a Proof-of-Concept research system. Results are experimental "
         "and must not be used for clinical diagnosis. Always validate through "
         "standard microbiological methods.",
     "cards.species.full_name": "Full name",
@@ -320,4 +320,29 @@ TRANSLATIONS = {
     "ack.staff.title": "\U0001f3eb Teaching Staff and Organizers",
     "ack.staff.desc": "We thank the teaching staff, mentors, and organizers of LABORLAN 2026 for their commitment "
         "and the learning environment that made this project possible.",
+    "cuora.title": "\U0001f9e0 Cuora",
+    "cuora.subtitle": "Your virtual microbiologist \u2014 Only answers questions about bacteriology, virology, mycology, parasitology, immunology and molecular biology.",
+    "cuora.chat_placeholder": "Ask about microbiology...",
+    "cuora.login_title": "Sign in with your Google account to talk to Cuora",
+    "cuora.login_button": "Continue with Google",
+    "cuora.login_error": "GOOGLE_CLIENT_ID not configured in secrets.toml",
+    "cuora.oauth_missing": "streamlit-oauth not installed. Using development mode.",
+    "cuora.dev_mode": "Development mode \u2014 no real OAuth",
+    "cuora.username_label": "Username",
+    "cuora.dev_login": "Enter (dev)",
+    "cuora.clear_chat": "\U0001f5d1\ufe0f Clear chat",
+    "cuora.export": "\U0001f4be Export",
+    "cuora.logout": "Logout",
+    "cuora.api_key_error": "GROQ_API_KEY not found in secrets.toml. Configure it to use Cuora.",
+    "cuora.analyzing": "\u23f3 Analyzing...",
+    "cuora.default_name": "User",
+    "cuora.prompt": (
+        "You are an expert microbiologist with deep knowledge of bacteriology, "
+        "virology, mycology, parasitology, immunology and molecular biology. "
+        "You will ONLY answer questions related to microbiology. "
+        "If the question is NOT about microbiology, answer exactly: "
+        "'I'm sorry, I can only answer questions related to microbiology.' "
+        "Do not make up information. If you do not know the answer, say so clearly. "
+        "Always respond in the same language as the user."
+    ),
 }

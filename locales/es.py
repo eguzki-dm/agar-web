@@ -15,7 +15,7 @@ TRANSLATIONS = {
     "sidebar.restart": "\U0001f504 Reiniciar pipeline",
 
     # ─── Home ───────────────────────────────────────────────────
-    "home.title": "AGAR",
+    "home.title": "\u03bcKount&\u03bcDetect",
     "home.subtitle": "Inteligencia Artificial para An\u00e1lisis de Placas de Agar",
     "home.intro": "Sistema de visi\u00f3n artificial para:",
     "home.bullet.detection": "Detecci\u00f3n de colonias",
@@ -45,7 +45,7 @@ TRANSLATIONS = {
 
     # ─── Pipeline page ──────────────────────────────────────────
     "pipeline.title": "\U0001f52c Pipeline de Procesamiento",
-    "pipeline.subtitle": "Diagrama del flujo completo de AGAR, desde la imagen original hasta la clasificaci\u00f3n final.",
+    "pipeline.subtitle": "Diagrama del flujo completo de \u03bcKount&\u03bcDetect, desde la imagen original hasta la clasificaci\u00f3n final.",
     "pipeline.step1.title": "\U0001f4e4 Imagen de Entrada",
     "pipeline.step1.desc": "El usuario sube una imagen de placa de agar (formatos: PNG, JPG, JPEG). "
         "La imagen se convierte a RGB y se almacena para su procesamiento.",
@@ -144,8 +144,8 @@ TRANSLATIONS = {
     "results.not_available": "N/D",
 
     # ─── About page ────────────────────────────────────────────
-    "about.title": "\u2139\ufe0f Acerca de \u2014 Sobre AGAR",
-    "about.subtitle": "AGAR (Artificial Intelligence for Agar Plate Analysis) es un sistema de "
+    "about.title": "\u2139\ufe0f Acerca de \u2014 Sobre \u03bcKount&\u03bcDetect",
+    "about.subtitle": "\u03bcKount&\u03bcDetect (Artificial Intelligence for Agar Plate Analysis) es un sistema de "
         "visi\u00f3n artificial dise\u00f1ado para la detecci\u00f3n, conteo y clasificaci\u00f3n de "
         "colonias microbianas en placas de agar. "
         "Este proyecto es el proyecto final del programa de formación Laborlan en IA, Machine Learning y Deep Learning",
@@ -171,7 +171,7 @@ TRANSLATIONS = {
 
     # ─── Future Features page ───────────────────────────────────
     "future.title": "\U0001f680 Funcionalidades Futuras",
-    "future.subtitle": "Funcionalidades planificadas para futuras versiones de AGAR.",
+    "future.subtitle": "Funcionalidades implementadas y planificadas para \u03bcKount&\u03bcDetect.",
     "future.phase2.title": "Fase 2 \u2014 Edici\u00f3n Manual de Detecciones",
     "future.phase2.desc": "Tras la ejecuci\u00f3n de \u03bcKount, el usuario podr\u00e1 interactuar directamente con las detecciones:",
     "future.phase3.title": "Fase 3 \u2014 Informaci\u00f3n Microbiol\u00f3gica Detallada",
@@ -223,16 +223,16 @@ TRANSLATIONS = {
 
     # ─── Disclaimer page ────────────────────────────────────────
     "disclaimer.title": "\u26a0\ufe0f Aviso Legal \u2014 Aviso \u00e9tico y cient\u00edfico",
-    "disclaimer.banner.title": "AGAR es un Sistema de Investigaci\u00f3n de Prueba de Concepto",
+    "disclaimer.banner.title": "\u03bcKount&\u03bcDetect es un Sistema de Investigaci\u00f3n de Prueba de Concepto",
     "disclaimer.banner.text": "NO debe usarse para diagn\u00f3stico cl\u00ednico.",
     "disclaimer.limitations.title": "Limitaciones del Sistema",
     "disclaimer.limitation1.title": "\U0001f52c Prop\u00f3sito exclusivamente investigador",
-    "disclaimer.limitation1.desc": "AGAR es una herramienta de investigaci\u00f3n y desarrollo. No est\u00e1 aprobada "
+    "disclaimer.limitation1.desc": "\u03bcKount&\u03bcDetect es una herramienta de investigaci\u00f3n y desarrollo. No est\u00e1 aprobada "
         "por ninguna autoridad sanitaria (FDA, EMA, etc.) para uso diagn\u00f3stico.",
     "disclaimer.limitation2.title": "\U0001f9ea No sustituye t\u00e9cnicas gold-standard",
     "disclaimer.limitation2.desc": "Los m\u00e9todos microbiol\u00f3gicos convencionales (cultivo, tinci\u00f3n Gram, "
         "pruebas bioqu\u00edmicas, MALDI-TOF) siguen siendo el est\u00e1ndar de referencia. "
-        "AGAR no reemplaza estos m\u00e9todos.",
+        "\u03bcKount&\u03bcDetect no reemplaza estos m\u00e9todos.",
     "disclaimer.limitation3.title": "\u26a0\ufe0f Resultados experimentales",
     "disclaimer.limitation3.desc": "Los modelos de detecci\u00f3n y clasificaci\u00f3n pueden producir errores. "
         "Falsos positivos, falsos negativos y clasificaciones incorrectas son "
@@ -248,23 +248,23 @@ TRANSLATIONS = {
         "paciente. No puede considerar el historial m\u00e9dico ni otras variables "
         "relevantes para un diagn\u00f3stico.",
     "disclaimer.responsible_use.title": "Uso Responsable",
-    "disclaimer.responsible_use.intro": "Al utilizar AGAR, el usuario acepta:",
+    "disclaimer.responsible_use.intro": "Al utilizar \u03bcKount&\u03bcDetect, el usuario acepta:",
     "disclaimer.responsible_use.item1": "NO utilizar los resultados para diagn\u00f3stico cl\u00ednico sin validaci\u00f3n previa.",
     "disclaimer.responsible_use.item2": "NO tomar decisiones m\u00e9dicas bas\u00e1ndose \u00fanicamente en la salida del sistema.",
     "disclaimer.responsible_use.item3": "Verificar todas las detecciones y clasificaciones mediante m\u00e9todos convencionales.",
-    "disclaimer.responsible_use.item4": "Citar AGAR como herramienta de investigaci\u00f3n en cualquier publicaci\u00f3n que utilice sus resultados.",
+    "disclaimer.responsible_use.item4": "Citar \u03bcKount&\u03bcDetect como herramienta de investigaci\u00f3n en cualquier publicaci\u00f3n que utilice sus resultados.",
     "disclaimer.responsible_use.footer": "El incumplimiento de estas condiciones puede tener consecuencias graves en contextos "
-        "cl\u00ednicos. Los desarrolladores de AGAR no se hacen responsables del uso indebido "
+        "cl\u00ednicos. Los desarrolladores de \u03bcKount&\u03bcDetect no se hacen responsables del uso indebido "
         "del sistema.",
     "disclaimer.version.title": "Versi\u00f3n Actual",
-    "disclaimer.version.info": "Versi\u00f3n 0.1.0 (MVP \u2014 servicios mock)",
+    "disclaimer.version.info": "Versi\u00f3n 1.0.0 \u2014 \u00a1Cuora est\u00e1 viva! \U0001f9e0",
     "disclaimer.version.desc": "Esta versi\u00f3n inicial utiliza datos simulados para demostrar la arquitectura y el "
         "flujo de trabajo. Los modelos reales (YOLO, CNN) se integrar\u00e1n en fases posteriores.",
     "disclaimer.version.status": "Estado: Proof of Concept / Prototipo funcional",
 
     # ─── Cards ──────────────────────────────────────────────────
     "cards.disclaimer.title": "\u26a0\ufe0f IMPORTANTE \u2014 AVISO \u00c9TICO Y CIENT\u00cdFICO",
-    "cards.disclaimer.poc": "AGAR es actualmente una Prueba de Concepto (Proof of Concept).",
+    "cards.disclaimer.poc": "\u03bcKount&\u03bcDetect es actualmente una Prueba de Concepto (Proof of Concept).",
     "cards.disclaimer.warning": "Los resultados generados por los modelos:",
     "cards.disclaimer.item1": "No constituyen un diagn\u00f3stico cl\u00ednico.",
     "cards.disclaimer.item2": "No sustituyen t\u00e9cnicas microbiol\u00f3gicas gold-standard.",
@@ -272,7 +272,7 @@ TRANSLATIONS = {
     "cards.disclaimer.item4": "Deben ser interpretados por personal cualificado.",
     "cards.disclaimer.footer": "La clasificaci\u00f3n autom\u00e1tica puede contener errores y debe considerarse \u00fanicamente como "
         "una herramienta de apoyo a la decisi\u00f3n.",
-    "cards.disclaimer.short": "\u26a0\ufe0f AGAR es un sistema de investigaci\u00f3n de Prueba de Concepto. Los resultados son experimentales "
+    "cards.disclaimer.short": "\u26a0\ufe0f \u03bcKount&\u03bcDetect es un sistema de investigaci\u00f3n de Prueba de Concepto. Los resultados son experimentales "
         "y no deben usarse para diagn\u00f3stico cl\u00ednico. Valide siempre mediante "
         "m\u00e9todos microbiol\u00f3gicos est\u00e1ndar.",
     "cards.species.full_name": "Nombre completo",
@@ -319,4 +319,29 @@ TRANSLATIONS = {
     "ack.staff.title": "\U0001f3eb Equipo Docente y Organizadores",
     "ack.staff.desc": "Agradecemos al equipo docente, mentores y organizadores de LABORLAN 2026 por su compromiso "
         "y el entorno de aprendizaje que hizo posible este proyecto.",
+    "cuora.title": "\U0001f9e0 Cuora",
+    "cuora.subtitle": "Tu microbi\u00f3loga virtual \u2014 Solo responde preguntas sobre bacteriolog\u00eda, virolog\u00eda, micolog\u00eda, parasitolog\u00eda, inmunolog\u00eda y biolog\u00eda molecular.",
+    "cuora.chat_placeholder": "Pregunta sobre microbiolog\u00eda...",
+    "cuora.login_title": "Accede con tu cuenta de Google para hablar con Cuora",
+    "cuora.login_button": "Continuar con Google",
+    "cuora.login_error": "GOOGLE_CLIENT_ID no configurado en secrets.toml",
+    "cuora.oauth_missing": "streamlit-oauth no instalado. Usando modo desarrollo.",
+    "cuora.dev_mode": "Modo desarrollo \u2014 sin OAuth real",
+    "cuora.username_label": "Nombre de usuario",
+    "cuora.dev_login": "Entrar (dev)",
+    "cuora.clear_chat": "\U0001f5d1\ufe0f Limpiar chat",
+    "cuora.export": "\U0001f4be Exportar",
+    "cuora.logout": "Cerrar sesi\u00f3n",
+    "cuora.api_key_error": "No se encontr\u00f3 GROQ_API_KEY en secrets.toml. Config\u00farala para usar Cuora.",
+    "cuora.analyzing": "\u23f3 Analizando...",
+    "cuora.default_name": "Usuario",
+    "cuora.prompt": (
+        "Eres un experto en microbiolog\u00eda con conocimiento profundo en bacteriolog\u00eda, "
+        "virolog\u00eda, micolog\u00eda, parasitolog\u00eda, inmunolog\u00eda y biolog\u00eda molecular. "
+        "SOLO responder\u00e1s preguntas relacionadas con microbiolog\u00eda. "
+        "Si la pregunta NO es sobre microbiolog\u00eda, responde exactamente: "
+        "'Lo siento, solo puedo responder preguntas relacionadas con microbiolog\u00eda.' "
+        "No inventes informaci\u00f3n. Si no sabes la respuesta, dilo claramente. "
+        "Responde siempre en el mismo idioma del usuario."
+    ),
 }

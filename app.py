@@ -3,6 +3,7 @@ import streamlit as st
 from config.settings import APP_NAME, APP_VERSION
 from utils.session_state import init_session_state
 from utils.i18n import t, get_language
+from utils.theme import inject_theme_css
 from components.cards import disclaimer_short
 
 st.set_page_config(
@@ -13,6 +14,7 @@ st.set_page_config(
 )
 
 init_session_state()
+inject_theme_css()
 
 pages = [
     st.Page("pages/01_home.py", title="Home", icon="🏠"),
@@ -20,6 +22,7 @@ pages = [
     st.Page("pages/03_kount.py", title="μKount", icon="🔍"),
     st.Page("pages/04_detect.py", title="μDetect", icon="🧪"),
     st.Page("pages/05_results.py", title="Results", icon="📊"),
+    st.Page("pages/10_cuora.py", title="Cuora", icon="🧠"),
     st.Page("pages/06_about.py", title="About", icon="ℹ️"),
     st.Page("pages/07_future_features.py", title="Future Features", icon="🚀"),
     st.Page("pages/08_disclaimer.py", title="Disclaimer", icon="⚠️"),
@@ -27,13 +30,15 @@ pages = [
 ]
 
 with st.sidebar:
+    pg = st.navigation(pages)
+
     import base64
     with open("icons/icono.png", "rb") as f:
         img_b64 = base64.b64encode(f.read()).decode()
 
     st.markdown(
         f"""
-        <div style="display: flex; justify-content: center;">
+        <div class="logo-wrapper" style="display: flex; justify-content: center;">
             <img src="data:image/png;base64,{img_b64}"
                  style="width: 200px; mix-blend-mode: multiply;" />
         </div>
@@ -48,25 +53,22 @@ with st.sidebar:
         '</p>',
         unsafe_allow_html=True,
     )
+
     st.divider()
 
     lang = get_language()
-    lang_label = t("sidebar.language")
-    new_lang = st.selectbox(
-        lang_label,
+    new_lang = st.radio(
+        "Idioma",
         options=["en", "es"],
-        format_func=lambda x: "🇬🇧 English" if x == "en" else "🇪🇸 Español",
+        format_func=lambda x: "GB" if x == "en" else "ES",
         index=0 if lang == "en" else 1,
         key="language_selector",
         label_visibility="collapsed",
+        horizontal=True,
     )
     if new_lang != lang:
         st.session_state.language = new_lang
         st.rerun()
-
-    st.divider()
-
-    pg = st.navigation(pages)
 
     st.divider()
 
@@ -77,6 +79,7 @@ with st.sidebar:
             st.session_state.classifications = []
             st.session_state.run_metadata = {}
             st.rerun()
+
 
     disclaimer_short()
 
