@@ -1,10 +1,20 @@
+import base64
 import streamlit as st
 
 from config.settings import APP_NAME
 from utils.i18n import t
 from components.cards import disclaimer_card
 
-st.title(f"\U0001f9eb {t('home.title')}")
+with open("icons/icono.png", "rb") as f:
+    logo = f"data:image/png;base64,{base64.b64encode(f.read()).decode()}"
+
+st.markdown(
+    f'<div style="text-align:center;">'
+    f'<img src="{logo}" style="width:200px;max-width:80%;">'
+    f'<h1 style="margin-top:1rem;">{t("home.title")}</h1>'
+    f'</div>',
+    unsafe_allow_html=True,
+)
 st.subheader(t("home.subtitle"), anchor=False)
 
 st.markdown(
