@@ -41,6 +41,7 @@ icons/ogs/
 .pytest_cache/
 .coverage
 htmlcov/
+.streamlit
 
 # Logs
 *.log

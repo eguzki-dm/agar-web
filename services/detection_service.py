@@ -178,7 +178,7 @@ class DetectionService:
             "time_ms": round(elapsed, 1),
         }
 
-    def sinthetic(self) -> tuple[Image.Image, list[dict]]:
+    def synthetic(self) -> tuple[Image.Image, list[dict]]:
         return self.generate_synthetic_plate()
 
 
