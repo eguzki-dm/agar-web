@@ -11,6 +11,7 @@ from config.settings import (
     YOLO_MODEL_PATH,
     YOLO_CONFIDENCE_THRESHOLD,
     YOLO_IOU_THRESHOLD,
+    POST_SLICE_NMS_IOU,
     SLICE_SIZE,
     STRIDE,
     SYNTHETIC_IMAGE_WIDTH,
@@ -32,7 +33,7 @@ def _compute_iou(box1, box2):
     return inter / (area1 + area2 - inter + 1e-6)
 
 
-def _nms(detections, iou_threshold=YOLO_IOU_THRESHOLD):
+def _nms(detections, iou_threshold=POST_SLICE_NMS_IOU):
     if not detections:
         return []
     dets = sorted(detections, key=lambda d: d["confidence"], reverse=True)
@@ -53,15 +54,16 @@ def _slice_image(image, slice_size=SLICE_SIZE, stride=STRIDE):
     tiles = []
     for y in range(0, max(h - slice_size + 1, 1), stride):
         for x in range(0, max(w - slice_size + 1, 1), stride):
-            y_end = min(y + slice_size, h)
-            x_end = min(x + slice_size, w)
-            if y_end - y < slice_size:
-                y = max(0, h - slice_size)
+            x_start, y_start = x, y
+            y_end = min(y_start + slice_size, h)
+            x_end = min(x_start + slice_size, w)
+            if y_end - y_start < slice_size:
+                y_start = max(0, h - slice_size)
                 y_end = h
-            if x_end - x < slice_size:
-                x = max(0, w - slice_size)
+            if x_end - x_start < slice_size:
+                x_start = max(0, w - slice_size)
                 x_end = w
-            tile = image[y:y_end, x:x_end]
+            tile = image[y_start:y_end, x_start:x_end]
             if tile.shape[0] < slice_size or tile.shape[1] < slice_size:
                 tile = cv2.copyMakeBorder(
                     tile,
@@ -72,8 +74,8 @@ def _slice_image(image, slice_size=SLICE_SIZE, stride=STRIDE):
                 )
             tiles.append({
                 "tile": tile,
-                "offset_x": x,
-                "offset_y": y,
+                "offset_x": x_start,
+                "offset_y": y_start,
             })
     return tiles
 
@@ -98,7 +100,7 @@ class DetectionService:
             results = model(
                 tile_img,
                 conf=YOLO_CONFIDENCE_THRESHOLD,
-                iou=0.5,
+                iou=YOLO_IOU_THRESHOLD,
                 verbose=False,
             )
             for r in results:
