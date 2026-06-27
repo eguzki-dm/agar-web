@@ -1,19 +1,20 @@
 import random
 import time
-import cv2
-import numpy as np
 from PIL import Image, ImageDraw
 import streamlit as st
+import numpy as np
 
-from ultralytics import YOLO
+from sahi import AutoDetectionModel
+from sahi.predict import get_sliced_prediction
 
 from config.settings import (
     YOLO_MODEL_PATH,
     YOLO_CONFIDENCE_THRESHOLD,
     YOLO_IOU_THRESHOLD,
-    POST_SLICE_NMS_IOU,
     SLICE_SIZE,
-    STRIDE,
+    SAHI_OVERLAP_RATIO,
+    SAHI_BATCH_SIZE,
+    POST_PROCESS_MATCH_THRESHOLD,
     SYNTHETIC_IMAGE_WIDTH,
     SYNTHETIC_IMAGE_HEIGHT,
     SYNTHETIC_MIN_COLONIES,
@@ -22,112 +23,56 @@ from config.settings import (
 )
 
 
-def _compute_iou(box1, box2):
-    x1 = max(box1[0], box2[0])
-    y1 = max(box1[1], box2[1])
-    x2 = min(box1[2], box2[2])
-    y2 = min(box1[3], box2[3])
-    inter = max(0, x2 - x1) * max(0, y2 - y1)
-    area1 = (box1[2] - box1[0]) * (box1[3] - box1[1])
-    area2 = (box2[2] - box2[0]) * (box2[3] - box2[1])
-    return inter / (area1 + area2 - inter + 1e-6)
-
-
-def _nms(detections, iou_threshold=POST_SLICE_NMS_IOU):
-    if not detections:
-        return []
-    dets = sorted(detections, key=lambda d: d["confidence"], reverse=True)
-    kept = []
-    for d in dets:
-        keep = True
-        for k in kept:
-            if _compute_iou(d["box"], k["box"]) > iou_threshold:
-                keep = False
-                break
-        if keep:
-            kept.append(d)
-    return kept
-
-
-def _slice_image(image, slice_size=SLICE_SIZE, stride=STRIDE):
-    h, w = image.shape[:2]
-    tiles = []
-    for y in range(0, max(h - slice_size + 1, 1), stride):
-        for x in range(0, max(w - slice_size + 1, 1), stride):
-            x_start, y_start = x, y
-            y_end = min(y_start + slice_size, h)
-            x_end = min(x_start + slice_size, w)
-            if y_end - y_start < slice_size:
-                y_start = max(0, h - slice_size)
-                y_end = h
-            if x_end - x_start < slice_size:
-                x_start = max(0, w - slice_size)
-                x_end = w
-            tile = image[y_start:y_end, x_start:x_end]
-            if tile.shape[0] < slice_size or tile.shape[1] < slice_size:
-                tile = cv2.copyMakeBorder(
-                    tile,
-                    0, slice_size - tile.shape[0],
-                    0, slice_size - tile.shape[1],
-                    cv2.BORDER_CONSTANT,
-                    value=(0, 0, 0),
-                )
-            tiles.append({
-                "tile": tile,
-                "offset_x": x_start,
-                "offset_y": y_start,
-            })
-    return tiles
-
-
 @st.cache_resource
-def _load_model():
-    return YOLO(YOLO_MODEL_PATH)
+def _load_sahi_model():
+    return AutoDetectionModel.from_pretrained(
+        model_type='ultralytics',
+        model_path=YOLO_MODEL_PATH,
+        confidence_threshold=YOLO_CONFIDENCE_THRESHOLD,
+        device='cpu',
+        image_size=SLICE_SIZE,
+    )
 
 
 class DetectionService:
     def detect(self, image: Image.Image) -> dict:
         start = time.time()
 
-        model = _load_model()
+        model = _load_sahi_model()
         img_array = np.array(image.convert("RGB"))
-        tiles = _slice_image(img_array)
 
-        all_detections = []
-        for t in tiles:
-            tile_img = t["tile"]
-            ox, oy = t["offset_x"], t["offset_y"]
-            results = model(
-                tile_img,
-                conf=YOLO_CONFIDENCE_THRESHOLD,
-                iou=YOLO_IOU_THRESHOLD,
-                verbose=False,
-            )
-            for r in results:
-                boxes = r.boxes
-                if boxes is None:
-                    continue
-                xyxy = boxes.xyxy.cpu().numpy()
-                confs = boxes.conf.cpu().numpy()
-                for box, conf in zip(xyxy, confs):
-                    x1, y1, x2, y2 = map(float, box)
-                    all_detections.append({
-                        "box": [
-                            int(x1 + ox),
-                            int(y1 + oy),
-                            int(x2 + ox),
-                            int(y2 + oy),
-                        ],
-                        "confidence": round(float(conf), 3),
-                    })
+        result = get_sliced_prediction(
+            img_array,
+            model,
+            slice_height=SLICE_SIZE,
+            slice_width=SLICE_SIZE,
+            overlap_height_ratio=SAHI_OVERLAP_RATIO,
+            overlap_width_ratio=SAHI_OVERLAP_RATIO,
+            batch_size=SAHI_BATCH_SIZE,
+            postprocess_type='GREEDYNMM',
+            postprocess_match_metric='IOU',
+            postprocess_match_threshold=POST_PROCESS_MATCH_THRESHOLD,
+            perform_standard_pred=True,
+            postprocess_class_agnostic=True,
+            verbose=0,
+        )
 
-        all_detections = _nms(all_detections)
+        detections = []
+        for pred in result.object_prediction_list:
+            x1, y1, x2, y2 = map(int, pred.bbox.to_voc_bbox())
+            conf = round(float(pred.score.value), 3)
+            if (x2 - x1) < 2 or (y2 - y1) < 2:
+                continue
+            detections.append({
+                "box": [x1, y1, x2, y2],
+                "confidence": conf,
+            })
 
         elapsed = (time.time() - start) * 1000
 
         return {
-            "detections": all_detections,
-            "count": len(all_detections),
+            "detections": detections,
+            "count": len(detections),
             "time_ms": round(elapsed, 1),
         }
 
