@@ -79,9 +79,10 @@ TRANSLATIONS = {
 
     # ─── μKount page ───────────────────────────────────────────
     "kount.title": "\U0001f50d \u03bcKount \u2014 Colony Detection",
-    "kount.subtitle": "Simulates colony detection using YOLO.",
+    "kount.subtitle": "YOLO-based colony detection with Slicing Aided Hyper Inference.",
     "kount.tab.upload": "Upload Image",
     "kount.tab.synthetic": "Generate Synthetic Image",
+    "kount.tab.examples": "Example Images",
     "kount.upload.label": "Select an agar plate image",
     "kount.synthetic.width": "Width",
     "kount.synthetic.height": "Height",
@@ -89,7 +90,10 @@ TRANSLATIONS = {
     "kount.synthetic.button": "\U0001f3b2 Generate synthetic plate",
     "kount.status.loaded": "Image loaded successfully.",
     "kount.status.generated": "Synthetic plate generated.",
-    "kount.detect.button": "\u25b6\ufe0f Run \u03bcKount (mock detection)",
+    "kount.examples.select": "Select an example image below to load it:",
+    "kount.examples.none": "No example images found.",
+    "kount.download_json": "\U0001f4e5 Download JSON",
+    "kount.detect.button": "\u25b6\ufe0f Run \u03bcKount",
     "kount.status.detected": "{count} colonies detected in {time} ms.",
     "kount.next.button": "\u27a1\ufe0f Process with \u03bcDetect",
     "kount.no_image": "Upload an image or generate a synthetic plate to start.",

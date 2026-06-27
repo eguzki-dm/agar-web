@@ -1,11 +1,18 @@
 import random
 import time
-from PIL import Image, ImageDraw
-
+import cv2
 import numpy as np
+from PIL import Image, ImageDraw
+import streamlit as st
+
+from ultralytics import YOLO
 
 from config.settings import (
-    USE_MOCK,
+    YOLO_MODEL_PATH,
+    YOLO_CONFIDENCE_THRESHOLD,
+    YOLO_IOU_THRESHOLD,
+    SLICE_SIZE,
+    STRIDE,
     SYNTHETIC_IMAGE_WIDTH,
     SYNTHETIC_IMAGE_HEIGHT,
     SYNTHETIC_MIN_COLONIES,
@@ -14,13 +21,113 @@ from config.settings import (
 )
 
 
+def _compute_iou(box1, box2):
+    x1 = max(box1[0], box2[0])
+    y1 = max(box1[1], box2[1])
+    x2 = min(box1[2], box2[2])
+    y2 = min(box1[3], box2[3])
+    inter = max(0, x2 - x1) * max(0, y2 - y1)
+    area1 = (box1[2] - box1[0]) * (box1[3] - box1[1])
+    area2 = (box2[2] - box2[0]) * (box2[3] - box2[1])
+    return inter / (area1 + area2 - inter + 1e-6)
+
+
+def _nms(detections, iou_threshold=YOLO_IOU_THRESHOLD):
+    if not detections:
+        return []
+    dets = sorted(detections, key=lambda d: d["confidence"], reverse=True)
+    kept = []
+    for d in dets:
+        keep = True
+        for k in kept:
+            if _compute_iou(d["box"], k["box"]) > iou_threshold:
+                keep = False
+                break
+        if keep:
+            kept.append(d)
+    return kept
+
+
+def _slice_image(image, slice_size=SLICE_SIZE, stride=STRIDE):
+    h, w = image.shape[:2]
+    tiles = []
+    for y in range(0, max(h - slice_size + 1, 1), stride):
+        for x in range(0, max(w - slice_size + 1, 1), stride):
+            y_end = min(y + slice_size, h)
+            x_end = min(x + slice_size, w)
+            if y_end - y < slice_size:
+                y = max(0, h - slice_size)
+                y_end = h
+            if x_end - x < slice_size:
+                x = max(0, w - slice_size)
+                x_end = w
+            tile = image[y:y_end, x:x_end]
+            if tile.shape[0] < slice_size or tile.shape[1] < slice_size:
+                tile = cv2.copyMakeBorder(
+                    tile,
+                    0, slice_size - tile.shape[0],
+                    0, slice_size - tile.shape[1],
+                    cv2.BORDER_CONSTANT,
+                    value=(0, 0, 0),
+                )
+            tiles.append({
+                "tile": tile,
+                "offset_x": x,
+                "offset_y": y,
+            })
+    return tiles
+
+
+@st.cache_resource
+def _load_model():
+    return YOLO(YOLO_MODEL_PATH)
+
+
 class DetectionService:
     def detect(self, image: Image.Image) -> dict:
-        if USE_MOCK:
-            return self._mock_detect(image)
+        start = time.time()
 
-        # Placeholder for real YOLO inference
-        raise NotImplementedError("Real YOLO detection not yet integrated")
+        model = _load_model()
+        img_array = np.array(image.convert("RGB"))
+        tiles = _slice_image(img_array)
+
+        all_detections = []
+        for t in tiles:
+            tile_img = t["tile"]
+            ox, oy = t["offset_x"], t["offset_y"]
+            results = model(
+                tile_img,
+                conf=YOLO_CONFIDENCE_THRESHOLD,
+                iou=0.5,
+                verbose=False,
+            )
+            for r in results:
+                boxes = r.boxes
+                if boxes is None:
+                    continue
+                xyxy = boxes.xyxy.cpu().numpy()
+                confs = boxes.conf.cpu().numpy()
+                for box, conf in zip(xyxy, confs):
+                    x1, y1, x2, y2 = map(float, box)
+                    all_detections.append({
+                        "box": [
+                            int(x1 + ox),
+                            int(y1 + oy),
+                            int(x2 + ox),
+                            int(y2 + oy),
+                        ],
+                        "confidence": round(float(conf), 3),
+                    })
+
+        all_detections = _nms(all_detections)
+
+        elapsed = (time.time() - start) * 1000
+
+        return {
+            "detections": all_detections,
+            "count": len(all_detections),
+            "time_ms": round(elapsed, 1),
+        }
 
     def generate_synthetic_plate(
         self,
@@ -30,7 +137,6 @@ class DetectionService:
         img = Image.new("RGB", (width, height), (245, 230, 202))
         draw = ImageDraw.Draw(img)
 
-        # Plate border (petri dish)
         border_margin = 30
         plate_color = (230, 210, 180)
         draw.ellipse(
@@ -40,7 +146,6 @@ class DetectionService:
             width=3,
         )
 
-        # Inner agar area
         inner_margin = 60
         agar_color = (245, 232, 200)
         draw.ellipse(
@@ -52,14 +157,11 @@ class DetectionService:
         detections = []
 
         for _ in range(num_colonies):
-            # Colony radius between 8 and 30 pixels
             radius = random.randint(8, 30)
-            # Keep colonies within the inner agar area
             margin = inner_margin + radius + 10
             cx = random.randint(margin, width - margin)
             cy = random.randint(margin, height - margin)
 
-            # Colony color: cream/white/yellowish tones
             colony_color = (
                 random.randint(220, 255),
                 random.randint(200, 240),
@@ -73,7 +175,6 @@ class DetectionService:
                 width=1,
             )
 
-            # Add slight texture variation (inner circle slightly different shade)
             inner_radius = radius * random.randint(3, 6) // 10
             inner_color = (
                 min(255, colony_color[0] + 10),
@@ -85,7 +186,6 @@ class DetectionService:
                 fill=inner_color,
             )
 
-            # Bounding box around the colony
             margin_box = 2
             x1 = cx - radius - margin_box
             y1 = cy - radius - margin_box
@@ -118,118 +218,5 @@ class DetectionService:
 
         return img_copy
 
-    def _mock_detect(self, image: Image.Image) -> dict:
-        """Simulate detection on a real uploaded image by finding non-background regions."""
-        start = time.time()
-
-        img_array = np.array(image.convert("RGB"))
-        gray = np.mean(img_array, axis=2)
-
-        # Simple threshold to find colonies (darker regions on light background)
-        threshold = 200
-        mask = gray < threshold
-
-        if not np.any(mask):
-            elapsed = (time.time() - start) * 1000
-            return {
-                "detections": [],
-                "count": 0,
-                "time_ms": round(elapsed, 1),
-            }
-
-        # Find connected components
-        from PIL import ImageFilter
-
-        # Use simple blob detection via connected components
-        labeled = np.zeros_like(mask, dtype=int)
-        label_num = 0
-        connected = _connected_components(mask, labeled)
-
-        detections = []
-        h, w = mask.shape
-        min_colony_size = 200
-
-        for label_idx in range(1, connected + 1):
-            ys, xs = np.where(labeled == label_idx)
-            if len(ys) < min_colony_size:
-                continue
-
-            x1 = int(xs.min()) - 2
-            y1 = int(ys.min()) - 2
-            x2 = int(xs.max()) + 2
-            y2 = int(ys.max()) + 2
-
-            x1 = max(0, x1)
-            y1 = max(0, y1)
-            x2 = min(w, x2)
-            y2 = min(h, y2)
-
-            confidence = round(random.uniform(0.85, 0.99), 3)
-            detections.append({
-                "box": [x1, y1, x2, y2],
-                "confidence": confidence,
-            })
-
-        elapsed = (time.time() - start) * 1000
-
-        return {
-            "detections": detections,
-            "count": len(detections),
-            "time_ms": round(elapsed, 1),
-        }
-
     def synthetic(self) -> tuple[Image.Image, list[dict]]:
         return self.generate_synthetic_plate()
-
-
-def _connected_components(binary_mask: np.ndarray, labeled: np.ndarray) -> int:
-    """Simple two-pass connected components labeling."""
-    label_num = 0
-    h, w = binary_mask.shape
-    equivalences = {}
-
-    # First pass
-    for y in range(h):
-        for x in range(w):
-            if not binary_mask[y, x]:
-                continue
-
-            neighbors = []
-            if y > 0 and labeled[y - 1, x] > 0:
-                neighbors.append(labeled[y - 1, x])
-            if x > 0 and labeled[y, x - 1] > 0:
-                neighbors.append(labeled[y, x - 1])
-
-            if not neighbors:
-                label_num += 1
-                labeled[y, x] = label_num
-            else:
-                min_label = min(neighbors)
-                labeled[y, x] = min_label
-                for n in neighbors:
-                    if n != min_label:
-                        equivalences[n] = min_label
-
-    # Resolve equivalences
-    for y in range(h):
-        for x in range(w):
-            if labeled[y, x] > 0:
-                label = labeled[y, x]
-                while label in equivalences:
-                    label = equivalences[label]
-                labeled[y, x] = label
-
-    # Renumber to consecutive
-    unique_labels = set()
-    for y in range(h):
-        for x in range(w):
-            if labeled[y, x] > 0:
-                unique_labels.add(labeled[y, x])
-
-    renumber = {old: new + 1 for new, old in enumerate(sorted(unique_labels))}
-    for y in range(h):
-        for x in range(w):
-            if labeled[y, x] > 0:
-                labeled[y, x] = renumber[labeled[y, x]]
-
-    return len(unique_labels)

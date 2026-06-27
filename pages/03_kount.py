@@ -1,11 +1,16 @@
+import json
 import time
 import base64
+from pathlib import Path
+from datetime import datetime
 import streamlit as st
+from PIL import Image
 
 from services.detection_service import DetectionService
 from components.image_viewer import show_image_with_boxes
 from components.charts import metrics_dashboard
 from utils.i18n import t
+from config.settings import EXAMPLE_IMAGES_DIR, RESULTS_DIR
 
 with open("icons/uKount.png", "rb") as f:
     img_b64 = base64.b64encode(f.read()).decode()
@@ -24,7 +29,11 @@ st.markdown(t("kount.subtitle"))
 
 detector = DetectionService()
 
-upload_tab, synthetic_tab = st.tabs([t("kount.tab.upload"), t("kount.tab.synthetic")])
+upload_tab, synthetic_tab, examples_tab = st.tabs([
+    t("kount.tab.upload"),
+    t("kount.tab.synthetic"),
+    t("kount.tab.examples"),
+])
 
 with upload_tab:
     uploaded_file = st.file_uploader(
@@ -33,8 +42,6 @@ with upload_tab:
     )
 
     if uploaded_file is not None:
-        from PIL import Image
-
         image = Image.open(uploaded_file).convert("RGB")
         st.session_state.original_image = image
         st.success(t("kount.status.loaded"))
@@ -55,6 +62,30 @@ with synthetic_tab:
             st.session_state.original_image = image
             st.success(t("kount.status.generated"))
             st.rerun()
+
+with examples_tab:
+    st.markdown(t("kount.examples.select"))
+
+    example_dir = Path(EXAMPLE_IMAGES_DIR)
+    example_extensions = ("*.jpg", "*.jpeg", "*.png")
+    example_files = []
+    for ext in example_extensions:
+        example_files.extend(example_dir.glob(ext))
+    example_files = sorted(example_files)
+
+    if not example_files:
+        st.info(t("kount.examples.none"))
+    else:
+        cols = st.columns(3)
+        for idx, img_path in enumerate(example_files):
+            with cols[idx % 3]:
+                thumb = Image.open(img_path).convert("RGB")
+                st.image(thumb, use_container_width=True)
+                fname = img_path.name
+                if st.button(fname, key=f"example_{idx}", use_container_width=True):
+                    st.session_state.original_image = thumb.copy()
+                    st.success(t("kount.status.loaded"))
+                    st.rerun()
 
 st.divider()
 
@@ -86,6 +117,38 @@ if st.session_state.original_image is not None:
             st.session_state.classifications,
             st.session_state.run_metadata,
         )
+
+        st.divider()
+
+        json_data = json.dumps({
+            "session_id": st.session_state.get("session_id", datetime.now().strftime("%Y%m%d_%H%M%S")),
+            "timestamp": datetime.now().isoformat(),
+            "total_detections": result["count"],
+            "time_ms": result["time_ms"],
+            "image_size": st.session_state.original_image.size,
+            "detections": [
+                {
+                    "box": d["box"],
+                    "confidence": d["confidence"],
+                }
+                for d in detections
+            ],
+        }, indent=2)
+
+        col_json, _ = st.columns([1, 3])
+        with col_json:
+            st.download_button(
+                label=t("kount.download_json"),
+                data=json_data,
+                file_name=f"kount_detections_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json",
+                mime="application/json",
+                use_container_width=True,
+            )
+
+        Path(RESULTS_DIR).mkdir(parents=True, exist_ok=True)
+        json_path = Path(RESULTS_DIR) / f"kount_detections_{st.session_state.get('session_id', 'unknown')}.json"
+        with open(json_path, "w", encoding="utf-8") as f:
+            f.write(json_data)
 
         st.divider()
 

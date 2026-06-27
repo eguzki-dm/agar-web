@@ -79,9 +79,10 @@ TRANSLATIONS = {
 
     # ─── μKount page ───────────────────────────────────────────
     "kount.title": "\U0001f50d \u03bcKount \u2014 Detecci\u00f3n de Colonias",
-    "kount.subtitle": "Simula la detecci\u00f3n de colonias mediante YOLO.",
+    "kount.subtitle": "Detecci\u00f3n de colonias basada en YOLO con Slicing Aided Hyper Inference.",
     "kount.tab.upload": "Subir Imagen",
     "kount.tab.synthetic": "Generar Imagen Sint\u00e9tica",
+    "kount.tab.examples": "Im\u00e1genes de Ejemplo",
     "kount.upload.label": "Selecciona una imagen de placa de agar",
     "kount.synthetic.width": "Ancho",
     "kount.synthetic.height": "Alto",
@@ -89,7 +90,10 @@ TRANSLATIONS = {
     "kount.synthetic.button": "\U0001f3b2 Generar placa sint\u00e9tica",
     "kount.status.loaded": "Imagen cargada correctamente.",
     "kount.status.generated": "Placa sint\u00e9tica generada.",
-    "kount.detect.button": "\u25b6\ufe0f Ejecutar \u03bcKount (detecci\u00f3n mock)",
+    "kount.examples.select": "Selecciona una imagen de ejemplo para cargarla:",
+    "kount.examples.none": "No se encontraron im\u00e1genes de ejemplo.",
+    "kount.download_json": "\U0001f4e5 Descargar JSON",
+    "kount.detect.button": "\u25b6\ufe0f Ejecutar \u03bcKount",
     "kount.status.detected": "{count} colonias detectadas en {time} ms.",
     "kount.next.button": "\u27a1\ufe0f Procesar con \u03bcDetect",
     "kount.no_image": "Sube una imagen o genera una placa sint\u00e9tica para comenzar.",
