@@ -10,7 +10,10 @@ from services.detection_service import DetectionService
 from components.image_viewer import show_image_with_boxes
 from components.charts import metrics_dashboard
 from utils.i18n import t
+from utils.session_state import init_session_state
 from config.settings import EXAMPLE_IMAGES_DIR, RESULTS_DIR
+
+init_session_state()
 
 with open("icons/uKount.png", "rb") as f:
     img_b64 = base64.b64encode(f.read()).decode()
