@@ -1,3 +1,11 @@
+import os
+import cv2
+
+cv2.setNumThreads(1)
+os.environ["OMP_NUM_THREADS"] = "1"
+os.environ["OPENBLAS_NUM_THREADS"] = "1"
+os.environ["MKL_NUM_THREADS"] = "1"
+
 import streamlit as st
 
 from app_config.settings import APP_NAME, APP_VERSION
