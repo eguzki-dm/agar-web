@@ -37,7 +37,7 @@ DETECTION_COLORS = [
     (0, 255, 255),
 ]
 
-YOLO_MODEL_PATH = "model/Kount/best.pt"
+YOLO_MODEL_PATH = "model/Kount/best_slicing.pt"
 YOLO_CONFIDENCE_THRESHOLD = 0.25
 YOLO_IOU_THRESHOLD = 0.45
 
