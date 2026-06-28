@@ -3,7 +3,7 @@ import time
 
 import numpy as np
 
-from config.settings import USE_MOCK, SPECIES
+from app_config.settings import USE_MOCK, SPECIES
 
 
 class ClassificationService:

@@ -1,7 +1,7 @@
 from PIL import Image
 import numpy as np
 
-from config.settings import USE_MOCK
+from app_config.settings import USE_MOCK
 
 
 class PreprocessingService:

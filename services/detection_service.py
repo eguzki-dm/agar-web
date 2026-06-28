@@ -7,7 +7,7 @@ import numpy as np
 from sahi import AutoDetectionModel
 from sahi.predict import get_sliced_prediction
 
-from config.settings import (
+from app_config.settings import (
     YOLO_MODEL_PATH,
     YOLO_CONFIDENCE_THRESHOLD,
     YOLO_IOU_THRESHOLD,

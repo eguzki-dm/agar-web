@@ -11,7 +11,7 @@ from components.image_viewer import show_image_with_boxes
 from components.charts import metrics_dashboard
 from utils.i18n import t
 from utils.session_state import init_session_state
-from config.settings import EXAMPLE_IMAGES_DIR, RESULTS_DIR
+from app_config.settings import EXAMPLE_IMAGES_DIR, RESULTS_DIR
 
 init_session_state()
 

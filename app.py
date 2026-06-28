@@ -1,6 +1,6 @@
 import streamlit as st
 
-from config.settings import APP_NAME, APP_VERSION
+from app_config.settings import APP_NAME, APP_VERSION
 from utils.session_state import init_session_state
 from utils.i18n import t, get_language
 from utils.theme import inject_theme_css
