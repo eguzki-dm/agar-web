@@ -77,7 +77,6 @@ if st.button(t("detect.process.button"), type="primary", use_container_width=Tru
 
         classifications = classifier.classify(processed_crops)
         st.session_state.classifications = classifications
-        st.session_state.run_metadata["classification_time_ms"] = 150
 
     st.success(t("detect.status.classified").format(count=len(classifications)))
 

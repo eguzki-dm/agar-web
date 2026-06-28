@@ -1,8 +1,6 @@
 from PIL import Image
 import numpy as np
 
-from app_config.settings import USE_MOCK
-
 
 class PreprocessingService:
     def crop_colony(self, image: Image.Image, box: list[int]) -> Image.Image:

@@ -1,19 +1,22 @@
 import time
-from PIL import Image
+from PIL import Image, ImageDraw
 import streamlit as st
 import numpy as np
+import cv2
 
 from sahi import AutoDetectionModel
 from sahi.predict import get_sliced_prediction
 
 from app_config.settings import (
     YOLO_MODEL_PATH,
+    YOLO_MODEL_RESIZE_PATH,
     YOLO_CONFIDENCE_THRESHOLD,
     YOLO_IOU_THRESHOLD,
     SLICE_SIZE,
     SAHI_OVERLAP_RATIO,
     SAHI_BATCH_SIZE,
     POST_PROCESS_MATCH_THRESHOLD,
+    LETTERBOX_SIZE,
     DETECTION_COLORS,
 )
 
@@ -29,10 +32,47 @@ def _load_sahi_model():
     )
 
 
+@st.cache_resource
+def _load_resize_model():
+    from ultralytics import YOLO
+    return YOLO(YOLO_MODEL_RESIZE_PATH)
+
+
+def _letterbox_image(img: np.ndarray, target_size: int = LETTERBOX_SIZE) -> tuple:
+    h, w = img.shape[:2]
+    scale = min(target_size / w, target_size / h)
+    new_w = int(w * scale)
+    new_h = int(h * scale)
+    resized = cv2.resize(img, (new_w, new_h), interpolation=cv2.INTER_LINEAR)
+    pad_left = (target_size - new_w) // 2
+    pad_top = (target_size - new_h) // 2
+    padded = cv2.copyMakeBorder(
+        resized, pad_top, target_size - new_h - pad_top,
+        pad_left, target_size - new_w - pad_left,
+        cv2.BORDER_CONSTANT, value=(114, 114, 114),
+    )
+    return padded, scale, pad_left, pad_top
+
+
 class DetectionService:
     def detect(self, image: Image.Image) -> dict:
         start = time.time()
+        w, h = image.size
 
+        if w >= SLICE_SIZE and h >= SLICE_SIZE:
+            detections = self._detect_slicing(image)
+        else:
+            detections = self._detect_resize(image)
+
+        elapsed = (time.time() - start) * 1000
+
+        return {
+            "detections": detections,
+            "count": len(detections),
+            "time_ms": round(elapsed, 1),
+        }
+
+    def _detect_slicing(self, image: Image.Image) -> list[dict]:
         model = _load_sahi_model()
         img_array = np.array(image.convert("RGB"))
 
@@ -62,14 +102,52 @@ class DetectionService:
                 "box": [x1, y1, x2, y2],
                 "confidence": conf,
             })
+        return detections
 
-        elapsed = (time.time() - start) * 1000
+    def _detect_resize(self, image: Image.Image) -> list[dict]:
+        model = _load_resize_model()
+        img_bgr = cv2.cvtColor(np.array(image.convert("RGB")), cv2.COLOR_RGB2BGR)
+        h, w = img_bgr.shape[:2]
 
-        return {
-            "detections": detections,
-            "count": len(detections),
-            "time_ms": round(elapsed, 1),
-        }
+        letterboxed, scale, pad_left, pad_top = _letterbox_image(img_bgr)
+
+        results = model.predict(
+            letterboxed,
+            conf=YOLO_CONFIDENCE_THRESHOLD,
+            iou=YOLO_IOU_THRESHOLD,
+            verbose=False,
+        )
+
+        detections = []
+        for r in results:
+            if r.boxes is None:
+                continue
+            for box in r.boxes:
+                xc, yc, bw, bh = box.xywhn[0].tolist()
+                conf = float(box.conf[0])
+                x_center_px = xc * LETTERBOX_SIZE
+                y_center_px = yc * LETTERBOX_SIZE
+                bw_px = bw * LETTERBOX_SIZE
+                bh_px = bh * LETTERBOX_SIZE
+                x1_l = x_center_px - bw_px / 2
+                y1_l = y_center_px - bh_px / 2
+                x2_l = x_center_px + bw_px / 2
+                y2_l = y_center_px + bh_px / 2
+                x1 = int((x1_l - pad_left) / scale)
+                y1 = int((y1_l - pad_top) / scale)
+                x2 = int((x2_l - pad_left) / scale)
+                y2 = int((y2_l - pad_top) / scale)
+                x1 = max(0, min(x1, w))
+                y1 = max(0, min(y1, h))
+                x2 = max(0, min(x2, w))
+                y2 = max(0, min(y2, h))
+                if (x2 - x1) < 2 or (y2 - y1) < 2:
+                    continue
+                detections.append({
+                    "box": [x1, y1, x2, y2],
+                    "confidence": round(conf, 3),
+                })
+        return detections
 
     def draw_boxes(
         self,
