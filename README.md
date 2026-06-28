@@ -23,7 +23,7 @@ Upload Image → μKount (Detection) → Crop → μDetect (Classification) → 
 
 | Step | Description |
 |------|-------------|
-| **📤 Upload** | Drag & drop or generate a synthetic agar plate |
+| **📤 Upload** | Drag & drop an agar plate image |
 | **🔍 μKount** | YOLO-based colony detection with bounding boxes |
 | **✂️ Crop** | Isolate each colony with black background preprocessing |
 | **🧪 μDetect** | CNN-based species classification (5 bacteria/fungi) |
@@ -52,7 +52,6 @@ Upload Image → μKount (Detection) → Crop → μDetect (Classification) → 
 - **🧪 Mock Services** — All AI services are mock until real YOLO/CNN models are integrated
 - **📖 Species Knowledge Base** — Bilingual descriptions, Gram stain, morphology, risk group
 - **📊 Results Dashboard** — Metrics, charts, detection previews
-- **🖼️ Synthetic Data** — Generate synthetic agar plates for testing
 - **♿ Accessible** — Clean, responsive UI with hidden navigation
 
 ---

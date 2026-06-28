@@ -1,5 +1,4 @@
 import json
-import time
 import base64
 from pathlib import Path
 from datetime import datetime
@@ -32,9 +31,8 @@ st.markdown(t("kount.subtitle"))
 
 detector = DetectionService()
 
-upload_tab, synthetic_tab, examples_tab = st.tabs([
+upload_tab, examples_tab = st.tabs([
     t("kount.tab.upload"),
-    t("kount.tab.synthetic"),
     t("kount.tab.examples"),
 ])
 
@@ -48,23 +46,6 @@ with upload_tab:
         image = Image.open(uploaded_file).convert("RGB")
         st.session_state.original_image = image
         st.success(t("kount.status.loaded"))
-
-with synthetic_tab:
-    st.markdown(t("kount.synthetic.desc"))
-
-    col_w, col_h = st.columns(2)
-    with col_w:
-        synth_width = st.slider(t("kount.synthetic.width"), 400, 1200, 800, key="synth_w")
-    with col_h:
-        synth_height = st.slider(t("kount.synthetic.height"), 300, 900, 600, key="synth_h")
-
-    if st.button(t("kount.synthetic.button"), use_container_width=True):
-        with st.spinner(t("kount.tab.synthetic")):
-            time.sleep(0.5)
-            image, _ = detector.generate_synthetic_plate(synth_width, synth_height)
-            st.session_state.original_image = image
-            st.success(t("kount.status.generated"))
-            st.rerun()
 
 with examples_tab:
     st.markdown(t("kount.examples.select"))

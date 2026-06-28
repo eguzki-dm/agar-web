@@ -1,6 +1,5 @@
-import random
 import time
-from PIL import Image, ImageDraw
+from PIL import Image
 import streamlit as st
 import numpy as np
 
@@ -15,10 +14,6 @@ from app_config.settings import (
     SAHI_OVERLAP_RATIO,
     SAHI_BATCH_SIZE,
     POST_PROCESS_MATCH_THRESHOLD,
-    SYNTHETIC_IMAGE_WIDTH,
-    SYNTHETIC_IMAGE_HEIGHT,
-    SYNTHETIC_MIN_COLONIES,
-    SYNTHETIC_MAX_COLONIES,
     DETECTION_COLORS,
 )
 
@@ -76,76 +71,6 @@ class DetectionService:
             "time_ms": round(elapsed, 1),
         }
 
-    def generate_synthetic_plate(
-        self,
-        width: int = SYNTHETIC_IMAGE_WIDTH,
-        height: int = SYNTHETIC_IMAGE_HEIGHT,
-    ) -> tuple[Image.Image, list[dict]]:
-        img = Image.new("RGB", (width, height), (245, 230, 202))
-        draw = ImageDraw.Draw(img)
-
-        border_margin = 30
-        plate_color = (230, 210, 180)
-        draw.ellipse(
-            [border_margin, border_margin, width - border_margin, height - border_margin],
-            fill=plate_color,
-            outline=(200, 180, 150),
-            width=3,
-        )
-
-        inner_margin = 60
-        agar_color = (245, 232, 200)
-        draw.ellipse(
-            [inner_margin, inner_margin, width - inner_margin, height - inner_margin],
-            fill=agar_color,
-        )
-
-        num_colonies = random.randint(SYNTHETIC_MIN_COLONIES, SYNTHETIC_MAX_COLONIES)
-        detections = []
-
-        for _ in range(num_colonies):
-            radius = random.randint(8, 30)
-            margin = inner_margin + radius + 10
-            cx = random.randint(margin, width - margin)
-            cy = random.randint(margin, height - margin)
-
-            colony_color = (
-                random.randint(220, 255),
-                random.randint(200, 240),
-                random.randint(170, 220),
-            )
-
-            draw.ellipse(
-                [cx - radius, cy - radius, cx + radius, cy + radius],
-                fill=colony_color,
-                outline=(180, 160, 130),
-                width=1,
-            )
-
-            inner_radius = radius * random.randint(3, 6) // 10
-            inner_color = (
-                min(255, colony_color[0] + 10),
-                min(255, colony_color[1] + 10),
-                min(255, colony_color[2] + 5),
-            )
-            draw.ellipse(
-                [cx - inner_radius, cy - inner_radius, cx + inner_radius, cy + inner_radius],
-                fill=inner_color,
-            )
-
-            margin_box = 2
-            x1 = cx - radius - margin_box
-            y1 = cy - radius - margin_box
-            x2 = cx + radius + margin_box
-            y2 = cy + radius + margin_box
-
-            detections.append({
-                "box": [x1, y1, x2, y2],
-                "confidence": round(random.uniform(0.85, 0.99), 3),
-            })
-
-        return img, detections
-
     def draw_boxes(
         self,
         image: Image.Image,
@@ -164,6 +89,3 @@ class DetectionService:
             draw.text((x1 + 2, y1 - 12), label, fill=color)
 
         return img_copy
-
-    def synthetic(self) -> tuple[Image.Image, list[dict]]:
-        return self.generate_synthetic_plate()
