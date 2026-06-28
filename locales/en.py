@@ -102,7 +102,7 @@ TRANSLATIONS = {
     "detect.button.back": "\u2190 Go to \u03bcKount",
     "detect.error.no_image": "No original image available. Go back to \u03bcKount and load an image.",
     "detect.status.ready": "{count} colonies detected ready for classification.",
-    "detect.process.button": "\u25b6\ufe0f Run \u03bcDetect (mock classification)",
+    "detect.process.button": "\u25b6\ufe0f Run \u03bcDetect",
     "detect.step1.title": "Crop Extraction",
     "detect.step1.desc": "Extracting each colony from the original image using bounding box coordinates...",
     "detect.step2.title": "Black Background",

@@ -9,11 +9,9 @@ from app_config.settings import (
     SPECIES,
 )
 
-# Model class names (no space after period, as trained)
+# Model class names (no space after period, as trained) -> display names (by index)
 _MODEL_CLASSES = ["B.subtilis", "C.albicans", "E.coli", "P.aeruginosa", "S.aureus"]
-
-# Mapping: model class name -> display name (add space after period)
-_CLASS_TO_SPECIES = {m: s for m, s in zip(_MODEL_CLASSES, SPECIES)}
+_INDEX_TO_SPECIES = [s.replace(".", ". ") for s in _MODEL_CLASSES]
 
 
 @st.cache_resource
@@ -37,8 +35,8 @@ class ClassificationService:
             idx = int(np.argmax(preds))
             conf = float(preds[idx])
 
-            probs = {_CLASS_TO_SPECIES[i]: round(float(preds[i]), 4) for i in range(len(SPECIES))}
-            species = _CLASS_TO_SPECIES[idx]
+            probs = {_INDEX_TO_SPECIES[i]: round(float(preds[i]), 4) for i in range(len(SPECIES))}
+            species = _INDEX_TO_SPECIES[idx]
 
             classifications.append({
                 "species": species,

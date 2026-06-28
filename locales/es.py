@@ -102,7 +102,7 @@ TRANSLATIONS = {
     "detect.button.back": "\u2190 Ir a \u03bcKount",
     "detect.error.no_image": "No hay imagen original disponible. Regresa a \u03bcKount y carga una imagen.",
     "detect.status.ready": "{count} colonias detectadas listas para clasificaci\u00f3n.",
-    "detect.process.button": "\u25b6\ufe0f Ejecutar \u03bcDetect (clasificaci\u00f3n mock)",
+    "detect.process.button": "\u25b6\ufe0f Ejecutar \u03bcDetect",
     "detect.step1.title": "Extracci\u00f3n de Recortes",
     "detect.step1.desc": "Extrayendo cada colonia de la imagen original usando las coordenadas de los bounding boxes...",
     "detect.step2.title": "Fondo Negro",
