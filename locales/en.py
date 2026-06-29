@@ -344,7 +344,10 @@ TRANSLATIONS = {
     ),
     "faq.q2.question": "How does the pipeline work?",
     "faq.q2.answer": (
-        "The pipeline consists of four stages: (1) upload or generate an agar plate image, "
+        "The pipeline consists of four stages: (1) upload an agar plate image "
+        "or use an example image "
+        "(the filename indicates the real colony count and species present, "
+        "e.g. 17_ESCO.jpg = 17 E. coli colonies), "
         "(2) \u03bcKount detects and counts colonies with bounding boxes, "
         "(3) \u03bcDetect classifies each colony by species, "
         "(4) results are displayed in an interactive dashboard with charts and metrics."
@@ -380,6 +383,14 @@ TRANSLATIONS = {
         "to human error. \u03bcKount & \u03bcDetect automates this process, providing "
         "consistent, fast, and reproducible results, accelerating microbiological analysis "
         "in clinical, industrial, and research settings."
+    ),
+    "faq.q8.question": "What do the abbreviations in the example files mean?",
+    "faq.q8.answer": (
+        "Example image filenames contain the colony count and species abbreviations:\n\n"
+        "- ESCO = _Escherichia coli_\n"
+        "- BASU = _Bacillus subtilis_\n"
+        "- PSAE = _Pseudomonas aeruginosa_\n"
+        "- STAU = _Staphylococcus aureus_"
     ),
 
     "cuora.analyzing": "\u23f3 Analyzing...",

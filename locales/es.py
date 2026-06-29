@@ -343,7 +343,10 @@ TRANSLATIONS = {
     ),
     "faq.q2.question": "\u00bfC\u00f3mo funciona el pipeline?",
     "faq.q2.answer": (
-        "El pipeline consta de cuatro etapas: (1) subir o generar una imagen de placa de agar, "
+        "El pipeline consta de cuatro etapas: (1) subir una imagen de placa de agar "
+        "o utilizar una imagen de ejemplo "
+        "(el nombre del archivo indica el n\u00famero real de colonias y las especies presentes, "
+        "ej. 17_ESCO.jpg = 17 colonias de E. coli), "
         "(2) \u03bcKount detecta y cuenta colonias con recuadros delimitadores, "
         "(3) \u03bcDetect clasifica cada colonia por especie, "
         "(4) los resultados se muestran en un panel interactivo con gr\u00e1ficos y m\u00e9tricas."
@@ -380,6 +383,15 @@ TRANSLATIONS = {
         "a errores humanos. \u03bcKount & \u03bcDetect automatiza este proceso, "
         "proporcionando resultados consistentes, r\u00e1pidos y reproducibles, acelerando "
         "el an\u00e1lisis microbiol\u00f3gico en entornos cl\u00ednicos, industriales y de investigaci\u00f3n."
+    ),
+    "faq.q8.question": "\u00bfQu\u00e9 significan las abreviaturas de los archivos de ejemplo?",
+    "faq.q8.answer": (
+        "Las im\u00e1genes de ejemplo incluyen en su nombre el n\u00famero de colonias "
+        "y una abreviatura de las especies presentes:\n\n"
+        "- ESCO = _Escherichia coli_\n"
+        "- BASU = _Bacillus subtilis_\n"
+        "- PSAE = _Pseudomonas aeruginosa_\n"
+        "- STAU = _Staphylococcus aureus_"
     ),
 
     "cuora.analyzing": "\u23f3 Analizando...",
