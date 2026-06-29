@@ -3,7 +3,7 @@ import numpy as np
 import streamlit as st
 import cv2
 
-from app_config.settings import (
+from config.settings import (
     CLASSIFICATION_MODEL_PATH,
     CLASSIFICATION_IMG_SIZE,
     SPECIES,

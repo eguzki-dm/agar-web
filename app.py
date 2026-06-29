@@ -8,7 +8,7 @@ os.environ["MKL_NUM_THREADS"] = "1"
 
 import streamlit as st
 
-from app_config.settings import APP_NAME, APP_VERSION
+from config.settings import APP_NAME, APP_VERSION
 from utils.session_state import init_session_state
 from utils.i18n import t, get_language
 from utils.theme import inject_theme_css
@@ -81,7 +81,7 @@ with st.sidebar:
     st.divider()
 
     if st.session_state.original_image is not None:
-        if st.button(t("sidebar.restart"), use_container_width=True):
+        if st.button(t("sidebar.restart"), width="stretch"):
             st.session_state.original_image = None
             st.session_state.detections = []
             st.session_state.classifications = []

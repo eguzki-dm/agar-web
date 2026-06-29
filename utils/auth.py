@@ -51,7 +51,7 @@ def render_login_page():
                 name=t("cuora.login_button"),
                 redirect_uri=cfg["redirect_uri"],
                 scope="openid email profile",
-                use_container_width=True,
+                width="stretch",
             )
 
             if result and "token" in result:

@@ -45,7 +45,7 @@ st.divider()
 preprocessor = PreprocessingService()
 classifier = ClassificationService()
 
-if st.button(t("detect.process.button"), type="primary", use_container_width=True):
+if st.button(t("detect.process.button"), type="primary", width="stretch"):
     with st.spinner(t("detect.process.button")):
         st.subheader(t("pipeline.title"), anchor=False)
 
@@ -69,7 +69,7 @@ if st.button(t("detect.process.button"), type="primary", use_container_width=Tru
         for i, col in enumerate(cols):
             if i < len(processed_crops):
                 with col:
-                    st.image(processed_crops[i], use_container_width=True, caption=t("detect.colony.label").format(number=i + 1))
+                    st.image(processed_crops[i], width="stretch", caption=t("detect.colony.label").format(number=i + 1))
 
         st.divider()
 
@@ -105,7 +105,7 @@ if st.session_state.classifications:
             crop = ps.crop_colony(image, det["box"])
             processed = ps.apply_black_background(crop)
 
-            st.image(processed, use_container_width=True, caption=t("detect.colony.processed"))
+            st.image(processed, width="stretch", caption=t("detect.colony.processed"))
 
         with cols[1]:
             st.markdown(f"**{t('detect.species.label')}:** {cls['species']}")

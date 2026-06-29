@@ -1,7 +1,7 @@
 from PIL import Image, ImageDraw
 import streamlit as st
 
-from app_config.settings import DETECTION_COLORS
+from config.settings import DETECTION_COLORS
 
 
 def draw_boxes(
@@ -29,7 +29,7 @@ def draw_boxes(
 
 def show_image_with_boxes(image: Image.Image, detections: list[dict], caption: str = ""):
     annotated = draw_boxes(image, detections)
-    st.image(annotated, caption=caption, use_container_width=True)
+    st.image(annotated, caption=caption, width="stretch")
 
 
 def show_crops_grid(crops: list, classifications: list, cols: int = 3):
@@ -44,7 +44,7 @@ def show_crops_grid(crops: list, classifications: list, cols: int = 3):
         for j, col in enumerate(columns):
             if j < len(row_crops):
                 with col:
-                    st.image(row_crops[j], use_container_width=True)
+                    st.image(row_crops[j], width="stretch")
                     if j < len(row_class):
                         c = row_class[j]
                         st.caption(f"{c['species']} ({c['confidence']:.0%})")
@@ -54,5 +54,5 @@ def display_crop_pipeline_step(step_number: int, title: str, description: str, i
     st.subheader(title, anchor=False)
     st.markdown(description)
     if image is not None:
-        st.image(image, use_container_width=True)
+        st.image(image, width="stretch")
     st.divider()

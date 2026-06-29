@@ -10,7 +10,7 @@ from components.image_viewer import show_image_with_boxes
 from components.charts import metrics_dashboard
 from utils.i18n import t
 from utils.session_state import init_session_state
-from app_config.settings import EXAMPLE_IMAGES_DIR, RESULTS_DIR
+from config.settings import EXAMPLE_IMAGES_DIR, RESULTS_DIR
 
 init_session_state()
 
@@ -64,9 +64,9 @@ with examples_tab:
         for idx, img_path in enumerate(example_files):
             with cols[idx % 3]:
                 thumb = Image.open(img_path).convert("RGB")
-                st.image(thumb, use_container_width=True)
+                st.image(thumb, width="stretch")
                 fname = img_path.name
-                if st.button(fname, key=f"example_{idx}", use_container_width=True):
+                if st.button(fname, key=f"example_{idx}", width="stretch"):
                     st.session_state.original_image = thumb.copy()
                     st.success(t("kount.status.loaded"))
                     st.rerun()
@@ -75,9 +75,9 @@ st.divider()
 
 if st.session_state.original_image is not None:
     st.subheader(t("kount.loaded_image"))
-    st.image(st.session_state.original_image, use_container_width=True)
+    st.image(st.session_state.original_image, width="stretch")
 
-    if st.button(t("kount.detect.button"), type="primary", use_container_width=True):
+    if st.button(t("kount.detect.button"), type="primary", width="stretch"):
         with st.spinner(t("kount.detect.button")):
             result = detector.detect(st.session_state.original_image)
 
@@ -126,7 +126,7 @@ if st.session_state.original_image is not None:
                 data=json_data,
                 file_name=f"kount_detections_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json",
                 mime="application/json",
-                use_container_width=True,
+                width="stretch",
             )
 
         Path(RESULTS_DIR).mkdir(parents=True, exist_ok=True)
@@ -138,7 +138,7 @@ if st.session_state.original_image is not None:
 
     next_btn = st.button(
         t("kount.next.button"),
-        use_container_width=True,
+        width="stretch",
         disabled=not st.session_state.detections,
     )
     if next_btn:

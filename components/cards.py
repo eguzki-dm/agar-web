@@ -37,7 +37,7 @@ def species_card(crop, species, confidence, species_info=None):
     col1, col2 = st.columns([1, 2])
 
     with col1:
-        st.image(crop, use_container_width=True)
+        st.image(crop, width="stretch")
 
     with col2:
         st.subheader(species, anchor=False)

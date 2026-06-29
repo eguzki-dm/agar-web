@@ -1,7 +1,7 @@
 import base64
 import streamlit as st
 
-from app_config.settings import APP_NAME
+from config.settings import APP_NAME
 from utils.i18n import t
 from components.cards import disclaimer_card
 

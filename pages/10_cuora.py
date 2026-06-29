@@ -40,7 +40,7 @@ else:
 
 col_clear, col_export, col_logout = st.columns([1, 1, 1])
 with col_clear:
-    if st.button(t("cuora.clear_chat"), use_container_width=True):
+    if st.button(t("cuora.clear_chat"), width="stretch"):
         clear_chat()
         st.rerun()
 with col_export:
@@ -51,10 +51,10 @@ with col_export:
             data=export_text,
             file_name=f"cuora_{st.session_state.get('session_id', 'chat')}.txt",
             mime="text/plain",
-            use_container_width=True,
+            width="stretch",
         )
 with col_logout:
-    if st.button(t("cuora.logout"), use_container_width=True):
+    if st.button(t("cuora.logout"), width="stretch"):
         auth_logout()
 
 messages_container = st.container()

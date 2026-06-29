@@ -30,7 +30,7 @@ if classifications:
 
     fig = species_distribution_chart(classifications)
     if fig:
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     st.divider()
 
@@ -54,14 +54,14 @@ if classifications:
 
     df = probability_table(classifications)
     if not df.empty:
-        st.dataframe(df, use_container_width=True, hide_index=True)
+        st.dataframe(df, width="stretch", hide_index=True)
 
     st.divider()
 
     st.subheader(t("results.probability_map.title"))
     fig2 = probability_heatmap(classifications)
     if fig2:
-        st.plotly_chart(fig2, use_container_width=True)
+        st.plotly_chart(fig2, width="stretch")
 
     st.divider()
 
