@@ -1,7 +1,7 @@
 from PIL import Image, ImageDraw
 import streamlit as st
 
-from config.settings import DETECTION_COLORS
+from app_config.settings import DETECTION_COLORS
 
 
 def draw_boxes(

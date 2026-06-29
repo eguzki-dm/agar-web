@@ -56,6 +56,7 @@ if st.button(t("detect.process.button"), type="primary", width="stretch"):
         )
 
         crops, processed_crops = preprocessor.process_crops(image, detections)
+        st.session_state.processed_crops = processed_crops
 
         st.markdown(t("detect.status.crops_extracted").format(count=len(crops)))
 
@@ -96,16 +97,14 @@ if st.session_state.classifications:
     except (FileNotFoundError, json.JSONDecodeError):
         species_info = {}
 
+    processed_crops = st.session_state.get("processed_crops", [])
     for i, (det, cls) in enumerate(zip(detections, classifications)):
         st.markdown(f"<h4>{t('detect.colony.label').format(number=i + 1)}</h4>", unsafe_allow_html=True)
         cols = st.columns([1, 1])
 
         with cols[0]:
-            ps = PreprocessingService()
-            crop = ps.crop_colony(image, det["box"])
-            processed = ps.apply_black_background(crop)
-
-            st.image(processed, width="stretch", caption=t("detect.colony.processed"))
+            if i < len(processed_crops):
+                st.image(processed_crops[i], width="stretch", caption=t("detect.colony.processed"))
 
         with cols[1]:
             st.markdown(f"**{t('detect.species.label')}:** {cls['species']}")
