@@ -79,18 +79,11 @@ if st.session_state.original_image is not None:
     with col_img:
         st.image(st.session_state.original_image, width=700)
 
-    confidence_threshold = st.slider(
-        t("kount.confidence.label"),
-        min_value=0.1, max_value=0.9, value=YOLO_CONFIDENCE_THRESHOLD, step=0.05,
-    )
-
     if st.button(t("kount.detect.button"), type="primary", width="stretch"):
         with st.spinner(t("kount.detect.button")):
-            result = detector.detect(st.session_state.original_image, confidence_threshold=confidence_threshold)
+            result = detector.detect(st.session_state.original_image, confidence_threshold=YOLO_CONFIDENCE_THRESHOLD)
 
-        detections = result["detections"]
-        st.session_state.detections = detections
-        st.session_state.filtered_detections = detections
+        st.session_state.detections = result["detections"]
 
         metadata = st.session_state.run_metadata
         metadata["detection_time_s"] = result["time_s"]
@@ -100,17 +93,9 @@ if st.session_state.original_image is not None:
         st.subheader(t("kount.detection_result"))
 
     if st.session_state.detections:
-        min_conf = st.slider(
-            t("kount.filter.label"),
-            min_value=0.0, max_value=1.0, value=0.0, step=0.05,
-        )
-        filtered = [d for d in st.session_state.detections if d["confidence"] >= min_conf]
-        st.session_state.filtered_detections = filtered
-
-        st.subheader(t("kount.detection_result"))
         show_image_with_boxes(
             st.session_state.original_image,
-            filtered,
+            st.session_state.detections,
             caption=t("kount.status.detected").format(
                 count=len(st.session_state.detections),
                 time=st.session_state.run_metadata.get("detection_time_s", 0),
@@ -118,7 +103,7 @@ if st.session_state.original_image is not None:
         )
 
         metrics_dashboard(
-            filtered,
+            st.session_state.detections,
             st.session_state.classifications,
             st.session_state.run_metadata,
         )
@@ -129,8 +114,7 @@ if st.session_state.original_image is not None:
             "session_id": st.session_state.get("session_id", datetime.now().strftime("%Y%m%d_%H%M%S")),
             "timestamp": datetime.now().isoformat(),
             "total_detections": len(st.session_state.detections),
-            "displayed_detections": len(filtered),
-            "confidence_threshold": min_conf,
+            "confidence_threshold": YOLO_CONFIDENCE_THRESHOLD,
             "time_s": st.session_state.run_metadata.get("detection_time_s", 0),
             "image_size": st.session_state.original_image.size,
             "detections": [
@@ -138,7 +122,7 @@ if st.session_state.original_image is not None:
                     "box": d["box"],
                     "confidence": d["confidence"],
                 }
-                for d in filtered
+                for d in st.session_state.detections
             ],
         }, indent=2)
 
@@ -162,10 +146,9 @@ if st.session_state.original_image is not None:
     next_btn = st.button(
         t("kount.next.button"),
         width="stretch",
-        disabled=not st.session_state.get("filtered_detections"),
+        disabled=not st.session_state.get("detections"),
     )
     if next_btn:
-        st.session_state.detections = st.session_state.filtered_detections
         st.switch_page("pages/05_detect.py")
 else:
     st.info(t("kount.no_image"))
