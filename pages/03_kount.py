@@ -87,10 +87,10 @@ if st.session_state.original_image is not None:
             st.session_state.run_metadata,
         )
 
-        st.divider()
+    st.divider()
 
-        if detections:
-            if st.button(t("kount.next.button"), use_container_width=True):
-                st.switch_page("pages/04_detect.py")
+    if st.session_state.detections:
+        if st.button(t("kount.next.button"), use_container_width=True):
+            st.switch_page("pages/04_detect.py")
 else:
     st.info(t("kount.no_image"))
