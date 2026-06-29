@@ -66,4 +66,4 @@ def generate_pdf(detections: list, classifications: list, species_counts: dict, 
         if len(classifications) > 50:
             pdf.cell(0, 7, f"... and {len(classifications) - 50} more colonies", new_x="LMARGIN", new_y="NEXT")
 
-    return pdf.output()
+    return bytes(pdf.output())
