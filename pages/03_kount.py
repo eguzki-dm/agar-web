@@ -75,7 +75,7 @@ st.divider()
 
 if st.session_state.original_image is not None:
     st.subheader(t("kount.loaded_image"))
-    st.image(st.session_state.original_image, width="stretch")
+    st.image(st.session_state.original_image, width=500)
 
     if st.button(t("kount.detect.button"), type="primary", width="stretch"):
         with st.spinner(t("kount.detect.button")):
