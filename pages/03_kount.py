@@ -85,15 +85,15 @@ if st.session_state.original_image is not None:
         st.session_state.detections = detections
 
         metadata = st.session_state.run_metadata
-        metadata["detection_time_ms"] = result["time_ms"]
+        metadata["detection_time_s"] = result["time_s"]
 
-        st.success(t("kount.status.detected").format(count=result["count"], time=result["time_ms"]))
+        st.success(t("kount.status.detected").format(count=result["count"], time=result["time_s"]))
 
         st.subheader(t("kount.detection_result"))
         show_image_with_boxes(
             st.session_state.original_image,
             detections,
-            caption=t("kount.status.detected").format(count=result["count"], time=result["time_ms"]),
+            caption=t("kount.status.detected").format(count=result["count"], time=result["time_s"]),
         )
 
         metrics_dashboard(
@@ -108,7 +108,7 @@ if st.session_state.original_image is not None:
             "session_id": st.session_state.get("session_id", datetime.now().strftime("%Y%m%d_%H%M%S")),
             "timestamp": datetime.now().isoformat(),
             "total_detections": result["count"],
-            "time_ms": result["time_ms"],
+            "time_s": result["time_s"],
             "image_size": st.session_state.original_image.size,
             "detections": [
                 {
@@ -136,8 +136,12 @@ if st.session_state.original_image is not None:
 
     st.divider()
 
-    if st.session_state.detections:
-        if st.button(t("kount.next.button"), use_container_width=True):
-            st.switch_page("pages/04_detect.py")
+    next_btn = st.button(
+        t("kount.next.button"),
+        use_container_width=True,
+        disabled=not st.session_state.detections,
+    )
+    if next_btn:
+        st.switch_page("pages/04_detect.py")
 else:
     st.info(t("kount.no_image"))

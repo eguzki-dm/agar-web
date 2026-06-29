@@ -88,7 +88,7 @@ TRANSLATIONS = {
     "kount.examples.none": "No se encontraron im\u00e1genes de ejemplo.",
     "kount.download_json": "\U0001f4e5 Descargar JSON",
     "kount.detect.button": "\u25b6\ufe0f Ejecutar \u03bcKount",
-    "kount.status.detected": "{count} colonias detectadas en {time} ms.",
+    "kount.status.detected": "{count} colonias detectadas en {time} s.",
     "kount.next.button": "\u27a1\ufe0f Procesar con \u03bcDetect",
     "kount.no_image": "Sube una imagen para comenzar.",
     "kount.loaded_image": "Imagen cargada",

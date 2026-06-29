@@ -64,12 +64,12 @@ class DetectionService:
         else:
             detections = self._detect_resize(image)
 
-        elapsed = (time.time() - start) * 1000
+        elapsed = time.time() - start
 
         return {
             "detections": detections,
             "count": len(detections),
-            "time_ms": round(elapsed, 1),
+            "time_s": round(elapsed, 2),
         }
 
     def _detect_slicing(self, image: Image.Image) -> list[dict]:

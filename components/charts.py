@@ -107,12 +107,12 @@ def metrics_dashboard(detections: list, classifications: list, metadata: dict):
         )
 
     with col3:
-        time_det = metadata.get("detection_time_ms", 0)
-        st.metric(t("charts.metrics.time_kount"), f"{time_det} ms")
+        time_det = metadata.get("detection_time_s", 0)
+        st.metric(t("charts.metrics.time_kount"), f"{time_det} s")
 
     with col4:
-        time_cls = metadata.get("classification_time_ms", 0)
+        time_cls = metadata.get("classification_time_s", 0)
         if time_cls:
-            st.metric(t("charts.metrics.time_detect"), f"{time_cls} ms")
+            st.metric(t("charts.metrics.time_detect"), f"{time_cls} s")
         else:
             st.metric(t("charts.metrics.time_detect"), "\u2014")
