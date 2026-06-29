@@ -37,6 +37,9 @@ icons/ogs/
 .opencode/
 .memory/
 
+# Archived scripts (not needed for the app)
+archive/
+
 # Testing
 .pytest_cache/
 .coverage

@@ -1,103 +1,153 @@
-import random
 import time
 from PIL import Image, ImageDraw
-
+import streamlit as st
 import numpy as np
+import cv2
 
-from config.settings import (
-    USE_MOCK,
-    SYNTHETIC_IMAGE_WIDTH,
-    SYNTHETIC_IMAGE_HEIGHT,
-    SYNTHETIC_MIN_COLONIES,
-    SYNTHETIC_MAX_COLONIES,
+from sahi import AutoDetectionModel
+from sahi.predict import get_sliced_prediction
+
+from app_config.settings import (
+    YOLO_MODEL_PATH,
+    YOLO_MODEL_RESIZE_PATH,
+    YOLO_CONFIDENCE_THRESHOLD,
+    YOLO_IOU_THRESHOLD,
+    SLICE_SIZE,
+    SAHI_OVERLAP_RATIO,
+    SAHI_BATCH_SIZE,
+    POST_PROCESS_MATCH_THRESHOLD,
+    LETTERBOX_SIZE,
     DETECTION_COLORS,
 )
 
 
+@st.cache_resource
+def _load_sahi_model():
+    return AutoDetectionModel.from_pretrained(
+        model_type='ultralytics',
+        model_path=YOLO_MODEL_PATH,
+        confidence_threshold=YOLO_CONFIDENCE_THRESHOLD,
+        device='cpu',
+        image_size=SLICE_SIZE,
+    )
+
+
+@st.cache_resource
+def _load_resize_model():
+    from ultralytics import YOLO
+    return YOLO(YOLO_MODEL_RESIZE_PATH)
+
+
+def _letterbox_image(img: np.ndarray, target_size: int = LETTERBOX_SIZE) -> tuple:
+    h, w = img.shape[:2]
+    scale = min(target_size / w, target_size / h)
+    new_w = int(w * scale)
+    new_h = int(h * scale)
+    resized = cv2.resize(img, (new_w, new_h), interpolation=cv2.INTER_LINEAR)
+    pad_left = (target_size - new_w) // 2
+    pad_top = (target_size - new_h) // 2
+    padded = cv2.copyMakeBorder(
+        resized, pad_top, target_size - new_h - pad_top,
+        pad_left, target_size - new_w - pad_left,
+        cv2.BORDER_CONSTANT, value=(114, 114, 114),
+    )
+    return padded, scale, pad_left, pad_top
+
+
 class DetectionService:
     def detect(self, image: Image.Image) -> dict:
-        if USE_MOCK:
-            return self._mock_detect(image)
+        start = time.time()
+        w, h = image.size
 
-        # Placeholder for real YOLO inference
-        raise NotImplementedError("Real YOLO detection not yet integrated")
+        if w >= SLICE_SIZE and h >= SLICE_SIZE:
+            detections = self._detect_slicing(image)
+        else:
+            detections = self._detect_resize(image)
 
-    def generate_synthetic_plate(
-        self,
-        width: int = SYNTHETIC_IMAGE_WIDTH,
-        height: int = SYNTHETIC_IMAGE_HEIGHT,
-    ) -> tuple[Image.Image, list[dict]]:
-        img = Image.new("RGB", (width, height), (245, 230, 202))
-        draw = ImageDraw.Draw(img)
+        elapsed = (time.time() - start) * 1000
 
-        # Plate border (petri dish)
-        border_margin = 30
-        plate_color = (230, 210, 180)
-        draw.ellipse(
-            [border_margin, border_margin, width - border_margin, height - border_margin],
-            fill=plate_color,
-            outline=(200, 180, 150),
-            width=3,
+        return {
+            "detections": detections,
+            "count": len(detections),
+            "time_ms": round(elapsed, 1),
+        }
+
+    def _detect_slicing(self, image: Image.Image) -> list[dict]:
+        model = _load_sahi_model()
+        img_array = np.array(image.convert("RGB"))
+
+        result = get_sliced_prediction(
+            img_array,
+            model,
+            slice_height=SLICE_SIZE,
+            slice_width=SLICE_SIZE,
+            overlap_height_ratio=SAHI_OVERLAP_RATIO,
+            overlap_width_ratio=SAHI_OVERLAP_RATIO,
+            batch_size=SAHI_BATCH_SIZE,
+            postprocess_type='GREEDYNMM',
+            postprocess_match_metric='IOU',
+            postprocess_match_threshold=POST_PROCESS_MATCH_THRESHOLD,
+            perform_standard_pred=True,
+            postprocess_class_agnostic=True,
+            verbose=0,
         )
 
-        # Inner agar area
-        inner_margin = 60
-        agar_color = (245, 232, 200)
-        draw.ellipse(
-            [inner_margin, inner_margin, width - inner_margin, height - inner_margin],
-            fill=agar_color,
-        )
-
-        num_colonies = random.randint(SYNTHETIC_MIN_COLONIES, SYNTHETIC_MAX_COLONIES)
         detections = []
-
-        for _ in range(num_colonies):
-            # Colony radius between 8 and 30 pixels
-            radius = random.randint(8, 30)
-            # Keep colonies within the inner agar area
-            margin = inner_margin + radius + 10
-            cx = random.randint(margin, width - margin)
-            cy = random.randint(margin, height - margin)
-
-            # Colony color: cream/white/yellowish tones
-            colony_color = (
-                random.randint(220, 255),
-                random.randint(200, 240),
-                random.randint(170, 220),
-            )
-
-            draw.ellipse(
-                [cx - radius, cy - radius, cx + radius, cy + radius],
-                fill=colony_color,
-                outline=(180, 160, 130),
-                width=1,
-            )
-
-            # Add slight texture variation (inner circle slightly different shade)
-            inner_radius = radius * random.randint(3, 6) // 10
-            inner_color = (
-                min(255, colony_color[0] + 10),
-                min(255, colony_color[1] + 10),
-                min(255, colony_color[2] + 5),
-            )
-            draw.ellipse(
-                [cx - inner_radius, cy - inner_radius, cx + inner_radius, cy + inner_radius],
-                fill=inner_color,
-            )
-
-            # Bounding box around the colony
-            margin_box = 2
-            x1 = cx - radius - margin_box
-            y1 = cy - radius - margin_box
-            x2 = cx + radius + margin_box
-            y2 = cy + radius + margin_box
-
+        for pred in result.object_prediction_list:
+            x1, y1, x2, y2 = map(int, pred.bbox.to_voc_bbox())
+            conf = round(float(pred.score.value), 3)
+            if (x2 - x1) < 2 or (y2 - y1) < 2:
+                continue
             detections.append({
                 "box": [x1, y1, x2, y2],
-                "confidence": round(random.uniform(0.85, 0.99), 3),
+                "confidence": conf,
             })
+        return detections
 
-        return img, detections
+    def _detect_resize(self, image: Image.Image) -> list[dict]:
+        model = _load_resize_model()
+        img_bgr = cv2.cvtColor(np.array(image.convert("RGB")), cv2.COLOR_RGB2BGR)
+        h, w = img_bgr.shape[:2]
+
+        letterboxed, scale, pad_left, pad_top = _letterbox_image(img_bgr)
+
+        results = model.predict(
+            letterboxed,
+            conf=YOLO_CONFIDENCE_THRESHOLD,
+            iou=YOLO_IOU_THRESHOLD,
+            verbose=False,
+        )
+
+        detections = []
+        for r in results:
+            if r.boxes is None:
+                continue
+            for box in r.boxes:
+                xc, yc, bw, bh = box.xywhn[0].tolist()
+                conf = float(box.conf[0])
+                x_center_px = xc * LETTERBOX_SIZE
+                y_center_px = yc * LETTERBOX_SIZE
+                bw_px = bw * LETTERBOX_SIZE
+                bh_px = bh * LETTERBOX_SIZE
+                x1_l = x_center_px - bw_px / 2
+                y1_l = y_center_px - bh_px / 2
+                x2_l = x_center_px + bw_px / 2
+                y2_l = y_center_px + bh_px / 2
+                x1 = int((x1_l - pad_left) / scale)
+                y1 = int((y1_l - pad_top) / scale)
+                x2 = int((x2_l - pad_left) / scale)
+                y2 = int((y2_l - pad_top) / scale)
+                x1 = max(0, min(x1, w))
+                y1 = max(0, min(y1, h))
+                x2 = max(0, min(x2, w))
+                y2 = max(0, min(y2, h))
+                if (x2 - x1) < 2 or (y2 - y1) < 2:
+                    continue
+                detections.append({
+                    "box": [x1, y1, x2, y2],
+                    "confidence": round(conf, 3),
+                })
+        return detections
 
     def draw_boxes(
         self,
@@ -117,119 +167,3 @@ class DetectionService:
             draw.text((x1 + 2, y1 - 12), label, fill=color)
 
         return img_copy
-
-    def _mock_detect(self, image: Image.Image) -> dict:
-        """Simulate detection on a real uploaded image by finding non-background regions."""
-        start = time.time()
-
-        img_array = np.array(image.convert("RGB"))
-        gray = np.mean(img_array, axis=2)
-
-        # Simple threshold to find colonies (darker regions on light background)
-        threshold = 200
-        mask = gray < threshold
-
-        if not np.any(mask):
-            elapsed = (time.time() - start) * 1000
-            return {
-                "detections": [],
-                "count": 0,
-                "time_ms": round(elapsed, 1),
-            }
-
-        # Find connected components
-        from PIL import ImageFilter
-
-        # Use simple blob detection via connected components
-        labeled = np.zeros_like(mask, dtype=int)
-        label_num = 0
-        connected = _connected_components(mask, labeled)
-
-        detections = []
-        h, w = mask.shape
-        min_colony_size = 200
-
-        for label_idx in range(1, connected + 1):
-            ys, xs = np.where(labeled == label_idx)
-            if len(ys) < min_colony_size:
-                continue
-
-            x1 = int(xs.min()) - 2
-            y1 = int(ys.min()) - 2
-            x2 = int(xs.max()) + 2
-            y2 = int(ys.max()) + 2
-
-            x1 = max(0, x1)
-            y1 = max(0, y1)
-            x2 = min(w, x2)
-            y2 = min(h, y2)
-
-            confidence = round(random.uniform(0.85, 0.99), 3)
-            detections.append({
-                "box": [x1, y1, x2, y2],
-                "confidence": confidence,
-            })
-
-        elapsed = (time.time() - start) * 1000
-
-        return {
-            "detections": detections,
-            "count": len(detections),
-            "time_ms": round(elapsed, 1),
-        }
-
-    def synthetic(self) -> tuple[Image.Image, list[dict]]:
-        return self.generate_synthetic_plate()
-
-
-def _connected_components(binary_mask: np.ndarray, labeled: np.ndarray) -> int:
-    """Simple two-pass connected components labeling."""
-    label_num = 0
-    h, w = binary_mask.shape
-    equivalences = {}
-
-    # First pass
-    for y in range(h):
-        for x in range(w):
-            if not binary_mask[y, x]:
-                continue
-
-            neighbors = []
-            if y > 0 and labeled[y - 1, x] > 0:
-                neighbors.append(labeled[y - 1, x])
-            if x > 0 and labeled[y, x - 1] > 0:
-                neighbors.append(labeled[y, x - 1])
-
-            if not neighbors:
-                label_num += 1
-                labeled[y, x] = label_num
-            else:
-                min_label = min(neighbors)
-                labeled[y, x] = min_label
-                for n in neighbors:
-                    if n != min_label:
-                        equivalences[n] = min_label
-
-    # Resolve equivalences
-    for y in range(h):
-        for x in range(w):
-            if labeled[y, x] > 0:
-                label = labeled[y, x]
-                while label in equivalences:
-                    label = equivalences[label]
-                labeled[y, x] = label
-
-    # Renumber to consecutive
-    unique_labels = set()
-    for y in range(h):
-        for x in range(w):
-            if labeled[y, x] > 0:
-                unique_labels.add(labeled[y, x])
-
-    renumber = {old: new + 1 for new, old in enumerate(sorted(unique_labels))}
-    for y in range(h):
-        for x in range(w):
-            if labeled[y, x] > 0:
-                labeled[y, x] = renumber[labeled[y, x]]
-
-    return len(unique_labels)
