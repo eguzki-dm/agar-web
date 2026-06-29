@@ -191,7 +191,7 @@ TRANSLATIONS = {
     "kount.detection_mode.sahi": "\U0001f50d Modo Agar Explorer",
     "kount.detection_mode.full.desc": "Detecci\u00f3n r\u00e1pida de placa completa.",
     "kount.detection_mode.sahi.desc": "Detecci\u00f3n de alta resoluci\u00f3n para placas densas.",
-    "kount.detection_mode.sahi.optimizing": "\u26a0\ufe0f Optimizaci\u00f3n en curso \u2014 Este modo puede ser m\u00e1s lento en im\u00e1genes grandes.",
+    "kount.detection_mode.sahi.optimizing": "\u26a0\ufe0f Optimizaci\u00f3n en curso \u2014 optimizando para mejor calidad de resultados",
 
     # ─── μDetect page ──────────────────────────────────────────
     "detect.title": "\U0001f9ea \u03bcDetect \u2014 Clasificaci\u00f3n de Colonias",

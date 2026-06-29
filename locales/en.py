@@ -186,7 +186,7 @@ TRANSLATIONS = {
     "kount.detection_mode.sahi": "\U0001f50d Agar Explorer Mode",
     "kount.detection_mode.full.desc": "Fast whole-plate detection.",
     "kount.detection_mode.sahi.desc": "High-resolution detection for dense plates.",
-    "kount.detection_mode.sahi.optimizing": "\u26a0\ufe0f Optimization in progress \u2014 This mode may be slower on large images.",
+    "kount.detection_mode.sahi.optimizing": "\u26a0\ufe0f Optimization in progress \u2014 optimizing for better output quality",
 
     # ─── μDetect page ──────────────────────────────────────────
     "detect.title": "\U0001f9ea \u03bcDetect \u2014 Colony Classification",
