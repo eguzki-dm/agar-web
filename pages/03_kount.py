@@ -63,11 +63,11 @@ with examples_tab:
         cols = st.columns(3)
         for idx, img_path in enumerate(example_files):
             with cols[idx % 3]:
-                thumb = Image.open(img_path).convert("RGB")
-                st.image(thumb, width="stretch")
+                img = Image.open(img_path).convert("RGB")
+                st.image(img.resize((250, 250), Image.Resampling.LANCZOS), width="stretch")
                 fname = img_path.name
                 if st.button(fname, key=f"example_{idx}", width="stretch"):
-                    st.session_state.original_image = thumb.copy()
+                    st.session_state.original_image = img
                     st.success(t("kount.status.loaded"))
                     st.rerun()
 

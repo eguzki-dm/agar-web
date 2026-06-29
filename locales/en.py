@@ -389,6 +389,7 @@ TRANSLATIONS = {
         "Example image filenames contain the colony count and species abbreviations:\n\n"
         "- ESCO = _Escherichia coli_\n"
         "- BASU = _Bacillus subtilis_\n"
+        "- CAAL = _Candida albicans_\n"
         "- PSAE = _Pseudomonas aeruginosa_\n"
         "- STAU = _Staphylococcus aureus_"
     ),
