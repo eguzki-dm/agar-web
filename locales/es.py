@@ -192,6 +192,13 @@ TRANSLATIONS = {
     "kount.detection_mode.full.desc": "Detecci\u00f3n r\u00e1pida de placa completa.",
     "kount.detection_mode.sahi.desc": "Detecci\u00f3n de alta resoluci\u00f3n para placas densas.",
     "kount.detection_mode.sahi.optimizing": "\u26a0\ufe0f Optimizaci\u00f3n en curso \u2014 optimizando para mejor calidad de resultados",
+    "kount.upload.guide.title": "📤 Subir imágenes para μKount",
+    "kount.upload.guide.desc": "Antes de subir, asegúrate de que tus imágenes sean **de alta calidad y estén bien enfocadas**.",
+    "kount.upload.guide.example": "🔎 Búsqueda de ejemplo en Google:",
+    "kount.upload.guide.example_query": "agar plate triptona soya agar",
+    "kount.upload.guide.tip_size": "📏 Tamaño de imagen: **Grande**",
+    "kount.upload.guide.tip_clarity": "🧫 Placa de Petri clara / agar visible",
+    "kount.upload.guide.tip_compression": "📸 Sin compresión pesada",
 
     # ─── μDetect page ──────────────────────────────────────────
     "detect.title": "\U0001f9ea \u03bcDetect \u2014 Clasificaci\u00f3n de Colonias",

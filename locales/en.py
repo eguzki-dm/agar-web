@@ -187,6 +187,13 @@ TRANSLATIONS = {
     "kount.detection_mode.full.desc": "Fast whole-plate detection.",
     "kount.detection_mode.sahi.desc": "High-resolution detection for dense plates.",
     "kount.detection_mode.sahi.optimizing": "\u26a0\ufe0f Optimization in progress \u2014 optimizing for better output quality",
+    "kount.upload.guide.title": "📤 Upload images for μKount",
+    "kount.upload.guide.desc": "Before uploading, make sure your images are **high quality and well-focused**.",
+    "kount.upload.guide.example": "🔎 Example Google search:",
+    "kount.upload.guide.example_query": "agar plate triptona soya agar",
+    "kount.upload.guide.tip_size": "📏 Image size: **Large**",
+    "kount.upload.guide.tip_clarity": "🧫 Clear Petri dish / agar visibility",
+    "kount.upload.guide.tip_compression": "📸 No heavy compression",
 
     # ─── μDetect page ──────────────────────────────────────────
     "detect.title": "\U0001f9ea \u03bcDetect \u2014 Colony Classification",
