@@ -201,6 +201,7 @@ TRANSLATIONS = {
     "detect.detection_precision": "Detection precision",
     "detect.probabilities.title": "View detailed probabilities",
     "detect.info.run": "Press 'Run \u03bcDetect' to classify the colonies.",
+    "detect.button.results": "\U0001f4ca Go to Results",
 
     # ─── Results page ───────────────────────────────────────────
     "results.title": "\U0001f4ca Results \u2014 Global Results",

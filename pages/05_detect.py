@@ -70,7 +70,7 @@ if st.button(t("detect.process.button"), type="primary", width="stretch"):
         for i, col in enumerate(cols):
             if i < len(processed_crops):
                 with col:
-                    st.image(processed_crops[i], width="stretch", caption=t("detect.colony.label").format(number=i + 1))
+                    st.image(processed_crops[i], width=100, caption=t("detect.colony.label").format(number=i + 1))
 
         st.divider()
 
@@ -104,7 +104,7 @@ if st.session_state.classifications:
 
         with cols[0]:
             if i < len(processed_crops):
-                st.image(processed_crops[i], width="stretch", caption=t("detect.colony.processed"))
+                st.image(processed_crops[i], width=100, caption=t("detect.colony.processed"))
 
         with cols[1]:
             st.markdown(f"**{t('detect.species.label')}:** {cls['species']}")
@@ -116,6 +116,9 @@ if st.session_state.classifications:
                     st.markdown(f"{sp}: `{prob:.4f}`")
 
         st.divider()
+
+    if st.button(t("detect.button.results"), type="primary", width="stretch"):
+        st.switch_page("pages/06_results.py")
 else:
     if st.session_state.detections:
         st.info(t("detect.info.run"))

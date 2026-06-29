@@ -206,6 +206,7 @@ TRANSLATIONS = {
     "detect.detection_precision": "Precisi\u00f3n detecci\u00f3n",
     "detect.probabilities.title": "Ver probabilidades detalladas",
     "detect.info.run": "Presiona 'Ejecutar \u03bcDetect' para clasificar las colonias.",
+    "detect.button.results": "\U0001f4ca Ir a Resultados",
 
     # ─── Results page ───────────────────────────────────────────
     "results.title": "\U0001f4ca Resultados \u2014 Resultados Globales",

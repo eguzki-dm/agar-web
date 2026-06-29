@@ -115,18 +115,14 @@ if classifications:
         "session_id": st.session_state.session_id,
         "detections": [
             {
-                "bbox": d["bbox"],
-                "confidence": d["confidence"],
+                "box": d["box"],
+                "detection_confidence": d["confidence"],
+                "predicted_species": st.session_state.classifications[i]["species"],
+                "classification_confidence": st.session_state.classifications[i]["confidence"],
+                "probabilities": st.session_state.classifications[i]["probabilities"],
             }
-            for d in st.session_state.detections
-        ],
-        "classifications": [
-            {
-                "species": c["species"],
-                "confidence": c["confidence"],
-                "probabilities": c["probabilities"],
-            }
-            for c in st.session_state.classifications
+            for i, d in enumerate(st.session_state.detections)
+            if i < len(st.session_state.classifications)
         ],
         "summary": {
             "total_detections": len(st.session_state.detections),

@@ -63,7 +63,7 @@ def probability_heatmap(classifications: list[dict]) -> go.Figure:
         df,
         text_auto=".2f",
         aspect="auto",
-        color_continuous_scale="Blues",
+        color_continuous_scale="Purples",
         title=t("charts.heatmap.title"),
         labels={
             "x": t("charts.heatmap.x_label"),
