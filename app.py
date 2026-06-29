@@ -25,18 +25,18 @@ init_session_state()
 inject_theme_css()
 
 pages = [
-    st.Page("pages/01_home.py", title="Home", icon="🏠"),
+    st.Page("pages/01_home.py", title=t("nav.home"), icon="🏠"),
     st.Page("pages/02_fundamentals.py", title=t("nav.fundamentals"), icon="📖"),
-    st.Page("pages/03_pipeline.py", title="Pipeline", icon="🔬"),
-    st.Page("pages/04_kount.py", title="μKount", icon="🔍"),
-    st.Page("pages/05_detect.py", title="μDetect", icon="🧪"),
-    st.Page("pages/06_results.py", title="Results", icon="📊"),
-    st.Page("pages/11_cuora.py", title="Cuora", icon="🧠"),
-    st.Page("pages/08_future_features.py", title="Future Features", icon="🚀"),
-    st.Page("pages/09_disclaimer.py", title="Disclaimer", icon="⚠️"),
-    st.Page("pages/12_faq.py", title="FAQ", icon="❓"),
-    st.Page("pages/10_acknowledgments.py", title="Acknowledgments", icon="🙏"),
-    st.Page("pages/13_about.py", title="⚙️ Technical Details", icon="⚙️"),
+    st.Page("pages/03_pipeline.py", title=t("nav.pipeline"), icon="🔬"),
+    st.Page("pages/04_kount.py", title=t("nav.kount"), icon="🔍"),
+    st.Page("pages/05_detect.py", title=t("nav.detect"), icon="🧪"),
+    st.Page("pages/06_results.py", title=t("nav.results"), icon="📊"),
+    st.Page("pages/11_cuora.py", title=t("nav.cuora"), icon="🧠"),
+    st.Page("pages/08_future_features.py", title=t("nav.future"), icon="🚀"),
+    st.Page("pages/09_disclaimer.py", title=t("nav.disclaimer"), icon="⚠️"),
+    st.Page("pages/12_faq.py", title=t("nav.faq"), icon="❓"),
+    st.Page("pages/10_acknowledgments.py", title=t("nav.acknowledgments"), icon="🙏"),
+    st.Page("pages/13_about.py", title=t("nav.about"), icon="⚙️"),
 ]
 
 with st.sidebar:
