@@ -16,6 +16,8 @@ TRANSLATIONS = {
     # ─── Sidebar ────────────────────────────────────────────────
     "sidebar.language": "Language / Idioma",
     "sidebar.restart": "\U0001f504 Restart pipeline",
+    "sidebar.microbiology_cta": "If you want to know more about microbiology:",
+    "sidebar.microbiology_handle": "lifeisaboutmicrobiology",
 
     # ─── Home ───────────────────────────────────────────────────
     "home.title": "\u03bcKount&\u03bcDetect",
@@ -229,6 +231,27 @@ TRANSLATIONS = {
     "results.not_available": "N/A",
     "results.download_json": "\U0001f4e5 Download JSON",
     "results.download_pdf": "\U0001f4c4 Download PDF",
+    "results.tab.kount": "\u03bcKount",
+    "results.tab.detect": "\u03bcDetect",
+    "results.cfu.title": "\U0001f9ee CFU Calculator",
+    "results.cfu.subtitle": "Estimate the microbial concentration of the original sample from the detected colony count.",
+    "results.cfu.colony_count": "Colony count",
+    "results.cfu.sample_type": "Sample type",
+    "results.cfu.liquid": "Liquid sample",
+    "results.cfu.solid": "Solid sample",
+    "results.cfu.dilution": "Dilution",
+    "results.cfu.volume": "Plated volume (mL)",
+    "results.cfu.calculate": "\U0001f9ee Calculate CFU",
+    "results.cfu.result": "Estimated concentration",
+    "results.cfu.unit_ml": "CFU/mL",
+    "results.cfu.unit_g": "CFU/g",
+    "results.cfu.error.colonies": "Colony count must be greater than 0.",
+    "results.cfu.error.volume": "Volume must be greater than 0.",
+    "results.cfu.error.dilution": "Please select a dilution.",
+    "results.cfu.validation.valid": "\U0001f7e2 Valid count (30\u2013300 colonies). Suitable for CFU estimation.",
+    "results.cfu.validation.low": "\U0001f7e1 Low colony count (<30). Estimation may be inaccurate.",
+    "results.cfu.validation.high": "\U0001f534 Too numerous to count (>300 colonies). Consider using a higher dilution.",
+    "results.cfu.disclaimer": "This estimation is based on the detected colony count and the dilution parameters provided by the user. Results are intended for educational and research purposes and should always be confirmed using standard microbiological laboratory procedures.",
 
     # ─── About page ────────────────────────────────────────────
     "about.title": "\u2699\ufe0f Technical Details",

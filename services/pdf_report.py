@@ -8,7 +8,7 @@ def generate_pdf(detections: list, classifications: list, species_counts: dict, 
     pdf.set_auto_page_break(auto=True, margin=15)
 
     pdf.set_font("Helvetica", "B", 16)
-    pdf.cell(0, 10, "uKount & uDetect — Analysis Report", new_x="LMARGIN", new_y="NEXT", align="C")
+    pdf.cell(0, 10, "uKount & uDetect - Analysis Report", new_x="LMARGIN", new_y="NEXT", align="C")
     pdf.set_font("Helvetica", "", 10)
     pdf.cell(0, 8, f"Session: {session_id}", new_x="LMARGIN", new_y="NEXT", align="C")
     pdf.cell(0, 8, f"Date: {datetime.now().strftime('%Y-%m-%d %H:%M')}", new_x="LMARGIN", new_y="NEXT", align="C")

@@ -18,6 +18,15 @@ def init_session_state():
     if "session_id" not in st.session_state:
         st.session_state.session_id = datetime.now().strftime("%Y%m%d_%H%M%S")
 
+    if "cfu_colony_count" not in st.session_state:
+        st.session_state.cfu_colony_count = 0
+    if "cfu_sample_type" not in st.session_state:
+        st.session_state.cfu_sample_type = "Liquid"
+    if "cfu_dilution_exponent" not in st.session_state:
+        st.session_state.cfu_dilution_exponent = -1
+    if "cfu_volume_plated" not in st.session_state:
+        st.session_state.cfu_volume_plated = 0.1
+
 
 def has_detections():
     return len(st.session_state.detections) > 0

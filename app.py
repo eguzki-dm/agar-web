@@ -65,9 +65,9 @@ with st.sidebar:
     )
     st.markdown(
         '<p style="font-size: 0.85rem; text-align: center;">'
-        "Si quieres saber m\u00e1s sobre microbiolog\u00eda:<br>"
+        + t("sidebar.microbiology_cta") + '<br>'
         '<a href="https://www.instagram.com/lifeisaboutmicrobiology/" target="_blank">'
-        "lifeisaboutmicrobiology</a></p>",
+        + t("sidebar.microbiology_handle") + '</a></p>',
         unsafe_allow_html=True,
     )
 

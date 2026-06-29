@@ -1,4 +1,5 @@
 import base64
+import time
 import streamlit as st
 
 from services.preprocessing_service import PreprocessingService
@@ -76,8 +77,11 @@ if st.button(t("detect.process.button"), type="primary", width="stretch"):
 
         st.subheader(t("detect.title"), anchor=False)
 
+        t0 = time.perf_counter()
         classifications = classifier.classify(processed_crops)
+        t1 = time.perf_counter()
         st.session_state.classifications = classifications
+        st.session_state.run_metadata["classification_time_s"] = round(t1 - t0, 2)
 
     st.success(t("detect.status.classified").format(count=len(classifications)))
 

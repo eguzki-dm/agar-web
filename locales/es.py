@@ -16,6 +16,8 @@ TRANSLATIONS = {
     # ─── Sidebar ────────────────────────────────────────────────
     "sidebar.language": "Idioma / Language",
     "sidebar.restart": "\U0001f504 Reiniciar pipeline",
+    "sidebar.microbiology_cta": "Si quieres saber m\u00e1s sobre microbiolog\u00eda:",
+    "sidebar.microbiology_handle": "lifeisaboutmicrobiology",
 
     # ─── Home ───────────────────────────────────────────────────
     "home.title": "\u03bcKount&\u03bcDetect",
@@ -234,6 +236,27 @@ TRANSLATIONS = {
     "results.not_available": "N/D",
     "results.download_json": "\U0001f4e5 Descargar JSON",
     "results.download_pdf": "\U0001f4c4 Descargar PDF",
+    "results.tab.kount": "\u03bcKount",
+    "results.tab.detect": "\u03bcDetect",
+    "results.cfu.title": "\U0001f9ee Calculadora de UFC",
+    "results.cfu.subtitle": "Estima la concentraci\u00f3n microbiana de la muestra original a partir del n\u00famero de colonias detectadas.",
+    "results.cfu.colony_count": "N\u00famero de colonias",
+    "results.cfu.sample_type": "Tipo de muestra",
+    "results.cfu.liquid": "Muestra l\u00edquida",
+    "results.cfu.solid": "Muestra s\u00f3lida",
+    "results.cfu.dilution": "Diluci\u00f3n",
+    "results.cfu.volume": "Volumen sembrado (mL)",
+    "results.cfu.calculate": "\U0001f9ee Calcular UFC",
+    "results.cfu.result": "Concentraci\u00f3n estimada",
+    "results.cfu.unit_ml": "UFC/mL",
+    "results.cfu.unit_g": "UFC/g",
+    "results.cfu.error.colonies": "El n\u00famero de colonias debe ser mayor que 0.",
+    "results.cfu.error.volume": "El volumen debe ser mayor que 0.",
+    "results.cfu.error.dilution": "Selecciona una diluci\u00f3n.",
+    "results.cfu.validation.valid": "\U0001f7e2 Recuento v\u00e1lido (30\u2013300 colonias). Apto para estimaci\u00f3n de UFC.",
+    "results.cfu.validation.low": "\U0001f7e1 Recuento bajo (<30 colonias). La estimaci\u00f3n puede ser imprecisa.",
+    "results.cfu.validation.high": "\U0001f534 Demasiadas colonias (>300). Considera usar una diluci\u00f3n mayor.",
+    "results.cfu.disclaimer": "Esta estimaci\u00f3n se basa en el n\u00famero de colonias detectadas y los par\u00e1metros de diluci\u00f3n proporcionados por el usuario. Los resultados tienen fines educativos y de investigaci\u00f3n y deben confirmarse mediante procedimientos microbiol\u00f3gicos est\u00e1ndar de laboratorio.",
 
     # ─── About page ────────────────────────────────────────────
     "about.title": "\u2699\ufe0f Aspectos t\u00e9cnicos",
