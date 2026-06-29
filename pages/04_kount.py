@@ -142,6 +142,6 @@ if st.session_state.original_image is not None:
         disabled=not st.session_state.detections,
     )
     if next_btn:
-        st.switch_page("pages/04_detect.py")
+        st.switch_page("pages/05_detect.py")
 else:
     st.info(t("kount.no_image"))

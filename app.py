@@ -26,16 +26,17 @@ inject_theme_css()
 
 pages = [
     st.Page("pages/01_home.py", title="Home", icon="🏠"),
-    st.Page("pages/02_pipeline.py", title="Pipeline", icon="🔬"),
-    st.Page("pages/03_kount.py", title="μKount", icon="🔍"),
-    st.Page("pages/04_detect.py", title="μDetect", icon="🧪"),
-    st.Page("pages/05_results.py", title="Results", icon="📊"),
-    st.Page("pages/10_cuora.py", title="Cuora", icon="🧠"),
-    st.Page("pages/06_about.py", title="About", icon="ℹ️"),
-    st.Page("pages/07_future_features.py", title="Future Features", icon="🚀"),
-    st.Page("pages/08_disclaimer.py", title="Disclaimer", icon="⚠️"),
-    st.Page("pages/11_faq.py", title="FAQ", icon="❓"),
-    st.Page("pages/09_acknowledgments.py", title="Acknowledgments", icon="🙏"),
+    st.Page("pages/02_fundamentals.py", title=t("nav.fundamentals"), icon="📖"),
+    st.Page("pages/03_pipeline.py", title="Pipeline", icon="🔬"),
+    st.Page("pages/04_kount.py", title="μKount", icon="🔍"),
+    st.Page("pages/05_detect.py", title="μDetect", icon="🧪"),
+    st.Page("pages/06_results.py", title="Results", icon="📊"),
+    st.Page("pages/11_cuora.py", title="Cuora", icon="🧠"),
+    st.Page("pages/07_about.py", title="About", icon="ℹ️"),
+    st.Page("pages/08_future_features.py", title="Future Features", icon="🚀"),
+    st.Page("pages/09_disclaimer.py", title="Disclaimer", icon="⚠️"),
+    st.Page("pages/12_faq.py", title="FAQ", icon="❓"),
+    st.Page("pages/10_acknowledgments.py", title="Acknowledgments", icon="🙏"),
 ]
 
 with st.sidebar:

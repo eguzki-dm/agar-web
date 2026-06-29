@@ -25,7 +25,7 @@ st.markdown(t("detect.subtitle"))
 if not st.session_state.detections:
     st.warning(t("detect.warning.no_detections"))
     if st.button(t("detect.button.back")):
-        st.switch_page("pages/03_kount.py")
+        st.switch_page("pages/04_kount.py")
     st.stop()
 
 if st.session_state.original_image is None:

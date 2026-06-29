@@ -10,6 +10,7 @@ TRANSLATIONS = {
     "nav.disclaimer": "Aviso Legal",
     "nav.acknowledgments": "Agradecimientos",
     "nav.faq": "FAQ",
+    "nav.fundamentals": "Fundamentos",
 
     # ─── Sidebar ────────────────────────────────────────────────
     "sidebar.language": "Idioma / Language",
@@ -43,6 +44,62 @@ TRANSLATIONS = {
     "home.dataset.source": "Dataset: AGAR dataset de NeuroSYS Research",
     "home.dataset.authors": "Investigadores: Majchrowska et al. (2021)",
     "home.dataset.title": "T\u00edtulo: AGAR a microbial colony dataset for deep learning detection",
+    "home.supporting": (
+        "Apoyando a microbi\u00f3logos mediante detecci\u00f3n automatizada de colonias, "
+        "recuento y clasificaci\u00f3n preliminar de colonias."
+    ),
+    "home.whatis.title": "\u00bfQu\u00e9 es \u03bcKount & \u03bcDetect?",
+    "home.whatis.content": (
+        "\u03bcKount & \u03bcDetect es un proyecto de Inteligencia Artificial "
+        "desarrollado como trabajo final de la formaci\u00f3n "
+        "**LABORLAN 2026: IA&Data Tech \u2013 Inteligencia Artificial "
+        "y Gesti\u00f3n de Proyectos Tecnol\u00f3gicos**.\n\n"
+        "La aplicaci\u00f3n asiste en el **an\u00e1lisis macrosc\u00f3pico de cultivos microbianos** "
+        "crecidos en placas de agar combinando t\u00e9cnicas de Computer Vision y Deep Learning.\n\n"
+        "Realiza tres tareas principales:\n\n"
+        "* \U0001f50d Detecci\u00f3n autom\u00e1tica de colonias\n"
+        "* \U0001f522 Recuento autom\u00e1tico de colonias\n"
+        "* \U0001f9eb Clasificaci\u00f3n preliminar de colonias\n\n"
+        "La clasificaci\u00f3n proporcionada por el modelo representa la **especie m\u00e1s compatible "
+        "seg\u00fan la morfolog\u00eda de la colonia** y debe considerarse como apoyo a la decisi\u00f3n, "
+        "no como una identificaci\u00f3n microbiol\u00f3gica definitiva."
+    ),
+    "home.architecture.title": "Arquitectura de IA",
+    "home.arch.kount": (
+        "### \u03bcKount (YOLO)\n\nDetecci\u00f3n y recuento autom\u00e1tico de colonias."
+    ),
+    "home.arch.detect": (
+        "### \u03bcDetect (CNN)\n\nClasificaci\u00f3n preliminar de colonias microbianas."
+    ),
+    "home.scope.title": "Alcance del Modelo",
+    "home.scope.content": (
+        "La versi\u00f3n actual ha sido entrenada utilizando:\n\n"
+        "* Placas de agar TSA\n"
+        "* Im\u00e1genes cenitales de alta resoluci\u00f3n\n"
+        "* Cinco especies microbianas:\n\n"
+        "  * _Bacillus subtilis_\n"
+        "  * _Candida albicans_\n"
+        "  * _Escherichia coli_\n"
+        "  * _Pseudomonas aeruginosa_\n"
+        "  * _Staphylococcus aureus_\n\n"
+        "Las predicciones fuera de estas condiciones pueden no ser fiables."
+    ),
+    "home.dataset.content": (
+        "Aproximadamente **18.000 im\u00e1genes de placas de agar** y **337.000 anotaciones "
+        "de colonias** de m\u00faltiples configuraciones de captura y condiciones de iluminaci\u00f3n.\n\n"
+        "Dataset: **AGAR Dataset** (Majchrowska et al., 2021)"
+    ),
+    "home.notice.title": "Aviso Cient\u00edfico",
+    "home.notice.items": (
+        "\u03bcKount & \u03bcDetect es actualmente un **Prueba de Concepto**.\n\n"
+        "Los resultados generados por esta aplicaci\u00f3n:\n\n"
+        "* est\u00e1n destinados exclusivamente a fines de investigaci\u00f3n y educativos;\n"
+        "* no constituyen un diagn\u00f3stico microbiol\u00f3gico o cl\u00ednico;\n"
+        "* no reemplazan las t\u00e9cnicas de identificaci\u00f3n est\u00e1ndar de laboratorio;\n"
+        "* deben ser siempre interpretados por personal cualificado;\n"
+        "* requieren confirmaci\u00f3n mediante m\u00e9todos microbiol\u00f3gicos convencionales "
+        "(ej. pruebas bioqu\u00edmicas o MALDI-TOF)."
+    ),
 
     # ─── Pipeline page ──────────────────────────────────────────
     "pipeline.title": "\U0001f52c Pipeline de Procesamiento",
@@ -332,6 +389,86 @@ TRANSLATIONS = {
     "cuora.export": "\U0001f4be Exportar",
     "cuora.logout": "Cerrar sesi\u00f3n",
     "cuora.api_key_error": "No se encontr\u00f3 GROQ_API_KEY en secrets.toml. Config\u00farala para usar Cuora.",
+
+    # ─── Fundamentos del proyecto ────────────────────────────────
+    "fundamentals.title": "Fundamentos del proyecto",
+    "fundamentals.welcome": (
+        "\u00a1Bienvenido a **\u03bcKount & \u03bcDetect**! "
+        "Te presento \u03bcKount & \u03bcDetect, un proyecto desarrollado como trabajo final "
+        "de la formaci\u00f3n **LABORLAN 2026: IA&Data Tech \u2013 Inteligencia Artificial "
+        "y Gesti\u00f3n de Proyectos Tecnol\u00f3gicos**.\n\n"
+        "\u03bcKount & \u03bcDetect es una herramienta dise\u00f1ada para asistir en el "
+        "**an\u00e1lisis macrosc\u00f3pico de cultivos microbianos**. En otras palabras, "
+        "ayuda a interpretar lo que observamos a simple vista en las placas de Petri "
+        "donde se han cultivado muestras con posible presencia de microorganismos."
+    ),
+    "fundamentals.context.title": "\u00bfPor qu\u00e9 es importante?",
+    "fundamentals.context.content": (
+        "Cuando los microorganismos crecen sobre una placa de cultivo forman colonias, "
+        "estructuras visibles a simple vista. En numerosas ocasiones estas colonias "
+        "deben contarse, ya que su n\u00famero permite estimar las Unidades Formadoras "
+        "de Colonias (UFC) presentes en la muestra original. Esta informaci\u00f3n "
+        "resulta fundamental en m\u00faltiples \u00e1mbitos:"
+    ),
+    "fundamentals.industries": (
+        "* **Industria alimentaria**, donde la carga microbiana puede ayudar "
+        "a establecer la vida \u00fatil de un producto.\n"
+        "* **Industria farmac\u00e9utica**, para verificar que un producto cumple "
+        "los criterios microbiol\u00f3gicos exigidos antes de su comercializaci\u00f3n.\n"
+        "* **Microbiolog\u00eda cl\u00ednica**, donde el n\u00famero de UFC puede aportar "
+        "informaci\u00f3n sobre la gravedad de una infecci\u00f3n.\n"
+        "* **Control de aguas**, en el que la presencia de determinados "
+        "microorganismos, como _Escherichia coli_, es inaceptable por indicar "
+        "contaminaci\u00f3n de origen fecal."
+    ),
+    "fundamentals.classification.title": "M\u00e1s all\u00e1 del recuento",
+    "fundamentals.classification.content": (
+        "Adem\u00e1s del recuento, tambi\u00e9n es importante la clasificaci\u00f3n de las colonias. "
+        "Identificar qu\u00e9 microorganismo ha crecido proporciona informaci\u00f3n muy valiosa. "
+        "Por ejemplo, detectar _Escherichia coli_ en una muestra de agua indica una "
+        "contaminaci\u00f3n que requiere actuaci\u00f3n inmediata, mientras que la presencia "
+        "de otros microorganismos puede ser aceptable siempre que no se superen "
+        "los l\u00edmites microbiol\u00f3gicos establecidos."
+    ),
+    "fundamentals.limitations.title": "Limitaciones del modelo",
+    "fundamentals.limitations.content": (
+        "Para obtener resultados fiables es importante tener en cuenta que el modelo "
+        "ha sido entrenado con im\u00e1genes muy espec\u00edficas:\n\n"
+        "* Placas de agar TSA (Triptona Soja Agar)\n"
+        "* Fotograf\u00edas tomadas desde un plano cenital (vista superior)\n"
+        "* Im\u00e1genes de alta resoluci\u00f3n\n"
+        "* Colonias compatibles \u00fanicamente con las siguientes especies:\n\n"
+        "  * _Bacillus subtilis_\n"
+        "  * _Candida albicans_\n"
+        "  * _Escherichia coli_\n"
+        "  * _Pseudomonas aeruginosa_\n"
+        "  * _Staphylococcus aureus_\n\n"
+        "Por ello, esta herramienta no identifica microorganismos de forma definitiva, "
+        "sino que propone la especie m\u00e1s compatible con el aspecto macrosc\u00f3pico "
+        "de la colonia, siempre dentro del conjunto de especies con las que ha sido "
+        "entrenada. Si se utilizan im\u00e1genes obtenidas en otras condiciones de cultivo "
+        "o pertenecientes a microorganismos diferentes, los resultados pueden no ser correctos."
+    ),
+    "fundamentals.support.title": "Un apoyo, no un sustituto del laboratorio",
+    "fundamentals.support.content": (
+        "Es importante recordar que \u03bcKount & \u03bcDetect no sustituye el diagn\u00f3stico "
+        "microbiol\u00f3gico realizado en un laboratorio.\n\n"
+        "La identificaci\u00f3n de un microorganismo requiere habitualmente la combinaci\u00f3n "
+        "de distintas t\u00e9cnicas, como pruebas bioqu\u00edmicas, ensayos metab\u00f3licos, "
+        "an\u00e1lisis de ant\u00edgenos y m\u00e9todos instrumentales avanzados, como la "
+        "espectrometr\u00eda de masas MALDI-TOF. Estas t\u00e9cnicas permiten confirmar con "
+        "gran precisi\u00f3n la identidad del microorganismo e incluso, en muchos casos, "
+        "determinar su cepa.\n\n"
+        "\u03bcKount & \u03bcDetect debe entenderse como una **herramienta de apoyo para el "
+        "an\u00e1lisis macrosc\u00f3pico de colonias**. Su objetivo es facilitar el recuento "
+        "y ofrecer una primera orientaci\u00f3n sobre la posible identidad de una colonia "
+        "a partir de su apariencia. A medida que se incorporen nuevas im\u00e1genes, "
+        "condiciones de cultivo y especies al entrenamiento del modelo, su utilidad "
+        "y capacidad de generalizaci\u00f3n podr\u00e1n seguir aumentando.\n\n"
+        "\u00bf**Te animas a probarlo**?"
+    ),
+    "fundamentals.cuora_caption": "Asistente de IA",
+
     # ─── FAQ ─────────────────────────────────────────────────────
     "faq.title": "Preguntas Frecuentes",
     "faq.q1.question": "\u00bfQu\u00e9 es \u03bcKount & \u03bcDetect?",

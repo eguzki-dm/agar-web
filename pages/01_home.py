@@ -17,18 +17,21 @@ st.markdown(
 )
 st.subheader(t("home.subtitle"), anchor=False)
 
-st.markdown(
-    f"""
-    {t('home.intro')}
-    - **{t('home.bullet.detection')}**
-    - **{t('home.bullet.counting')}**
-    - **{t('home.bullet.classification')}**
+st.markdown(t("home.supporting"))
 
-    {t('home.based_on.intro')}
-    - **{t('home.based_on.kount')}**
-    - **{t('home.based_on.detect')}**
-    """
-)
+st.divider()
+
+st.subheader(t("home.whatis.title"))
+st.markdown(t("home.whatis.content"))
+
+st.divider()
+
+st.subheader(t("home.architecture.title"))
+col_arch1, col_arch2 = st.columns(2)
+with col_arch1:
+    st.markdown(t("home.arch.kount"))
+with col_arch2:
+    st.markdown(t("home.arch.detect"))
 
 st.divider()
 
@@ -148,17 +151,18 @@ with col5:
 
 st.divider()
 
+st.subheader(t("home.scope.title"))
+st.markdown(t("home.scope.content"))
+
+st.divider()
+
 st.subheader(t("home.dataset"))
-st.markdown(
-    f"""
-    - **{t('home.dataset.images')}**
-    - **{t('home.dataset.annotations')}**
-    - {t('home.dataset.configs')}
-    - {t('home.dataset.source')}
-    - {t('home.dataset.authors')}
-    - {t('home.dataset.title')}
-    """
-)
+st.markdown(t("home.dataset.content"))
+
+st.divider()
+
+st.subheader(t("home.notice.title"))
+st.markdown(t("home.notice.items"))
 
 st.divider()
 
