@@ -196,6 +196,7 @@ TRANSLATIONS = {
     # ─── μDetect page ──────────────────────────────────────────
     "detect.title": "\U0001f9ea \u03bcDetect \u2014 Clasificaci\u00f3n de Colonias",
     "detect.subtitle": "Clasifica cada colonia detectada por especie microbiana.",
+    "detect.optimizing_warning": "\u2699\ufe0f Optimizaci\u00f3n necesaria \u2014 El modelo de clasificaci\u00f3n CNN \u03bcDetect es una prueba de concepto. Los resultados deben interpretarse con precauci\u00f3n y validarse mediante m\u00e9todos microbiol\u00f3gicos est\u00e1ndar.",
     "detect.warning.no_detections": "No hay detecciones previas. Ejecuta \u03bcKount primero "
         "para detectar colonias en una imagen.",
     "detect.button.back": "\u2190 Ir a \u03bcKount",

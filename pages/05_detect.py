@@ -22,6 +22,7 @@ st.markdown(
 )
 st.title(t("detect.title"))
 st.markdown(t("detect.subtitle"))
+st.warning(t("detect.optimizing_warning"))
 
 if not st.session_state.detections:
     st.warning(t("detect.warning.no_detections"))

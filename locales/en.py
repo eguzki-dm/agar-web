@@ -191,6 +191,7 @@ TRANSLATIONS = {
     # ─── μDetect page ──────────────────────────────────────────
     "detect.title": "\U0001f9ea \u03bcDetect \u2014 Colony Classification",
     "detect.subtitle": "Classifies each detected colony by microbial species.",
+    "detect.optimizing_warning": "\u2699\ufe0f Optimization needed \u2014 The \u03bcDetect CNN classification model is a proof of concept. Results should be interpreted with caution and validated by standard microbiological methods.",
     "detect.warning.no_detections": "No previous detections. Run \u03bcKount first "
         "to detect colonies in an image.",
     "detect.button.back": "\u2190 Go to \u03bcKount",
