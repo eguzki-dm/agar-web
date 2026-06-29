@@ -182,10 +182,11 @@ TRANSLATIONS = {
     "kount.loaded_image": "Loaded image",
     "kount.detection_result": "Detection result",
     "kount.detection_mode.title": "Detection Mode",
-    "kount.detection_mode.full": "\U0001f9eb Large Colonies (Full Image)",
-    "kount.detection_mode.sahi": "\U0001f52c Small / Medium Colonies (SAHI)",
-    "kount.detection_mode.full.desc": "Default mode. Processes the complete image without slicing. Recommended for most agar plates.",
-    "kount.detection_mode.sahi.desc": "Slower, but better for small colonies on dense agar plates. Uses SAHI slicing for maximum sensitivity.",
+    "kount.detection_mode.full": "\u26a1 Vibrio Mode (Recommended)",
+    "kount.detection_mode.sahi": "\U0001f50d Agar Explorer Mode",
+    "kount.detection_mode.full.desc": "Fast whole-plate detection.",
+    "kount.detection_mode.sahi.desc": "High-resolution detection for dense plates.",
+    "kount.detection_mode.sahi.optimizing": "\u26a0\ufe0f Optimization in progress \u2014 This mode may be slower on large images.",
 
     # ─── μDetect page ──────────────────────────────────────────
     "detect.title": "\U0001f9ea \u03bcDetect \u2014 Colony Classification",

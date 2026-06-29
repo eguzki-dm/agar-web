@@ -64,7 +64,7 @@ with examples_tab:
         for idx, img_path in enumerate(example_files):
             with cols[idx % 3]:
                 img = Image.open(img_path).convert("RGB")
-                st.image(img.resize((250, 250), Image.Resampling.LANCZOS), width="stretch")
+                st.image(img.resize((150, 150), Image.Resampling.LANCZOS), width="stretch")
                 fname = img_path.name
                 if st.button(fname, key=f"example_{idx}", width="stretch"):
                     st.session_state.original_image = img
@@ -100,6 +100,9 @@ if st.session_state.original_image is not None:
     )
     st.session_state.detection_mode = selected_mode
     st.caption(mode_descriptions[selected_mode])
+
+    if selected_mode == "sahi":
+        st.warning(t("kount.detection_mode.sahi.optimizing"))
 
     if st.button(t("kount.detect.button"), type="primary", width="stretch"):
         with st.spinner(t("kount.detect.button")):

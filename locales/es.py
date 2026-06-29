@@ -187,10 +187,11 @@ TRANSLATIONS = {
     "kount.loaded_image": "Imagen cargada",
     "kount.detection_result": "Resultado de detecci\u00f3n",
     "kount.detection_mode.title": "Modo de Detecci\u00f3n",
-    "kount.detection_mode.full": "\U0001f9eb Colonias Grandes (Imagen Completa)",
-    "kount.detection_mode.sahi": "\U0001f52c Colonias Peque\u00f1as / Medianas (SAHI)",
-    "kount.detection_mode.full.desc": "Modo predeterminado. Procesa la imagen completa sin slicing. Recomendado para la mayor\u00eda de placas.",
-    "kount.detection_mode.sahi.desc": "M\u00e1s lento, pero mejor para colonias peque\u00f1as en placas densas. Utiliza SAHI slicing para m\u00e1xima sensibilidad.",
+    "kount.detection_mode.full": "\u26a1 Modo Vibrio (Recomendado)",
+    "kount.detection_mode.sahi": "\U0001f50d Modo Agar Explorer",
+    "kount.detection_mode.full.desc": "Detecci\u00f3n r\u00e1pida de placa completa.",
+    "kount.detection_mode.sahi.desc": "Detecci\u00f3n de alta resoluci\u00f3n para placas densas.",
+    "kount.detection_mode.sahi.optimizing": "\u26a0\ufe0f Optimizaci\u00f3n en curso \u2014 Este modo puede ser m\u00e1s lento en im\u00e1genes grandes.",
 
     # ─── μDetect page ──────────────────────────────────────────
     "detect.title": "\U0001f9ea \u03bcDetect \u2014 Clasificaci\u00f3n de Colonias",
