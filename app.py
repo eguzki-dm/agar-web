@@ -63,6 +63,14 @@ with st.sidebar:
         '</p>',
         unsafe_allow_html=True,
     )
+    st.markdown(
+        '<p style="font-size: 0.85rem; text-align: center;">'
+        "Si quieres saber m\u00e1s sobre microbiolog\u00eda:<br>"
+        '<a href="https://www.instagram.com/lifeisaboutmicrobiology/" target="_blank">'
+        "lifeisaboutmicrobiology</a></p>",
+        unsafe_allow_html=True,
+    )
+
 
     st.divider()
 
@@ -93,11 +101,5 @@ with st.sidebar:
 
     disclaimer_short()
 
-    st.markdown(
-        '<p style="font-size: 0.85rem; text-align: center;">'
-        '\U0001f4d6 <a href="https://www.instagram.com/lifeisaboutmicrobiology/" target="_blank">'
-        "lifeisaboutmicrobiology</a></p>",
-        unsafe_allow_html=True,
-    )
 
 pg.run()
