@@ -171,6 +171,8 @@ TRANSLATIONS = {
     "kount.examples.select": "Select an example image below to load it:",
     "kount.examples.none": "No example images found.",
     "kount.download_json": "\U0001f4e5 Download JSON",
+    "kount.confidence.label": "Detection confidence threshold",
+    "kount.filter.label": "Minimum confidence to display",
     "kount.detect.button": "\u25b6\ufe0f Run \u03bcKount",
     "kount.status.detected": "{count} colonies detected in {time} s.",
     "kount.next.button": "\u27a1\ufe0f Process with \u03bcDetect",
@@ -226,6 +228,7 @@ TRANSLATIONS = {
     "results.references": "References",
     "results.not_available": "N/A",
     "results.download_json": "\U0001f4e5 Download JSON",
+    "results.download_pdf": "\U0001f4c4 Download PDF",
 
     # ─── About page ────────────────────────────────────────────
     "about.title": "\u2699\ufe0f Technical Details",

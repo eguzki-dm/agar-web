@@ -1,4 +1,5 @@
 import json
+from datetime import datetime
 import streamlit as st
 
 from components.charts import (
@@ -8,6 +9,7 @@ from components.charts import (
     metrics_dashboard,
 )
 from components.cards import disclaimer_card
+from services.pdf_report import generate_pdf
 from utils.i18n import t, get_language, get_localized_field
 
 st.title(t("results.title"))
@@ -111,6 +113,23 @@ if classifications:
 
     st.divider()
 
+    pdf_bytes = generate_pdf(
+        st.session_state.detections,
+        st.session_state.classifications,
+        species_counts,
+        st.session_state.session_id,
+    )
+    col_pdf, col_json = st.columns(2)
+    with col_pdf:
+        st.download_button(
+            label=t("results.download_pdf"),
+            data=pdf_bytes,
+            file_name=f"ukount_report_{st.session_state.session_id}.pdf",
+            mime="application/pdf",
+            type="primary",
+            width="stretch",
+        )
+
     export_data = {
         "session_id": st.session_state.session_id,
         "detections": [
@@ -130,14 +149,15 @@ if classifications:
             "species_counts": species_counts,
         },
     }
-    st.download_button(
-        label=t("results.download_json"),
-        data=json.dumps(export_data, indent=2, ensure_ascii=False),
-        file_name=f"ukount_results_{st.session_state.session_id}.json",
-        mime="application/json",
-        type="primary",
-        width="stretch",
-    )
+    with col_json:
+        st.download_button(
+            label=t("results.download_json"),
+            data=json.dumps(export_data, indent=2, ensure_ascii=False),
+            file_name=f"ukount_results_{st.session_state.session_id}.json",
+            mime="application/json",
+            type="primary",
+            width="stretch",
+        )
 else:
     st.info(t("results.no_classifications"))
 

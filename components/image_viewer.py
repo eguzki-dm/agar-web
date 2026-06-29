@@ -33,6 +33,17 @@ def show_image_with_boxes(image: Image.Image, detections: list[dict], caption: s
     with col_img:
         st.image(annotated, caption=caption, width=700)
 
+    if detections:
+        with st.expander(f"\U0001f50d {len(detections)} colonies — click to zoom", expanded=False):
+            zoom_cols = st.columns(min(4, len(detections)))
+            for i, det in enumerate(detections):
+                col_idx = i % len(zoom_cols)
+                with zoom_cols[col_idx]:
+                    box = det["box"]
+                    x1, y1, x2, y2 = box
+                    crop = image.crop((x1, y1, x2, y2))
+                    st.image(crop, width=150, caption=f"#{i+1} ({det['confidence']:.0%})")
+
 
 def show_crops_grid(crops: list, classifications: list, cols: int = 3):
     if not crops:

@@ -26,7 +26,7 @@ def _load_sahi_model():
     return AutoDetectionModel.from_pretrained(
         model_type='ultralytics',
         model_path=YOLO_MODEL_PATH,
-        confidence_threshold=YOLO_CONFIDENCE_THRESHOLD,
+        confidence_threshold=0.1,
         device='cpu',
         image_size=SLICE_SIZE,
     )
@@ -55,14 +55,15 @@ def _letterbox_image(img: np.ndarray, target_size: int = LETTERBOX_SIZE) -> tupl
 
 
 class DetectionService:
-    def detect(self, image: Image.Image) -> dict:
+    def detect(self, image: Image.Image, confidence_threshold: float | None = None) -> dict:
+        threshold = confidence_threshold if confidence_threshold is not None else YOLO_CONFIDENCE_THRESHOLD
         start = time.time()
         w, h = image.size
 
         if w >= SLICE_SIZE and h >= SLICE_SIZE:
-            detections = self._detect_slicing(image)
+            detections = self._detect_slicing(image, threshold)
         else:
-            detections = self._detect_resize(image)
+            detections = self._detect_resize(image, threshold)
 
         elapsed = time.time() - start
 
@@ -72,7 +73,7 @@ class DetectionService:
             "time_s": round(elapsed, 2),
         }
 
-    def _detect_slicing(self, image: Image.Image) -> list[dict]:
+    def _detect_slicing(self, image: Image.Image, confidence_threshold: float) -> list[dict]:
         model = _load_sahi_model()
         img_array = np.array(image.convert("RGB"))
 
@@ -96,6 +97,8 @@ class DetectionService:
         for pred in result.object_prediction_list:
             x1, y1, x2, y2 = map(int, pred.bbox.to_voc_bbox())
             conf = round(float(pred.score.value), 3)
+            if conf < confidence_threshold:
+                continue
             if (x2 - x1) < 2 or (y2 - y1) < 2:
                 continue
             detections.append({
@@ -104,7 +107,7 @@ class DetectionService:
             })
         return detections
 
-    def _detect_resize(self, image: Image.Image) -> list[dict]:
+    def _detect_resize(self, image: Image.Image, confidence_threshold: float) -> list[dict]:
         model = _load_resize_model()
         img_bgr = cv2.cvtColor(np.array(image.convert("RGB")), cv2.COLOR_RGB2BGR)
         h, w = img_bgr.shape[:2]
@@ -113,7 +116,7 @@ class DetectionService:
 
         results = model.predict(
             letterboxed,
-            conf=YOLO_CONFIDENCE_THRESHOLD,
+            conf=confidence_threshold,
             iou=YOLO_IOU_THRESHOLD,
             verbose=False,
         )

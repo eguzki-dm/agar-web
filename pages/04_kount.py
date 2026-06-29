@@ -10,7 +10,7 @@ from components.image_viewer import show_image_with_boxes
 from components.charts import metrics_dashboard
 from utils.i18n import t
 from utils.session_state import init_session_state
-from app_config.settings import EXAMPLE_IMAGES_DIR, RESULTS_DIR
+from app_config.settings import EXAMPLE_IMAGES_DIR, RESULTS_DIR, YOLO_CONFIDENCE_THRESHOLD
 
 init_session_state()
 
@@ -79,12 +79,18 @@ if st.session_state.original_image is not None:
     with col_img:
         st.image(st.session_state.original_image, width=700)
 
+    confidence_threshold = st.slider(
+        t("kount.confidence.label"),
+        min_value=0.1, max_value=0.9, value=YOLO_CONFIDENCE_THRESHOLD, step=0.05,
+    )
+
     if st.button(t("kount.detect.button"), type="primary", width="stretch"):
         with st.spinner(t("kount.detect.button")):
-            result = detector.detect(st.session_state.original_image)
+            result = detector.detect(st.session_state.original_image, confidence_threshold=confidence_threshold)
 
         detections = result["detections"]
         st.session_state.detections = detections
+        st.session_state.filtered_detections = detections
 
         metadata = st.session_state.run_metadata
         metadata["detection_time_s"] = result["time_s"]
@@ -92,14 +98,27 @@ if st.session_state.original_image is not None:
         st.success(t("kount.status.detected").format(count=result["count"], time=result["time_s"]))
 
         st.subheader(t("kount.detection_result"))
+
+    if st.session_state.detections:
+        min_conf = st.slider(
+            t("kount.filter.label"),
+            min_value=0.0, max_value=1.0, value=0.0, step=0.05,
+        )
+        filtered = [d for d in st.session_state.detections if d["confidence"] >= min_conf]
+        st.session_state.filtered_detections = filtered
+
+        st.subheader(t("kount.detection_result"))
         show_image_with_boxes(
             st.session_state.original_image,
-            detections,
-            caption=t("kount.status.detected").format(count=result["count"], time=result["time_s"]),
+            filtered,
+            caption=t("kount.status.detected").format(
+                count=len(st.session_state.detections),
+                time=st.session_state.run_metadata.get("detection_time_s", 0),
+            ),
         )
 
         metrics_dashboard(
-            detections,
+            filtered,
             st.session_state.classifications,
             st.session_state.run_metadata,
         )
@@ -109,15 +128,17 @@ if st.session_state.original_image is not None:
         json_data = json.dumps({
             "session_id": st.session_state.get("session_id", datetime.now().strftime("%Y%m%d_%H%M%S")),
             "timestamp": datetime.now().isoformat(),
-            "total_detections": result["count"],
-            "time_s": result["time_s"],
+            "total_detections": len(st.session_state.detections),
+            "displayed_detections": len(filtered),
+            "confidence_threshold": min_conf,
+            "time_s": st.session_state.run_metadata.get("detection_time_s", 0),
             "image_size": st.session_state.original_image.size,
             "detections": [
                 {
                     "box": d["box"],
                     "confidence": d["confidence"],
                 }
-                for d in detections
+                for d in filtered
             ],
         }, indent=2)
 
@@ -141,9 +162,10 @@ if st.session_state.original_image is not None:
     next_btn = st.button(
         t("kount.next.button"),
         width="stretch",
-        disabled=not st.session_state.detections,
+        disabled=not st.session_state.get("filtered_detections"),
     )
     if next_btn:
+        st.session_state.detections = st.session_state.filtered_detections
         st.switch_page("pages/05_detect.py")
 else:
     st.info(t("kount.no_image"))

@@ -176,6 +176,8 @@ TRANSLATIONS = {
     "kount.examples.select": "Selecciona una imagen de ejemplo para cargarla:",
     "kount.examples.none": "No se encontraron im\u00e1genes de ejemplo.",
     "kount.download_json": "\U0001f4e5 Descargar JSON",
+    "kount.confidence.label": "Umbral de confianza de detecci\u00f3n",
+    "kount.filter.label": "Confianza m\u00ednima para mostrar",
     "kount.detect.button": "\u25b6\ufe0f Ejecutar \u03bcKount",
     "kount.status.detected": "{count} colonias detectadas en {time} s.",
     "kount.next.button": "\u27a1\ufe0f Procesar con \u03bcDetect",
@@ -231,6 +233,7 @@ TRANSLATIONS = {
     "results.references": "Referencias",
     "results.not_available": "N/D",
     "results.download_json": "\U0001f4e5 Descargar JSON",
+    "results.download_pdf": "\U0001f4c4 Descargar PDF",
 
     # ─── About page ────────────────────────────────────────────
     "about.title": "\u2699\ufe0f Aspectos t\u00e9cnicos",
