@@ -228,54 +228,12 @@ TRANSLATIONS = {
     # ─── Future Features page ───────────────────────────────────
     "future.title": "\U0001f680 Funcionalidades Futuras",
     "future.subtitle": "Funcionalidades implementadas y planificadas para \u03bcKount&\u03bcDetect.",
-    "future.phase2.title": "Fase 2 \u2014 Edici\u00f3n Manual de Detecciones",
-    "future.phase2.desc": "Tras la ejecuci\u00f3n de \u03bcKount, el usuario podr\u00e1 interactuar directamente con las detecciones:",
-    "future.phase3.title": "Fase 3 \u2014 Informaci\u00f3n Microbiol\u00f3gica Detallada",
-    "future.phase3.desc": "Cada especie detectada mostrar\u00e1 informaci\u00f3n completa en tarjetas informativas:",
-    "future.phase4.title": "Fase 4 \u2014 Chatbot Especializado",
-    "future.phase4.desc": "Un asistente conversacional basado en IA que responder\u00e1 preguntas sobre:",
-    "future.feature.move_boxes": "Mover bounding boxes",
-    "future.feature.move_boxes.desc": "Arrastrar y soltar las cajas detectadas para ajustar su posici\u00f3n si el modelo no ha "
-        "centrado correctamente la colonia.",
-    "future.feature.resize_boxes": "Redimensionar bounding boxes",
-    "future.feature.resize_boxes.desc": "Ajustar el tama\u00f1o de cada bounding box manualmente, permitiendo corregir "
-        "sobredetecciones o subdetecciones.",
-    "future.feature.delete_boxes": "Eliminar detecciones",
-    "future.feature.delete_boxes.desc": "Seleccionar y eliminar falsos positivos directamente sobre la imagen antes de "
-        "pasar a la fase de clasificaci\u00f3n.",
-    "future.feature.add_boxes": "A\u00f1adir nuevas detecciones",
-    "future.feature.add_boxes.desc": "Dibujar nuevas bounding boxes en zonas donde el modelo no detect\u00f3 colonias "
-        "para asegurar una cobertura completa.",
-    "future.feature.micro_description": "Descripci\u00f3n microbiol\u00f3gica",
-    "future.feature.micro_description.desc": "Informaci\u00f3n detallada sobre morfolog\u00eda, Gram, h\u00e1bitats naturales y caracter\u00edsticas "
-        "biol\u00f3gicas de cada especie detectada.",
-    "future.feature.clinical": "Relevancia cl\u00ednica",
-    "future.feature.clinical.desc": "Descripci\u00f3n de las patolog\u00edas asociadas, grupos de riesgo y precauciones necesarias "
-        "para su manipulaci\u00f3n.",
-    "future.feature.industrial": "Relevancia industrial",
-    "future.feature.industrial.desc": "Aplicaciones en biotecnolog\u00eda, industria alimentaria, farmac\u00e9utica y agr\u00edcola.",
-    "future.feature.pharma": "Aplicaciones farmac\u00e9uticas",
-    "future.feature.pharma.desc": "Usos en producci\u00f3n de antibi\u00f3ticos, enzimas, probi\u00f3ticos y otros compuestos "
-        "de inter\u00e9s farmac\u00e9utico.",
-    "future.feature.chatbot_micro": "Consulta de microorganismos",
-    "future.feature.chatbot_micro.desc": "Preguntas sobre las especies detectadas, sus caracter\u00edsticas y significado.",
-    "future.feature.chatbot_results": "Interpretaci\u00f3n de resultados",
-    "future.feature.chatbot_results.desc": "Ayuda para comprender los resultados del an\u00e1lisis y su relevancia.",
-    "future.feature.chatbot_safety": "Informaci\u00f3n de seguridad",
-    "future.feature.chatbot_safety.desc": "Consultas sobre niveles de bioseguridad, precauciones y manejo de muestras.",
-    "future.chatbot_warning": "Aviso importante: La informaci\u00f3n generada por el chatbot es \u00fanicamente "
-        "orientativa y no sustituye el criterio de un profesional sanitario, microbi\u00f3logo "
-        "o especialista.",
-    "future.roadmap.title": "Roadmap Completo",
-    "future.roadmap.phase1": "Fase 1 \u2014 MVP Streamlit con servicios mock",
-    "future.roadmap.phase2": "Fase 2 \u2014 Integraci\u00f3n \u03bcKount (YOLO real)",
-    "future.roadmap.phase3": "Fase 3 \u2014 Integraci\u00f3n \u03bcDetect (CNN real)",
-    "future.roadmap.phase4": "Fase 4 \u2014 Edici\u00f3n manual de bounding boxes",
-    "future.roadmap.phase5": "Fase 5 \u2014 Informaci\u00f3n microbiol\u00f3gica completa",
-    "future.roadmap.phase6": "Fase 6 \u2014 Chatbot especializado",
-    "future.roadmap.phase7": "Fase 7 \u2014 Despliegue p\u00fablico",
-    "future.roadmap.completed": "Completada",
-    "future.roadmap.pending": "Pendiente",
+    "future.feature.edit_boxes": "Editar bounding boxes",
+    "future.feature.edit_boxes.desc": "Mover, redimensionar, eliminar o a\u00f1adir cajas de "
+        "detecci\u00f3n manualmente tras el procesamiento de \u03bcKount.",
+    "future.feature.improve_cnn": "Mejorar CNN para clasificaci\u00f3n de bacterias",
+    "future.feature.improve_cnn.desc": "Reentrenar el modelo con m\u00e1s especies, distintos "
+        "medios de cultivo y condiciones de iluminaci\u00f3n para mejorar la generalizaci\u00f3n.",
 
     # ─── Disclaimer page ────────────────────────────────────────
     "disclaimer.title": "\u26a0\ufe0f Aviso Legal \u2014 Aviso \u00e9tico y cient\u00edfico",
