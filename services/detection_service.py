@@ -88,7 +88,7 @@ class DetectionService:
             postprocess_type='GREEDYNMM',
             postprocess_match_metric='IOU',
             postprocess_match_threshold=POST_PROCESS_MATCH_THRESHOLD,
-            perform_standard_pred=True,
+            perform_standard_pred=False,
             postprocess_class_agnostic=True,
             verbose=0,
         )
