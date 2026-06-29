@@ -11,7 +11,7 @@ st.divider()
 future_feature_card(
     t("future.feature.edit_boxes"),
     t("future.feature.edit_boxes.desc"),
-    "completed",
+    "planned",
 )
 
 future_feature_card(
