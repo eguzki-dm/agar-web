@@ -39,11 +39,11 @@ upload_tab, examples_tab = st.tabs([
 with upload_tab:
     st.markdown(f"### {t('kount.upload.guide.title')}")
     st.markdown(t("kount.upload.guide.desc"))
+    st.markdown(t("kount.upload.guide.example"))
     st.code(t("kount.upload.guide.example_query"), language="text")
-    st.caption(t("kount.upload.guide.example"))
-    st.markdown(f"- {t('kount.upload.guide.tip_size')}")
-    st.markdown(f"- {t('kount.upload.guide.tip_clarity')}")
-    st.markdown(f"- {t('kount.upload.guide.tip_compression')}")
+    st.markdown(t("kount.upload.guide.tip_size"))
+    st.markdown(t("kount.upload.guide.tip_clarity"))
+    st.markdown(t("kount.upload.guide.tip_compression"))
     st.divider()
 
     uploaded_file = st.file_uploader(
