@@ -187,12 +187,10 @@ TRANSLATIONS = {
     "kount.loaded_image": "Imagen cargada",
     "kount.detection_result": "Resultado de detecci\u00f3n",
     "kount.detection_mode.title": "Modo de Detecci\u00f3n",
-    "kount.detection_mode.auto": "\U0001f916 Autom\u00e1tico (Recomendado)",
-    "kount.detection_mode.sahi": "\U0001f52c Colonias Peque\u00f1as / Medianas (SAHI)",
     "kount.detection_mode.full": "\U0001f9eb Colonias Grandes (Imagen Completa)",
-    "kount.detection_mode.auto.desc": "La aplicaci\u00f3n selecciona autom\u00e1ticamente la mejor estrategia seg\u00fan el tama\u00f1o de la imagen. SAHI para im\u00e1genes grandes, Imagen Completa para im\u00e1genes peque\u00f1as.",
-    "kount.detection_mode.sahi.desc": "Recomendado para placas densas con muchas colonias peque\u00f1as o medianas. Utiliza SAHI slicing para m\u00e1xima sensibilidad.",
-    "kount.detection_mode.full.desc": "Recomendado para placas con pocas colonias grandes (ej. Bacillus spp.). Evita duplicaciones causadas por el slicing de la imagen.",
+    "kount.detection_mode.sahi": "\U0001f52c Colonias Peque\u00f1as / Medianas (SAHI)",
+    "kount.detection_mode.full.desc": "Modo predeterminado. Procesa la imagen completa sin slicing. Recomendado para la mayor\u00eda de placas.",
+    "kount.detection_mode.sahi.desc": "M\u00e1s lento, pero mejor para colonias peque\u00f1as en placas densas. Utiliza SAHI slicing para m\u00e1xima sensibilidad.",
 
     # ─── μDetect page ──────────────────────────────────────────
     "detect.title": "\U0001f9ea \u03bcDetect \u2014 Clasificaci\u00f3n de Colonias",
@@ -313,6 +311,8 @@ TRANSLATIONS = {
     "future.feature.edit_boxes": "Editar bounding boxes",
     "future.feature.edit_boxes.desc": "Mover, redimensionar, eliminar o a\u00f1adir cajas de "
         "detecci\u00f3n manualmente tras el procesamiento de \u03bcKount.",
+    "future.feature.optimize_sahi": "Optimizar procesamiento SAHI slicing",
+    "future.feature.optimize_sahi.desc": "Mejorar el rendimiento del pipeline de inferencia SAHI slicing para placas densas. Optimizar solapamiento de slices, procesamiento por lotes y post-procesado para reducir el tiempo de detecci\u00f3n manteniendo la sensibilidad para colonias peque\u00f1as.",
     "future.feature.improve_cnn": "Mejorar CNN para clasificaci\u00f3n de bacterias",
     "future.feature.improve_cnn.desc": "Reentrenar el modelo con m\u00e1s especies, distintos "
         "medios de cultivo y condiciones de iluminaci\u00f3n para mejorar la generalizaci\u00f3n.",

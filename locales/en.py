@@ -182,12 +182,10 @@ TRANSLATIONS = {
     "kount.loaded_image": "Loaded image",
     "kount.detection_result": "Detection result",
     "kount.detection_mode.title": "Detection Mode",
-    "kount.detection_mode.auto": "\U0001f916 Automatic (Recommended)",
-    "kount.detection_mode.sahi": "\U0001f52c Small / Medium Colonies (SAHI)",
     "kount.detection_mode.full": "\U0001f9eb Large Colonies (Full Image)",
-    "kount.detection_mode.auto.desc": "The application automatically selects the best strategy based on image size. SAHI for large images, Full Image for smaller ones.",
-    "kount.detection_mode.sahi.desc": "Recommended for dense agar plates containing many small or medium-sized colonies. Uses SAHI slicing for maximum sensitivity.",
-    "kount.detection_mode.full.desc": "Recommended for sparse plates containing large colonies (e.g. Bacillus spp.). Avoids duplicated detections caused by image slicing.",
+    "kount.detection_mode.sahi": "\U0001f52c Small / Medium Colonies (SAHI)",
+    "kount.detection_mode.full.desc": "Default mode. Processes the complete image without slicing. Recommended for most agar plates.",
+    "kount.detection_mode.sahi.desc": "Slower, but better for small colonies on dense agar plates. Uses SAHI slicing for maximum sensitivity.",
 
     # ─── μDetect page ──────────────────────────────────────────
     "detect.title": "\U0001f9ea \u03bcDetect \u2014 Colony Classification",
@@ -307,6 +305,8 @@ TRANSLATIONS = {
     "future.feature.edit_boxes": "Edit bounding boxes",
     "future.feature.edit_boxes.desc": "Move, resize, delete or add detection boxes manually "
         "after \u03bcKount processing.",
+    "future.feature.optimize_sahi": "Optimize SAHI slicing processing",
+    "future.feature.optimize_sahi.desc": "Improve performance of the SAHI sliced inference pipeline for dense agar plates. Optimize slice overlap, batch processing, and post-processing to reduce detection time while maintaining sensitivity for small colonies.",
     "future.feature.improve_cnn": "Improve CNN for bacteria classification",
     "future.feature.improve_cnn.desc": "Retrain the model with more species, varied culture "
         "media and lighting conditions to improve generalisation.",

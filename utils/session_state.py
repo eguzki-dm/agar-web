@@ -19,7 +19,7 @@ def init_session_state():
         st.session_state.session_id = datetime.now().strftime("%Y%m%d_%H%M%S")
 
     if "detection_mode" not in st.session_state:
-        st.session_state.detection_mode = "auto"
+        st.session_state.detection_mode = "full"
 
     if "cfu_colony_count" not in st.session_state:
         st.session_state.cfu_colony_count = 0

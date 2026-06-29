@@ -55,20 +55,14 @@ def _letterbox_image(img: np.ndarray, target_size: int = LETTERBOX_SIZE) -> tupl
 
 
 class DetectionService:
-    def detect(self, image: Image.Image, confidence_threshold: float | None = None, detection_mode: str = "auto") -> dict:
+    def detect(self, image: Image.Image, confidence_threshold: float | None = None, detection_mode: str = "full") -> dict:
         threshold = confidence_threshold if confidence_threshold is not None else YOLO_CONFIDENCE_THRESHOLD
         start = time.time()
 
         if detection_mode == "sahi":
             detections = self._detect_slicing(image, threshold)
-        elif detection_mode == "full":
-            detections = self._detect_resize(image, threshold)
         else:
-            w, h = image.size
-            if w >= SLICE_SIZE and h >= SLICE_SIZE:
-                detections = self._detect_slicing(image, threshold)
-            else:
-                detections = self._detect_resize(image, threshold)
+            detections = self._detect_resize(image, threshold)
 
         elapsed = time.time() - start
 

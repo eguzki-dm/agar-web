@@ -81,16 +81,14 @@ if st.session_state.original_image is not None:
 
     st.markdown(f"### {t('kount.detection_mode.title')}")
 
-    mode_options = ["auto", "sahi", "full"]
+    mode_options = ["full", "sahi"]
     mode_labels = {
-        "auto": t("kount.detection_mode.auto"),
-        "sahi": t("kount.detection_mode.sahi"),
         "full": t("kount.detection_mode.full"),
+        "sahi": t("kount.detection_mode.sahi"),
     }
     mode_descriptions = {
-        "auto": t("kount.detection_mode.auto.desc"),
-        "sahi": t("kount.detection_mode.sahi.desc"),
         "full": t("kount.detection_mode.full.desc"),
+        "sahi": t("kount.detection_mode.sahi.desc"),
     }
 
     selected_mode = st.radio(

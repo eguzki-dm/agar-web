@@ -31,11 +31,10 @@ with tab_kount:
     metrics_dashboard(detections, classifications, st.session_state.run_metadata)
 
     mode_labels = {
-        "auto": t("kount.detection_mode.auto"),
-        "sahi": t("kount.detection_mode.sahi"),
         "full": t("kount.detection_mode.full"),
+        "sahi": t("kount.detection_mode.sahi"),
     }
-    current_mode = st.session_state.get("detection_mode", "auto")
+    current_mode = st.session_state.get("detection_mode", "full")
     st.info(
         f"**{t('kount.detection_mode.title')}:** {mode_labels.get(current_mode, current_mode)}"
         f"  \n**Confidence threshold:** {YOLO_CONFIDENCE_THRESHOLD}"

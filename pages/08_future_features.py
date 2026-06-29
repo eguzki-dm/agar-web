@@ -15,6 +15,12 @@ future_feature_card(
 )
 
 future_feature_card(
+    t("future.feature.optimize_sahi"),
+    t("future.feature.optimize_sahi.desc"),
+    "planned",
+)
+
+future_feature_card(
     t("future.feature.improve_cnn"),
     t("future.feature.improve_cnn.desc"),
     "planned",
