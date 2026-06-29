@@ -29,7 +29,9 @@ def draw_boxes(
 
 def show_image_with_boxes(image: Image.Image, detections: list[dict], caption: str = ""):
     annotated = draw_boxes(image, detections)
-    st.image(annotated, caption=caption, width=500)
+    _, col_img, _ = st.columns([1, 3, 1])
+    with col_img:
+        st.image(annotated, caption=caption, width=700)
 
 
 def show_crops_grid(crops: list, classifications: list, cols: int = 3):
