@@ -29,3 +29,10 @@ with col_right:
         f'Cuora — {t("fundamentals.cuora_caption")}</p>',
         unsafe_allow_html=True,
     )
+
+st.divider()
+
+st.subheader(t("fundamentals.detection_strategies.title"))
+st.markdown(t("fundamentals.detection_strategies.intro"))
+st.markdown(t("fundamentals.detection_strategies.sahi"))
+st.markdown(t("fundamentals.detection_strategies.full"))

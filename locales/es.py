@@ -186,6 +186,13 @@ TRANSLATIONS = {
     "kount.no_image": "Sube una imagen para comenzar.",
     "kount.loaded_image": "Imagen cargada",
     "kount.detection_result": "Resultado de detecci\u00f3n",
+    "kount.detection_mode.title": "Modo de Detecci\u00f3n",
+    "kount.detection_mode.auto": "\U0001f916 Autom\u00e1tico (Recomendado)",
+    "kount.detection_mode.sahi": "\U0001f52c Colonias Peque\u00f1as / Medianas (SAHI)",
+    "kount.detection_mode.full": "\U0001f9eb Colonias Grandes (Imagen Completa)",
+    "kount.detection_mode.auto.desc": "La aplicaci\u00f3n selecciona autom\u00e1ticamente la mejor estrategia seg\u00fan el tama\u00f1o de la imagen. SAHI para im\u00e1genes grandes, Imagen Completa para im\u00e1genes peque\u00f1as.",
+    "kount.detection_mode.sahi.desc": "Recomendado para placas densas con muchas colonias peque\u00f1as o medianas. Utiliza SAHI slicing para m\u00e1xima sensibilidad.",
+    "kount.detection_mode.full.desc": "Recomendado para placas con pocas colonias grandes (ej. Bacillus spp.). Evita duplicaciones causadas por el slicing de la imagen.",
 
     # ─── μDetect page ──────────────────────────────────────────
     "detect.title": "\U0001f9ea \u03bcDetect \u2014 Clasificaci\u00f3n de Colonias",
@@ -501,6 +508,10 @@ TRANSLATIONS = {
         "\u00bf**Te animas a probarlo**?"
     ),
     "fundamentals.cuora_caption": "Asistente de IA",
+    "fundamentals.detection_strategies.title": "Estrategias de Detecci\u00f3n",
+    "fundamentals.detection_strategies.intro": "\u03bcKount ofrece dos estrategias de detecci\u00f3n que pueden seleccionarse antes de ejecutar el an\u00e1lisis:",
+    "fundamentals.detection_strategies.sahi": "**\U0001f52c SAHI + YOLO** \u2014 Dise\u00f1ado para im\u00e1genes de alta resoluci\u00f3n. Excelente para colonias peque\u00f1as en placas densas. Utiliza slicing para aumentar la sensibilidad de detecci\u00f3n.",
+    "fundamentals.detection_strategies.full": "**\U0001f9eb YOLO a Imagen Completa** \u2014 Procesa la imagen completa sin slicing. Recomendado para placas con pocas colonias grandes. Evita duplicaciones derivadas del slicing.",
 
     # ─── FAQ ─────────────────────────────────────────────────────
     "faq.title": "Preguntas Frecuentes",

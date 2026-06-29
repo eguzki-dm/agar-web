@@ -181,6 +181,13 @@ TRANSLATIONS = {
     "kount.no_image": "Upload an image to start.",
     "kount.loaded_image": "Loaded image",
     "kount.detection_result": "Detection result",
+    "kount.detection_mode.title": "Detection Mode",
+    "kount.detection_mode.auto": "\U0001f916 Automatic (Recommended)",
+    "kount.detection_mode.sahi": "\U0001f52c Small / Medium Colonies (SAHI)",
+    "kount.detection_mode.full": "\U0001f9eb Large Colonies (Full Image)",
+    "kount.detection_mode.auto.desc": "The application automatically selects the best strategy based on image size. SAHI for large images, Full Image for smaller ones.",
+    "kount.detection_mode.sahi.desc": "Recommended for dense agar plates containing many small or medium-sized colonies. Uses SAHI slicing for maximum sensitivity.",
+    "kount.detection_mode.full.desc": "Recommended for sparse plates containing large colonies (e.g. Bacillus spp.). Avoids duplicated detections caused by image slicing.",
 
     # ─── μDetect page ──────────────────────────────────────────
     "detect.title": "\U0001f9ea \u03bcDetect \u2014 Colony Classification",
@@ -492,6 +499,10 @@ TRANSLATIONS = {
         "**Would you like to try it?**"
     ),
     "fundamentals.cuora_caption": "AI Assistant",
+    "fundamentals.detection_strategies.title": "Detection Strategies",
+    "fundamentals.detection_strategies.intro": "\u03bcKount offers two detection strategies that can be selected before running the analysis:",
+    "fundamentals.detection_strategies.sahi": "**\U0001f52c SAHI + YOLO** \u2014 Designed for high-resolution images. Excellent for small colonies on dense agar plates. Uses image slicing to increase detection sensitivity.",
+    "fundamentals.detection_strategies.full": "**\U0001f9eb Full Image YOLO** \u2014 Processes the complete image without slicing. Recommended for plates with few large colonies. Avoids duplications derived from slicing.",
 
     # ─── FAQ ─────────────────────────────────────────────────────
     "faq.title": "Frequently Asked Questions",

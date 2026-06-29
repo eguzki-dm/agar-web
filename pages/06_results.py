@@ -9,6 +9,7 @@ from components.charts import (
     metrics_dashboard,
 )
 from components.cards import disclaimer_card
+from app_config.settings import YOLO_CONFIDENCE_THRESHOLD
 from components.cfu_calculator import render_cfu_calculator
 from services.pdf_report import generate_pdf
 from utils.i18n import t, get_language, get_localized_field
@@ -28,6 +29,17 @@ tab_kount, tab_detect = st.tabs([t("results.tab.kount"), t("results.tab.detect")
 with tab_kount:
     st.subheader(t("results.summary.title"))
     metrics_dashboard(detections, classifications, st.session_state.run_metadata)
+
+    mode_labels = {
+        "auto": t("kount.detection_mode.auto"),
+        "sahi": t("kount.detection_mode.sahi"),
+        "full": t("kount.detection_mode.full"),
+    }
+    current_mode = st.session_state.get("detection_mode", "auto")
+    st.info(
+        f"**{t('kount.detection_mode.title')}:** {mode_labels.get(current_mode, current_mode)}"
+        f"  \n**Confidence threshold:** {YOLO_CONFIDENCE_THRESHOLD}"
+    )
 
     st.divider()
 

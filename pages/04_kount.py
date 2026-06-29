@@ -79,9 +79,37 @@ if st.session_state.original_image is not None:
     with col_img:
         st.image(st.session_state.original_image, width=700)
 
+    st.markdown(f"### {t('kount.detection_mode.title')}")
+
+    mode_options = ["auto", "sahi", "full"]
+    mode_labels = {
+        "auto": t("kount.detection_mode.auto"),
+        "sahi": t("kount.detection_mode.sahi"),
+        "full": t("kount.detection_mode.full"),
+    }
+    mode_descriptions = {
+        "auto": t("kount.detection_mode.auto.desc"),
+        "sahi": t("kount.detection_mode.sahi.desc"),
+        "full": t("kount.detection_mode.full.desc"),
+    }
+
+    selected_mode = st.radio(
+        t("kount.detection_mode.title"),
+        options=mode_options,
+        format_func=lambda x: mode_labels[x],
+        index=mode_options.index(st.session_state.detection_mode),
+        label_visibility="collapsed",
+    )
+    st.session_state.detection_mode = selected_mode
+    st.caption(mode_descriptions[selected_mode])
+
     if st.button(t("kount.detect.button"), type="primary", width="stretch"):
         with st.spinner(t("kount.detect.button")):
-            result = detector.detect(st.session_state.original_image, confidence_threshold=YOLO_CONFIDENCE_THRESHOLD)
+            result = detector.detect(
+                st.session_state.original_image,
+                confidence_threshold=YOLO_CONFIDENCE_THRESHOLD,
+                detection_mode=st.session_state.detection_mode,
+            )
 
         st.session_state.detections = result["detections"]
 
