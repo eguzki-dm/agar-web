@@ -32,11 +32,11 @@ pages = [
     st.Page("pages/05_detect.py", title="μDetect", icon="🧪"),
     st.Page("pages/06_results.py", title="Results", icon="📊"),
     st.Page("pages/11_cuora.py", title="Cuora", icon="🧠"),
-    st.Page("pages/07_about.py", title="About", icon="ℹ️"),
     st.Page("pages/08_future_features.py", title="Future Features", icon="🚀"),
     st.Page("pages/09_disclaimer.py", title="Disclaimer", icon="⚠️"),
     st.Page("pages/12_faq.py", title="FAQ", icon="❓"),
     st.Page("pages/10_acknowledgments.py", title="Acknowledgments", icon="🙏"),
+    st.Page("pages/13_about.py", title="⚙️ Technical Details", icon="⚙️"),
 ]
 
 with st.sidebar:

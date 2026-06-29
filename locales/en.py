@@ -199,7 +199,7 @@ TRANSLATIONS = {
     "results.not_available": "N/A",
 
     # ─── About page ────────────────────────────────────────────
-    "about.title": "\u2139\ufe0f About \u2014 About \u03bcKount&\u03bcDetect",
+    "about.title": "\u2699\ufe0f Technical Details",
     "about.subtitle": "\u03bcKount&\u03bcDetect (Artificial Intelligence for Agar Plate Analysis) is a "
         "computer vision system designed for detection, counting and classification of "
         "microbial colonies on agar plates. "
