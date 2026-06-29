@@ -5,6 +5,15 @@ from utils.i18n import t
 st.title(t("pipeline.title"))
 st.markdown(t("pipeline.subtitle"))
 
+show_tutorial = st.checkbox(t("pipeline.show_tutorial"))
+
+if show_tutorial:
+    with st.expander("\U0001f4d6 " + t("pipeline.tutorial.title"), expanded=True):
+        for i in range(7):
+            st.markdown(t(f"pipeline.tutorial.{i}"))
+            if i < 6:
+                st.markdown("<h3 style='text-align:center;'>\u2193</h3>", unsafe_allow_html=True)
+
 st.divider()
 
 steps = [

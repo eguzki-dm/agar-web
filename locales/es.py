@@ -104,6 +104,36 @@ TRANSLATIONS = {
 
     # ─── Pipeline page ──────────────────────────────────────────
     "pipeline.title": "\U0001f52c Pipeline de Procesamiento",
+    "pipeline.show_tutorial": "\U0001f4a1 Mostrar tutorial",
+    "pipeline.tutorial.title": "Gu\u00eda paso a paso",
+    "pipeline.tutorial.0": "**Sube una imagen de placa de agar** \u2014 El proceso "
+        "comienza cuando subes una foto de una placa de agar. La app acepta "
+        "formatos est\u00e1ndar como PNG, JPG y JPEG. Una vez cargada, la imagen "
+        "se almacena en memoria y est\u00e1 lista para el siguiente paso.",
+    "pipeline.tutorial.1": "**\u03bcKount (detecci\u00f3n YOLO)** \u2014 \u03bcKount utiliza un modelo "
+        "YOLOv8 para escanear la imagen y localizar cada colonia. Por cada colonia "
+        "encontrada, dibuja un bounding box y asigna un nivel de confianza. "
+        "Puedes revisar los resultados antes de continuar.",
+    "pipeline.tutorial.2": "**Bounding boxes** \u2014 Cada colonia detectada se resalta "
+        "con una caja de color y un n\u00famero. El nivel de confianza (0\u20131) indica "
+        "cu\u00e1n seguro est\u00e1 el modelo de haber encontrado una colonia real. "
+        "Cuanto m\u00e1s alto, mejor.",
+    "pipeline.tutorial.3": "**Extracci\u00f3n de recortes** \u2014 Cada bounding box se usa "
+        "para recortar un cuadrado peque\u00f1o de la imagen original, aislando una "
+        "sola colonia. Estos recortes son la entrada para la siguiente fase.",
+    "pipeline.tutorial.4": "**Fondo negro** \u2014 Un filtro elimina el fondo brillante "
+        "del agar, dejando solo la colonia visible sobre negro. Esto ayuda a la "
+        "CNN a centrarse en la forma y textura de la colonia, mejorando la "
+        "precisi\u00f3n de la clasificaci\u00f3n.",
+    "pipeline.tutorial.5": "**\u03bcDetect (clasificaci\u00f3n CNN)** \u2014 Cada recorte con "
+        "fondo negro se pasa por un modelo MobileNetV2 que predice la especie "
+        "m\u00e1s probable. El resultado incluye una probabilidad para cada una de "
+        "las 5 especies soportadas.",
+    "pipeline.tutorial.6": "**Resultados e interpretaci\u00f3n** \u2014 La p\u00e1gina final "
+        "muestra: un gr\u00e1fico de distribuci\u00f3n de especies, probabilidades por "
+        "colonia, un mapa de calor y tarjetas detalladas para cada especie. "
+        "**Recuerda**: esto es una prueba de concepto \u2014 los resultados deben "
+        "verificarse en un laboratorio.",
     "pipeline.subtitle": "Diagrama del flujo completo de \u03bcKount&\u03bcDetect, desde la imagen original hasta la clasificaci\u00f3n final.",
     "pipeline.step1.title": "\U0001f4e4 Imagen de Entrada",
     "pipeline.step1.desc": "El usuario sube una imagen de placa de agar (formatos: PNG, JPG, JPEG). "
@@ -199,6 +229,7 @@ TRANSLATIONS = {
     "results.biosafety_notes": "Bioseguridad",
     "results.references": "Referencias",
     "results.not_available": "N/D",
+    "results.download_json": "\U0001f4e5 Descargar JSON",
 
     # ─── About page ────────────────────────────────────────────
     "about.title": "\u2699\ufe0f Aspectos t\u00e9cnicos",
@@ -224,6 +255,22 @@ TRANSLATIONS = {
         "Anotaciones realizadas por microbi\u00f3logos expertos. "
         "Las im\u00e1genes fueron adquiridas en condiciones controladas de laboratorio "
         "y representan 5 especies microbianas diferentes.",
+    "about.env.title": "\u2699\ufe0f Entorno de Desarrollo",
+    "about.env.content": "Python 3.11, Streamlit 1.38+, Ultralytics YOLOv8, "
+        "TensorFlow 2.15, OpenCV 4.9, NumPy, Plotly, scikit-learn",
+    "about.training.title": "\U0001f9e0 Entrenamiento del Modelo",
+    "about.training.kount": "**\u03bcKount (YOLOv8m)** \u2014 Entrada: 640px, "
+        "\u00c9pocas: 150, Batch: 16, Optimizador: AdamW, Hardware: NVIDIA RTX 3060 12GB",
+    "about.training.detect": "**\u03bcDetect (MobileNetV2)** \u2014 Entrada: 224px, "
+        "Transfer Learning, Especies: 5, \u00c9pocas: 50, Framework: TensorFlow",
+    "about.paper.title": "\U0001f4c4 Referencia Acad\u00e9mica",
+    "about.paper.content": "Majchrowska et al. (2021). AGAR: a microbial colony "
+        "dataset for deep learning detection. *Scientific Reports*, 11, 23973. "
+        "DOI: [10.1038/s41598-021-02912-2](https://doi.org/10.1038/s41598-021-02912-2)",
+    "about.repository.title": "\U0001f4bb C\u00f3digo Fuente",
+    "about.repository.content": "El c\u00f3digo fuente completo de este proyecto "
+        "est\u00e1 disponible en:\n\n"
+        "[https://github.com/eguzki-dm/agar-web](https://github.com/eguzki-dm/agar-web)",
     "about.architecture.title": "Arquitectura del Proyecto",
 
     # ─── Future Features page ───────────────────────────────────

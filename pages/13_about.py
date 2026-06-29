@@ -38,6 +38,27 @@ st.markdown(t("about.dataset.content"))
 
 st.divider()
 
+st.subheader(t("about.env.title"))
+st.markdown(t("about.env.content"))
+
+st.divider()
+
+st.subheader(t("about.training.title"))
+st.markdown(t("about.training.kount"))
+st.markdown(t("about.training.detect"))
+
+st.divider()
+
+st.subheader(t("about.paper.title"))
+st.markdown(t("about.paper.content"))
+
+st.divider()
+
+st.subheader(t("about.repository.title"))
+st.markdown(t("about.repository.content"))
+
+st.divider()
+
 st.subheader(t("about.architecture.title"))
 
 st.code(

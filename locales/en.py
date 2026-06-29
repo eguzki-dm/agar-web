@@ -103,6 +103,32 @@ TRANSLATIONS = {
 
     # ─── Pipeline page ──────────────────────────────────────────
     "pipeline.title": "\U0001f52c Processing Pipeline",
+    "pipeline.show_tutorial": "\U0001f4a1 Show tutorial",
+    "pipeline.tutorial.title": "Step-by-step guide",
+    "pipeline.tutorial.0": "**Upload an agar plate image** \u2014 The process "
+        "starts when you upload a photo of an agar plate. The app accepts "
+        "standard formats like PNG, JPG, and JPEG. Once loaded, the image "
+        "is stored in memory and ready for the next step.",
+    "pipeline.tutorial.1": "**\u03bcKount (YOLO detection)** \u2014 \u03bcKount uses a YOLOv8 "
+        "model to scan the image and locate every colony. For each colony found, "
+        "it draws a bounding box and assigns a confidence score. You can review "
+        "the results before proceeding.",
+    "pipeline.tutorial.2": "**Bounding boxes** \u2014 Each detected colony is "
+        "highlighted with a coloured box and a number. The confidence level (0\u20131) "
+        "tells you how sure the model is that it found a real colony. Higher is better.",
+    "pipeline.tutorial.3": "**Crop extraction** \u2014 Each bounding box is used to cut "
+        "out a small square from the original image, isolating a single colony. "
+        "These crops are the input for the next phase.",
+    "pipeline.tutorial.4": "**Black background** \u2014 A filter removes the bright agar "
+        "background, leaving only the colony visible against black. This helps "
+        "the CNN focus on the colony's shape and texture, improving classification accuracy.",
+    "pipeline.tutorial.5": "**\u03bcDetect (CNN classification)** \u2014 Each black-background "
+        "crop is passed through a MobileNetV2 model that predicts the most likely "
+        "species. The result includes a probability for all 5 supported species.",
+    "pipeline.tutorial.6": "**Results & interpretation** \u2014 The final page shows: "
+        "a species distribution chart, per-colony probabilities, a heatmap, and "
+        "detailed cards for each species. **Remember**: this is a proof of concept "
+        "\u2014 results must be verified in a laboratory.",
     "pipeline.subtitle": "Complete \u03bcKount&\u03bcDetect flow diagram, from original image to final classification.",
     "pipeline.step1.title": "\U0001f4e4 Input Image",
     "pipeline.step1.desc": "The user uploads an agar plate image (PNG, JPG, JPEG). "
@@ -198,6 +224,7 @@ TRANSLATIONS = {
     "results.biosafety_notes": "Biosafety",
     "results.references": "References",
     "results.not_available": "N/A",
+    "results.download_json": "\U0001f4e5 Download JSON",
 
     # ─── About page ────────────────────────────────────────────
     "about.title": "\u2699\ufe0f Technical Details",
@@ -223,6 +250,21 @@ TRANSLATIONS = {
         "Annotations by expert microbiologists. "
         "Images were acquired under controlled laboratory conditions "
         "and represent 5 different microbial species.",
+    "about.env.title": "\u2699\ufe0f Development Environment",
+    "about.env.content": "Python 3.11, Streamlit 1.38+, Ultralytics YOLOv8, "
+        "TensorFlow 2.15, OpenCV 4.9, NumPy, Plotly, scikit-learn",
+    "about.training.title": "\U0001f9e0 Model Training",
+    "about.training.kount": "**\u03bcKount (YOLOv8m)** \u2014 Input: 640px, "
+        "Epochs: 150, Batch: 16, Optimizer: AdamW, Hardware: NVIDIA RTX 3060 12GB",
+    "about.training.detect": "**\u03bcDetect (MobileNetV2)** \u2014 Input: 224px, "
+        "Transfer Learning, Species: 5, Epochs: 50, Framework: TensorFlow",
+    "about.paper.title": "\U0001f4c4 Academic Reference",
+    "about.paper.content": "Majchrowska et al. (2021). AGAR: a microbial colony "
+        "dataset for deep learning detection. *Scientific Reports*, 11, 23973. "
+        "DOI: [10.1038/s41598-021-02912-2](https://doi.org/10.1038/s41598-021-02912-2)",
+    "about.repository.title": "\U0001f4bb Source Code",
+    "about.repository.content": "The full source code of this project is available at:\n\n"
+        "[https://github.com/eguzki-dm/agar-web](https://github.com/eguzki-dm/agar-web)",
     "about.architecture.title": "Project Architecture",
 
     # ─── Future Features page ───────────────────────────────────

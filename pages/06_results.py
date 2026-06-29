@@ -108,6 +108,40 @@ if classifications:
                 st.markdown(f"**{t('results.references')}:**")
                 for r in references:
                     st.markdown(f"- {r}")
+
+    st.divider()
+
+    export_data = {
+        "session_id": st.session_state.session_id,
+        "detections": [
+            {
+                "bbox": d["bbox"],
+                "confidence": d["confidence"],
+            }
+            for d in st.session_state.detections
+        ],
+        "classifications": [
+            {
+                "species": c["species"],
+                "confidence": c["confidence"],
+                "probabilities": c["probabilities"],
+            }
+            for c in st.session_state.classifications
+        ],
+        "summary": {
+            "total_detections": len(st.session_state.detections),
+            "total_classified": len(st.session_state.classifications),
+            "species_counts": species_counts,
+        },
+    }
+    st.download_button(
+        label=t("results.download_json"),
+        data=json.dumps(export_data, indent=2, ensure_ascii=False),
+        file_name=f"ukount_results_{st.session_state.session_id}.json",
+        mime="application/json",
+        type="primary",
+        width="stretch",
+    )
 else:
     st.info(t("results.no_classifications"))
 
