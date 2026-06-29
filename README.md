@@ -18,16 +18,17 @@
 ## Workflow
 
 ```
-Upload Image → μKount (Detection) → Crop → μDetect (Classification) → Results
+Upload Image → μKount (Detection) → Crop & Preprocess → μDetect (Classification) → Results → Cuora (AI Assistant)
 ```
 
 | Step | Description |
 |------|-------------|
 | **📤 Upload** | Drag & drop an agar plate image |
-| **🔍 μKount** | YOLO-based colony detection with bounding boxes |
-| **✂️ Crop** | Isolate each colony with black background preprocessing |
-| **🧪 μDetect** | CNN-based species classification (5 bacteria/fungi) |
-| **📊 Results** | Metrics dashboard + species knowledge base |
+| **🔍 μKount** | YOLO-based colony detection with SAHI slicing inference |
+| **✂️ Crop + Prep** | Isolate each colony and apply Chan-Vese black background |
+| **🧪 μDetect** | MobileNetV2 CNN species classification (5 bacteria/fungi) |
+| **📊 Results** | Metrics dashboard, charts, species knowledge base, JSON/PDF export |
+| **🧠 Cuora** | AI assistant powered by Groq API — ask about your results |
 
 ---
 
@@ -46,13 +47,16 @@ Upload Image → μKount (Detection) → Crop → μDetect (Classification) → 
 
 ## Features
 
-- **🎯 Colony Detection** — Locate and count microbial colonies on agar plates
-- **🔬 Species Classification** — Identify 5 species: *S. aureus*, *B. subtilis*, *P. aeruginosa*, *E. coli*, *C. albicans*
-- **🌐 Bilingual** — Full English / Spanish support via dictionary-based i18n (229 keys each)
-- **🧪 Mock Services** — All AI services are mock until real YOLO/CNN models are integrated
+- **🎯 Colony Detection** — Real YOLOv8 detection via SAHI (Slicing Aided Hyper Inference)
+- **🔬 Species Classification** — MobileNetV2 CNN trained on 5 species: *S. aureus*, *B. subtilis*, *P. aeruginosa*, *E. coli*, *C. albicans*
+- **🎚️ Confidence Slider** — Adjust detection threshold before running μKount
+- **🔍 Colony Zoom** — Expandable crop viewer per detected colony
+- **📄 Export Results** — Download detections as JSON or full report as PDF
+- **🧠 Cuora AI Assistant** — Conversational agent powered by Groq API, answers questions about your analysis
+- **💡 Pipeline Tutorial** — Step-by-step guide togglable in the Pipeline page
+- **🌐 Bilingual** — Full English / Spanish support (300+ translation keys)
 - **📖 Species Knowledge Base** — Bilingual descriptions, Gram stain, morphology, risk group
-- **📊 Results Dashboard** — Metrics, charts, detection previews
-- **♿ Accessible** — Clean, responsive UI with hidden navigation
+- **📊 Results Dashboard** — Metrics, distribution charts, probability heatmap, per-colony tables
 
 ---
 
@@ -60,11 +64,15 @@ Upload Image → μKount (Detection) → Crop → μDetect (Classification) → 
 
 | Technology | Purpose |
 |------------|---------|
-| **[Streamlit](https://streamlit.io)** (≥1.28) | Web framework |
-| **Python** (≥3.10) | Language |
-| **Pillow** | Image processing |
-| **YOLOv8** (future) | Real colony detection |
-| **CNN** (future) | Real species classification |
+| **[Streamlit](https://streamlit.io)** (≥1.36) | Web framework |
+| **[Ultralytics YOLOv8](https://github.com/ultralytics/ultralytics)** | Colony detection model |
+| **[SAHI](https://github.com/obss/sahi)** | Slicing Aided Hyper Inference for small object detection |
+| **[TensorFlow](https://www.tensorflow.org)** / MobileNetV2 | Species classification CNN |
+| **[OpenCV](https://opencv.org)** | Image preprocessing (Chan-Vese, Otsu, morphological ops) |
+| **[Plotly](https://plotly.com)** | Interactive charts and heatmaps |
+| **[fpdf2](https://github.com/PyFPDF/fpdf2)** | PDF report generation |
+| **[Groq API](https://groq.com)** | Cuora conversational AI backend |
+| **Python** (≥3.11) | Language |
 
 ---
 
@@ -78,7 +86,10 @@ cd agar-web
 # 2. Install dependencies
 pip install -r requirements.txt
 
-# 3. Run the app
+# 3. (Optional) Add Groq API key for Cuora chatbot
+echo "GROQ_API_KEY = \"your-key-here\"" > .streamlit/secrets.toml
+
+# 4. Run the app
 streamlit run app.py
 ```
 
@@ -90,18 +101,36 @@ The app will open at `http://localhost:8501`.
 
 ```
 agar-web/
-├── app.py                  # Entry point + sidebar
-├── config/                 # Settings (species, mock flag, colors)
-├── pages/                  # 8 Streamlit pages (Home, Pipeline, μKount, μDetect, Results, About, Future Features, Disclaimer)
-├── services/               # Detection, classification, preprocessing (mock)
-├── components/             # Cards, charts, image viewer
+├── app.py                  # Entry point + sidebar navigation
+├── app_config/             # Centralized settings
+├── pages/                  # 12 Streamlit pages
+│   ├── 01_home.py          # Home page
+│   ├── 02_fundamentals.py  # Project overview
+│   ├── 03_pipeline.py      # Processing pipeline + tutorial
+│   ├── 04_kount.py         # μKount — colony detection
+│   ├── 05_detect.py        # μDetect — species classification
+│   ├── 06_results.py       # Results dashboard + export
+│   ├── 08_future_features.py
+│   ├── 09_disclaimer.py
+│   ├── 10_acknowledgments.py
+│   ├── 11_cuora.py         # Cuora AI assistant
+│   ├── 12_faq.py
+│   └── 13_about.py         # Technical details
+├── services/               # Business logic
+│   ├── detection_service.py     # YOLO + SAHI detection
+│   ├── classification_service.py # CNN classification
+│   ├── preprocessing_service.py # Chan-Vese pipeline
+│   └── pdf_report.py            # PDF generation
+├── components/             # Reusable UI components
+│   ├── cards.py
+│   ├── charts.py
+│   └── image_viewer.py
 ├── data/                   # species_info.json (bilingual knowledge base)
-├── icons/                  # Branding icons
 ├── locales/                # i18n dictionaries (en.py, es.py)
 ├── utils/                  # Session state, i18n helper
-├── .opencode/              # AI assistant config
-├── .memory/                # Project memory
-└── .streamlit/             # Streamlit Cloud config
+├── icons/                  # Branding icons
+│── .streamlit/             # Streamlit Cloud config
+└── requirements.txt
 ```
 
 ---
@@ -112,9 +141,9 @@ agar-web/
   <img src="icons/Cuora.png" width="240" alt="Cuora">
 </div>
 
-**Cuora** is the virtual microbiologist of AGAR-Web. Soon she will answer your questions about colonies, species, and lab techniques — making the app not just a tool, but a learning companion.
+**Cuora** is the virtual microbiologist of AGAR-Web. She answers your questions about colonies, species, and lab techniques — making the app not just a tool, but a learning companion.
 
-*Coming in a future phase.*
+✅ **Implemented** — Powered by the **Groq API**, Cuora provides conversational assistance about your analysis results, detected species, and microbiological concepts.
 
 ---
 
@@ -123,12 +152,13 @@ agar-web/
 | Phase | Status |
 |-------|--------|
 | **1 — MVP** Streamlit + mock services | ✅ Complete |
-| **2 — μKount** Real YOLO detection | 🔄 Pending |
-| **3 — μDetect** Real CNN classification | ⬜ Pending |
-| **4 — Detection Editing** Manual box adjustment | ⬜ Pending |
-| **5 — Rich Species Info** Morphology, pathology | ⬜ Pending |
-| **6 — Chatbot** Cuora answers your questions | ⬜ Pending |
-| **7 — Deployment** Streamlit Cloud / HF Spaces | ⬜ Pending |
+| **2 — μKount** Real YOLO detection | ✅ Complete |
+| **3 — μDetect** Real CNN classification | ✅ Complete |
+| **4 — Detection Filtering** Confidence threshold + zoom | ✅ Complete |
+| **5 — Cuora** AI assistant with Groq API | ✅ Complete |
+| **6 — Export** JSON + PDF report download | ✅ Complete |
+| **7 — More Species** Retrain model with additional organisms | 🔜 Planned |
+| **8 — Box Editing** Manual adjustment of bounding boxes | 🔜 Planned |
 
 ---
 
@@ -136,8 +166,10 @@ agar-web/
 
 | Resource | Reference |
 |----------|-----------|
-| **AGAR dataset** | Majchrowska et al. 2021 |
+| **AGAR dataset** | Majchrowska et al. 2021 · [DOI: 10.1038/s41598-021-02912-2](https://doi.org/10.1038/s41598-021-02912-2) |
 | **Patch preprocessing** | Pawłowski et al. 2022 · [GitHub](https://github.com/jarek-pawlowski/microbial-dataset-generation) |
+| **YOLOv8** | Ultralytics · [GitHub](https://github.com/ultralytics/ultralytics) |
+| **SAHI** | Slicing Aided Hyper Inference · [GitHub](https://github.com/obss/sahi) |
 
 ---
 
@@ -159,4 +191,4 @@ We also thank the teaching staff, mentors, and organizers of LABORLAN 2026 for t
 
 ## Disclaimer
 
-AGAR-Web is a **Proof-of-Concept research system**. All AI services are mock implementations. Results are experimental and must **not** be used for clinical diagnosis, treatment decisions, or any medical purpose. Always validate microbial identification through standard microbiological methods.
+AGAR-Web is a **Proof-of-Concept research system**. Results are experimental and must **not** be used for clinical diagnosis, treatment decisions, or any medical purpose. Always validate microbial identification through standard microbiological methods.
