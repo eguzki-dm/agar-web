@@ -9,6 +9,7 @@ TRANSLATIONS = {
     "nav.future": "Future Features",
     "nav.disclaimer": "Disclaimer",
     "nav.acknowledgments": "Acknowledgments",
+    "nav.faq": "FAQ",
 
     # ─── Sidebar ────────────────────────────────────────────────
     "sidebar.language": "Language / Idioma",
@@ -332,6 +333,55 @@ TRANSLATIONS = {
     "cuora.export": "\U0001f4be Export",
     "cuora.logout": "Logout",
     "cuora.api_key_error": "GROQ_API_KEY not found in secrets.toml. Configure it to use Cuora.",
+    # ─── FAQ ─────────────────────────────────────────────────────
+    "faq.title": "Frequently Asked Questions",
+    "faq.q1.question": "What is \u03bcKount & \u03bcDetect?",
+    "faq.q1.answer": (
+        "\u03bcKount & \u03bcDetect is an AI-powered system for analyzing agar plates "
+        "used in microbiology. \u03bcKount detects and counts microbial colonies using "
+        "YOLO object detection, while \u03bcDetect classifies colony species using "
+        "a CNN-based classifier."
+    ),
+    "faq.q2.question": "How does the pipeline work?",
+    "faq.q2.answer": (
+        "The pipeline consists of four stages: (1) upload or generate an agar plate image, "
+        "(2) \u03bcKount detects and counts colonies with bounding boxes, "
+        "(3) \u03bcDetect classifies each colony by species, "
+        "(4) results are displayed in an interactive dashboard with charts and metrics."
+    ),
+    "faq.q3.question": "What is YOLO?",
+    "faq.q3.answer": (
+        "YOLO (You Only Look Once) is a real-time object detection algorithm. "
+        "It divides the image into a grid and predicts bounding boxes and class probabilities "
+        "in a single pass. \u03bcKount uses a YOLO model fine-tuned on the AGAR dataset "
+        "for colony detection."
+    ),
+    "faq.q4.question": "What is a CNN?",
+    "faq.q4.answer": (
+        "A CNN (Convolutional Neural Network) is a deep learning architecture specialized "
+        "for image analysis. \u03bcDetect uses a CNN trained to classify microbial species "
+        "(S. aureus, E. coli, P. aeruginosa, B. subtilis, C. albicans) from colony crops."
+    ),
+    "faq.q5.question": "What image types can I upload?",
+    "faq.q5.answer": (
+        "You can upload PNG, JPG, and JPEG images of agar plates. "
+        "The system also provides synthetic plate generation for testing purposes."
+    ),
+    "faq.q6.question": "How accurate are the results?",
+    "faq.q6.answer": (
+        "The detection model was trained on ~18,000 agar plate images with ~337,000 annotations "
+        "from the AGAR dataset. Classification accuracy depends on image quality, lighting "
+        "conditions, and colony morphology. Always validate results with traditional "
+        "microbiological methods."
+    ),
+    "faq.q7.question": "Why is this tool important?",
+    "faq.q7.answer": (
+        "Manual colony counting and classification is time-consuming, subjective, and prone "
+        "to human error. \u03bcKount & \u03bcDetect automates this process, providing "
+        "consistent, fast, and reproducible results, accelerating microbiological analysis "
+        "in clinical, industrial, and research settings."
+    ),
+
     "cuora.analyzing": "\u23f3 Analyzing...",
     "cuora.default_name": "User",
     "cuora.prompt": (

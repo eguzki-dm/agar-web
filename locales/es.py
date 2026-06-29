@@ -9,6 +9,7 @@ TRANSLATIONS = {
     "nav.future": "Funcionalidades Futuras",
     "nav.disclaimer": "Aviso Legal",
     "nav.acknowledgments": "Agradecimientos",
+    "nav.faq": "FAQ",
 
     # ─── Sidebar ────────────────────────────────────────────────
     "sidebar.language": "Idioma / Language",
@@ -331,6 +332,56 @@ TRANSLATIONS = {
     "cuora.export": "\U0001f4be Exportar",
     "cuora.logout": "Cerrar sesi\u00f3n",
     "cuora.api_key_error": "No se encontr\u00f3 GROQ_API_KEY en secrets.toml. Config\u00farala para usar Cuora.",
+    # ─── FAQ ─────────────────────────────────────────────────────
+    "faq.title": "Preguntas Frecuentes",
+    "faq.q1.question": "\u00bfQu\u00e9 es \u03bcKount & \u03bcDetect?",
+    "faq.q1.answer": (
+        "\u03bcKount & \u03bcDetect es un sistema basado en inteligencia artificial "
+        "para analizar placas de agar en microbiolog\u00eda. \u03bcKount detecta y cuenta "
+        "colonias microbianas usando detecci\u00f3n de objetos YOLO, mientras que "
+        "\u03bcDetect clasifica las especies de colonias usando un clasificador basado en CNN."
+    ),
+    "faq.q2.question": "\u00bfC\u00f3mo funciona el pipeline?",
+    "faq.q2.answer": (
+        "El pipeline consta de cuatro etapas: (1) subir o generar una imagen de placa de agar, "
+        "(2) \u03bcKount detecta y cuenta colonias con recuadros delimitadores, "
+        "(3) \u03bcDetect clasifica cada colonia por especie, "
+        "(4) los resultados se muestran en un panel interactivo con gr\u00e1ficos y m\u00e9tricas."
+    ),
+    "faq.q3.question": "\u00bfQu\u00e9 es YOLO?",
+    "faq.q3.answer": (
+        "YOLO (You Only Look Once) es un algoritmo de detecci\u00f3n de objetos en tiempo real. "
+        "Divide la imagen en una cuadr\u00edcula y predice recuadros delimitadores y "
+        "probabilidades de clase en una sola pasada. \u03bcKount usa un modelo YOLO "
+        "ajustado en el dataset AGAR para detecci\u00f3n de colonias."
+    ),
+    "faq.q4.question": "\u00bfQu\u00e9 es una CNN?",
+    "faq.q4.answer": (
+        "Una CNN (Red Neuronal Convolucional) es una arquitectura de deep learning "
+        "especializada en an\u00e1lisis de im\u00e1genes. \u03bcDetect usa una CNN entrenada "
+        "para clasificar especies microbianas (S. aureus, E. coli, P. aeruginosa, "
+        "B. subtilis, C. albicans) a partir de recortes de colonias."
+    ),
+    "faq.q5.question": "\u00bfQu\u00e9 tipos de imagen puedo subir?",
+    "faq.q5.answer": (
+        "Puedes subir im\u00e1genes PNG, JPG y JPEG de placas de agar. "
+        "El sistema tambi\u00e9n ofrece generaci\u00f3n de placas sint\u00e9ticas para pruebas."
+    ),
+    "faq.q6.question": "\u00bfQu\u00e9 precisi\u00f3n tienen los resultados?",
+    "faq.q6.answer": (
+        "El modelo de detecci\u00f3n fue entrenado con ~18,000 im\u00e1genes de placas de agar "
+        "con ~337,000 anotaciones del dataset AGAR. La precisi\u00f3n de clasificaci\u00f3n "
+        "depende de la calidad de imagen, condiciones de iluminaci\u00f3n y morfolog\u00eda "
+        "de las colonias. Siempre valida los resultados con m\u00e9todos microbiol\u00f3gicos tradicionales."
+    ),
+    "faq.q7.question": "\u00bfPor qu\u00e9 es importante esta herramienta?",
+    "faq.q7.answer": (
+        "El conteo y clasificaci\u00f3n manual de colonias es lento, subjetivo y propenso "
+        "a errores humanos. \u03bcKount & \u03bcDetect automatiza este proceso, "
+        "proporcionando resultados consistentes, r\u00e1pidos y reproducibles, acelerando "
+        "el an\u00e1lisis microbiol\u00f3gico en entornos cl\u00ednicos, industriales y de investigaci\u00f3n."
+    ),
+
     "cuora.analyzing": "\u23f3 Analizando...",
     "cuora.default_name": "Usuario",
     "cuora.prompt": (

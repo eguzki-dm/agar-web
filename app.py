@@ -34,6 +34,7 @@ pages = [
     st.Page("pages/06_about.py", title="About", icon="ℹ️"),
     st.Page("pages/07_future_features.py", title="Future Features", icon="🚀"),
     st.Page("pages/08_disclaimer.py", title="Disclaimer", icon="⚠️"),
+    st.Page("pages/11_faq.py", title="FAQ", icon="❓"),
     st.Page("pages/09_acknowledgments.py", title="Acknowledgments", icon="🙏"),
 ]
 
