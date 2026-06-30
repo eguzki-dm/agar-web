@@ -24,13 +24,13 @@ st.title(t("detect.title"))
 st.markdown(t("detect.subtitle"))
 st.warning(t("detect.optimizing_warning"))
 
-if not st.session_state.detections:
+if "detections" not in st.session_state or not st.session_state.detections:
     st.warning(t("detect.warning.no_detections"))
     if st.button(t("detect.button.back")):
         st.switch_page("pages/04_kount.py")
     st.stop()
 
-if st.session_state.original_image is None:
+if "original_image" not in st.session_state or st.session_state.original_image is None:
     st.error(t("detect.error.no_image"))
     st.stop()
 

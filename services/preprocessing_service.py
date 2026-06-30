@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 from PIL import Image
 
-from lib import (
+from .lib import (
     get_alpha_from_segmentation,
     get_alpha_from_blending_with_backgroung,
 )
