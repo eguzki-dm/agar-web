@@ -69,9 +69,9 @@ with examples_tab:
     if not example_files:
         st.info(t("kount.examples.none"))
     else:
-        cols = st.columns(3)
+        cols = st.columns(4)
         for idx, img_path in enumerate(example_files):
-            with cols[idx % 3]:
+            with cols[idx % 4]:
                 img = Image.open(img_path).convert("RGB")
                 st.image(img.resize((250, 250), Image.Resampling.LANCZOS), width="stretch")
                 fname = img_path.name
