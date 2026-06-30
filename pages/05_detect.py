@@ -1,5 +1,6 @@
 import base64
 import time
+from collections import Counter
 import streamlit as st
 
 from services.preprocessing_service import PreprocessingService
@@ -22,8 +23,6 @@ st.markdown(
 )
 st.title(t("detect.title"))
 st.markdown(t("detect.subtitle"))
-st.warning(t("detect.optimizing_warning"))
-
 if "detections" not in st.session_state or not st.session_state.detections:
     st.warning(t("detect.warning.no_detections"))
     if st.button(t("detect.button.back")):
@@ -85,6 +84,16 @@ if st.button(t("detect.process.button"), type="primary", width="stretch"):
         st.session_state.run_metadata["classification_time_s"] = round(t1 - t0, 2)
 
     st.success(t("detect.status.classified").format(count=len(classifications)))
+
+    species_counts = Counter(cls["species"] for cls in classifications)
+    top_two = [sp for sp, _ in species_counts.most_common(2)]
+    st.toast(
+        t("detect.toast.done").format(
+            count=len(classifications),
+            species=", ".join(top_two),
+        ),
+        icon="✅",
+    )
 
 st.divider()
 

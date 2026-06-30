@@ -198,7 +198,6 @@ TRANSLATIONS = {
     # ─── μDetect page ──────────────────────────────────────────
     "detect.title": "\U0001f9ea \u03bcDetect \u2014 Colony Classification",
     "detect.subtitle": "Classifies each detected colony by microbial species.",
-    "detect.optimizing_warning": "\u2699\ufe0f Optimization needed \u2014 The \u03bcDetect CNN classification model is a proof of concept. Results should be interpreted with caution and validated by standard microbiological methods.",
     "detect.warning.no_detections": "No previous detections. Run \u03bcKount first "
         "to detect colonies in an image.",
     "detect.button.back": "\u2190 Go to \u03bcKount",
@@ -211,6 +210,7 @@ TRANSLATIONS = {
     "detect.step2.desc": "Applying black background to each crop to improve classification...",
     "detect.status.crops_extracted": "{count} crops extracted.",
     "detect.status.classified": "{count} colonies classified.",
+    "detect.toast.done": "Done! You have {count} colonies, the main ones are: {species}",
     "detect.results.title": "Results per colony",
     "detect.colony.label": "Colony #{number}",
     "detect.colony.processed": "Processed crop",
