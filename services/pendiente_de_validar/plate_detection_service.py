@@ -3,8 +3,6 @@ import numpy as np
 from PIL import Image
 
 
-# ── Constantes extraídas textualmente del notebook de Colab ──
-# (celdas `detectar_y_medir_placa`)
 GAUSSIAN_KERNEL = (5, 5)
 GAUSSIAN_SIGMA = 0
 
