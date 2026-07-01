@@ -716,17 +716,7 @@ TRANSLATIONS = {
         "complex patterns. This process is called **training**."
     ),
 
-        "learn.concept_12.title": "\U0001f393 \u00bfC\u00f3mo aprende la IA?",
-        "learn.concept_12.content": (
-            "Durante el entrenamiento:\n\n"
-            "1. Se muestran miles de im\u00e1genes al modelo\n"
-            "2. El modelo hace una predicci\u00f3n\n"
-            "3. La predicci\u00f3n se compara con la respuesta correcta\n"
-            "4. Si se equivoca, millones de par\u00e1metros internos se **ajustan autom\u00e1ticamente**\n"
-            "5. Este proceso se repite miles de veces\n\n"
-            "Con el tiempo, la IA mejora progresivamente hasta aprender a reconocer patrones "
-            "complejos. Este proceso se llama **entrenamiento**."
-        ),
+
         "learn.concept_13.title": "🧬 What is μKount & μDetect?",
         "learn.concept_13.content": (
             "μKount & μDetect is an AI system for agar plate analysis.\n\n"
