@@ -1,3 +1,5 @@
+PRIMARY_COLOR = "#dda4f7"
+
 MAX_UPLOAD_MB = 20
 
 SUPPORTED_FORMATS = ["png", "jpg", "jpeg"]

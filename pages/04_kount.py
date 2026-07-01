@@ -10,7 +10,7 @@ from components.image_viewer import show_image_with_boxes
 from components.charts import metrics_dashboard
 from utils.i18n import t
 from utils.session_state import init_session_state
-from app_config.settings import EXAMPLE_IMAGES_DIR, RESULTS_DIR, YOLO_CONFIDENCE_THRESHOLD
+from app_config.settings import EXAMPLE_IMAGES_DIR, RESULTS_DIR, YOLO_CONFIDENCE_THRESHOLD, PRIMARY_COLOR
 
 init_session_state()
 
@@ -48,7 +48,7 @@ with upload_tab:
         st.markdown(
             f'<a href="https://www.google.com/search?tbm=isch&q={query}" target="_blank" '
             f'style="display: inline-flex; align-items: center; justify-content: center; '
-            f'padding: 0.25em 0.6em; background-color: #4285F4; color: white; '
+            f'padding: 0.25em 0.6em; background-color: {PRIMARY_COLOR}; color: white; '
             f'text-decoration: none; border-radius: 0.5rem; font-size: 0.8rem; '
             f'font-weight: 500; height: 2.5em; margin-top: 4px;">{t("kount.upload.guide.search_button")}</a>',
             unsafe_allow_html=True,

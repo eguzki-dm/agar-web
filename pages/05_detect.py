@@ -47,8 +47,8 @@ preprocessor = PreprocessingService()
 classifier = ClassificationService()
 
 if st.button(t("detect.process.button"), type="primary", width="stretch"):
-    with st.spinner(t("detect.process.button")):
-        st.subheader(t("pipeline.title"), anchor=False)
+    with st.status(t("pipeline.title"), expanded=True) as status:
+        status.update(label=t("detect.step1.title"), state="running")
 
         display_crop_pipeline_step(
             1,
@@ -60,6 +60,8 @@ if st.button(t("detect.process.button"), type="primary", width="stretch"):
         st.session_state.processed_crops = processed_crops
 
         st.markdown(t("detect.status.crops_extracted").format(count=len(crops)))
+
+        status.update(label=t("detect.step2.title"), state="running")
 
         display_crop_pipeline_step(
             2,
@@ -75,7 +77,7 @@ if st.button(t("detect.process.button"), type="primary", width="stretch"):
 
         st.divider()
 
-        st.subheader(t("detect.title"), anchor=False)
+        status.update(label=t("detect.title"), state="running")
 
         t0 = time.perf_counter()
         classifications = classifier.classify(processed_crops)
@@ -83,7 +85,11 @@ if st.button(t("detect.process.button"), type="primary", width="stretch"):
         st.session_state.classifications = classifications
         st.session_state.run_metadata["classification_time_s"] = round(t1 - t0, 2)
 
-    st.success(t("detect.status.classified").format(count=len(classifications)))
+        status.update(
+            label=t("detect.status.classified").format(count=len(classifications)),
+            state="complete",
+            expanded=False,
+        )
 
     species_counts = Counter(cls["species"] for cls in classifications)
     top_two = [sp for sp, _ in species_counts.most_common(2)]
