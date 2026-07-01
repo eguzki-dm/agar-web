@@ -3,7 +3,7 @@
   <h1>μKount & μDetect</h1>
   <p><em>AI-Assisted Microbiological Colony Analysis</em></p>
   <p>
-    Eguzkiñe<br>
+    Eguzkiñe Diez-Martin<br>
     <a href="https://github.com/eguzki-dm"><img src="https://img.shields.io/badge/GitHub-eguzki--dm-181717?style=flat-square&logo=github" alt="GitHub"></a>
     <a href="https://orcid.org/0000-0002-7151-1639"><img src="https://img.shields.io/badge/ORCID-0000--0002--7151--1639-A6CE39?style=flat-square&logo=orcid&logoColor=white" alt="ORCID"></a>
     <a href="https://es.linkedin.com/in/eguzkine-dm"><img src="https://img.shields.io/badge/LinkedIn-eguzkine--dm-0A66C2?style=flat-square&logo=linkedin" alt="LinkedIn"></a>
