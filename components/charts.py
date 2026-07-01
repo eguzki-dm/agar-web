@@ -91,28 +91,41 @@ def probability_table(classifications: list[dict]) -> pd.DataFrame:
     return pd.DataFrame(rows)
 
 
-def metrics_dashboard(detections: list, classifications: list, metadata: dict):
-    col1, col2, col3, col4 = st.columns(4)
+def metrics_dashboard(detections: list, classifications: list, metadata: dict, show_classification: bool = True):
+    if show_classification:
+        col1, col2, col3, col4 = st.columns(4)
 
-    with col1:
-        st.metric(
-            t("charts.metrics.detected"),
-            len(detections),
-        )
+        with col1:
+            st.metric(
+                t("charts.metrics.detected"),
+                len(detections),
+            )
 
-    with col2:
-        st.metric(
-            t("charts.metrics.classified"),
-            len(classifications),
-        )
+        with col2:
+            st.metric(
+                t("charts.metrics.classified"),
+                len(classifications),
+            )
 
-    with col3:
-        time_det = metadata.get("detection_time_s", 0)
-        st.metric(t("charts.metrics.time_kount"), f"{time_det} s")
+        with col3:
+            time_det = metadata.get("detection_time_s", 0)
+            st.metric(t("charts.metrics.time_kount"), f"{time_det} s")
 
-    with col4:
-        time_cls = metadata.get("classification_time_s", 0)
-        if time_cls:
-            st.metric(t("charts.metrics.time_detect"), f"{time_cls} s")
-        else:
-            st.metric(t("charts.metrics.time_detect"), "\u2014")
+        with col4:
+            time_cls = metadata.get("classification_time_s", 0)
+            if time_cls:
+                st.metric(t("charts.metrics.time_detect"), f"{time_cls} s")
+            else:
+                st.metric(t("charts.metrics.time_detect"), "\u2014")
+    else:
+        col1, col2 = st.columns(2)
+
+        with col1:
+            st.metric(
+                t("charts.metrics.detected"),
+                len(detections),
+            )
+
+        with col2:
+            time_det = metadata.get("detection_time_s", 0)
+            st.metric(t("charts.metrics.time_kount"), f"{time_det} s")

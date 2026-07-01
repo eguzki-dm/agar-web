@@ -156,6 +156,7 @@ if st.session_state.original_image is not None:
             st.session_state.detections,
             st.session_state.classifications,
             st.session_state.run_metadata,
+            show_classification=False,
         )
 
         st.divider()
