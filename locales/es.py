@@ -719,57 +719,38 @@ TRANSLATIONS = {
         "| B. subtilis | 1% |\n\n"
         "Cuanto mayor es la probabilidad, mayor es la confianza del modelo en esa predicci\u00f3n."
     ),
-    "learn.concept_13.title": "🧬 What is μKount & μDetect?",
+    "learn.concept_12.title": "\U0001f393 \u00bfC\u00f3mo aprende la IA?",
+    "learn.concept_12.content": (
+        "Durante el entrenamiento:\n\n"
+        "1. Se muestran miles de im\u00e1genes al modelo\n"
+        "2. El modelo hace una predicci\u00f3n\n"
+        "3. La predicci\u00f3n se compara con la respuesta correcta\n"
+        "4. Si se equivoca, millones de par\u00e1metros internos se **ajustan autom\u00e1ticamente**\n"
+        "5. Este proceso se repite miles de veces\n\n"
+        "Con el tiempo, la IA mejora progresivamente hasta aprender a reconocer "
+        "patrones complejos. A este proceso se le llama **entrenamiento**."
+    ),
+    "learn.concept_13.title": "\U0001f9ec \u00bfQu\u00e9 es \u03bcKount & \u03bcDetect?",
     "learn.concept_13.content": (
-        "μKount & μDetect is an AI system for agar plate analysis.\n\n"
-        "μKount performs colony detection and counting using YOLO.\n"
-        "μDetect performs species classification using a CNN.\n\n"
-        "Together they form a pipeline that automates microbiological image analysis."
+        "μKount & μDetect es un sistema de IA para el análisis de placas de agar.\n\n"
+        "μKount realiza la detección y el recuento de colonias usando YOLO.\n"
+        "μDetect realiza la clasificación de especies usando una CNN.\n\n"
+        "Juntos forman un pipeline que automatiza el análisis microbiológico de imágenes."
     ),
 
-    "learn.concept_14.title": "🔬 How does the pipeline work?",
+    "learn.concept_14.title": "🔬 ¿Cómo funciona el pipeline?",
     "learn.concept_14.content": (
-        "The pipeline works in sequential steps:\n\n"
-        "1. Upload agar plate image\n"
-        "2. μKount detects colonies using YOLO\n"
-        "3. Each colony is cropped\n"
-        "4. μDetect classifies each colony\n"
-        "5. Results are visualized\n\n"
-        "This allows full automation from image to biological interpretation."
+        "El pipeline funciona en pasos secuenciales:\n\n"
+        "1. Subir la imagen de la placa de agar\n"
+        "2. μKount detecta colonias usando YOLO\n"
+        "3. Cada colonia se recorta\n"
+        "4. μDetect clasifica cada colonia\n"
+        "5. Los resultados se visualizan\n\n"
+        "Esto permite la automatización completa desde la imagen hasta la interpretación biológica."
     ),
     # ─── FAQ ─────────────────────────────────────────────────────
     "faq.title": "Preguntas Frecuentes",
-    "faq.q1.question": "\u00bfQu\u00e9 es \u03bcKount & \u03bcDetect?",
-    "faq.q1.answer": (
-        "\u03bcKount & \u03bcDetect es un sistema basado en inteligencia artificial "
-        "para analizar placas de agar en microbiolog\u00eda. \u03bcKount detecta y cuenta "
-        "colonias microbianas usando detecci\u00f3n de objetos YOLO, mientras que "
-        "\u03bcDetect clasifica las especies de colonias usando un clasificador basado en CNN."
-    ),
-    "faq.q2.question": "\u00bfC\u00f3mo funciona el pipeline?",
-    "faq.q2.answer": (
-        "El pipeline consta de cuatro etapas: (1) subir una imagen de placa de agar "
-        "o utilizar una imagen de ejemplo "
-        "(el nombre del archivo indica el n\u00famero real de colonias y las especies presentes, "
-        "ej. 17_ESCO.jpg = 17 colonias de E. coli), "
-        "(2) \u03bcKount detecta y cuenta colonias con recuadros delimitadores, "
-        "(3) \u03bcDetect clasifica cada colonia por especie, "
-        "(4) los resultados se muestran en un panel interactivo con gr\u00e1ficos y m\u00e9tricas."
-    ),
-    "faq.q3.question": "\u00bfQu\u00e9 es YOLO?",
-    "faq.q3.answer": (
-        "YOLO (You Only Look Once) es un algoritmo de detecci\u00f3n de objetos en tiempo real. "
-        "Divide la imagen en una cuadr\u00edcula y predice recuadros delimitadores y "
-        "probabilidades de clase en una sola pasada. \u03bcKount usa un modelo YOLO "
-        "ajustado en el dataset AGAR para detecci\u00f3n de colonias."
-    ),
-    "faq.q4.question": "\u00bfQu\u00e9 es una CNN?",
-    "faq.q4.answer": (
-        "Una CNN (Red Neuronal Convolucional) es una arquitectura de deep learning "
-        "especializada en an\u00e1lisis de im\u00e1genes. \u03bcDetect usa una CNN entrenada "
-        "para clasificar especies microbianas (S. aureus, E. coli, P. aeruginosa, "
-        "B. subtilis, C. albicans) a partir de recortes de colonias."
-    ),
+
     "faq.q5.question": "\u00bfQu\u00e9 tipos de imagen puedo subir?",
     "faq.q5.answer": (
         "Puedes subir im\u00e1genes PNG, JPG y JPEG de placas de agar. "

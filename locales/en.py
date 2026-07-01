@@ -717,56 +717,27 @@ TRANSLATIONS = {
     ),
 
 
-        "learn.concept_13.title": "🧬 What is μKount & μDetect?",
-        "learn.concept_13.content": (
-            "μKount & μDetect is an AI system for agar plate analysis.\n\n"
-            "μKount performs colony detection and counting using YOLO.\n"
-            "μDetect performs species classification using a CNN.\n\n"
-            "Together they form a pipeline that automates microbiological image analysis."
-        ),
+    "learn.concept_13.title": "🧬 What is μKount & μDetect?",
+    "learn.concept_13.content": (
+        "μKount & μDetect is an AI system for agar plate analysis.\n\n"
+        "μKount performs colony detection and counting using YOLO.\n"
+        "μDetect performs species classification using a CNN.\n\n"
+        "Together they form a pipeline that automates microbiological image analysis."
+    ),
 
-        "learn.concept_14.title": "🔬 How does the pipeline work?",
-        "learn.concept_14.content": (
-            "The pipeline works in sequential steps:\n\n"
-            "1. Upload agar plate image\n"
-            "2. μKount detects colonies using YOLO\n"
-            "3. Each colony is cropped\n"
-            "4. μDetect classifies each colony\n"
-            "5. Results are visualized\n\n"
-            "This allows full automation from image to biological interpretation."
-        ),
+    "learn.concept_14.title": "🔬 How does the pipeline work?",
+    "learn.concept_14.content": (
+        "The pipeline works in sequential steps:\n\n"
+        "1. Upload agar plate image\n"
+        "2. μKount detects colonies using YOLO\n"
+        "3. Each colony is cropped\n"
+        "4. μDetect classifies each colony\n"
+        "5. Results are visualized\n\n"
+        "This allows full automation from image to biological interpretation."
+    ),
     # ─── FAQ ─────────────────────────────────────────────────────
     "faq.title": "Frequently Asked Questions",
-    "faq.q1.question": "What is \u03bcKount & \u03bcDetect?",
-    "faq.q1.answer": (
-        "\u03bcKount & \u03bcDetect is an AI-powered system for analyzing agar plates "
-        "used in microbiology. \u03bcKount detects and counts microbial colonies using "
-        "YOLO object detection, while \u03bcDetect classifies colony species using "
-        "a CNN-based classifier."
-    ),
-    "faq.q2.question": "How does the pipeline work?",
-    "faq.q2.answer": (
-        "The pipeline consists of four stages: (1) upload an agar plate image "
-        "or use an example image "
-        "(the filename indicates the real colony count and species present, "
-        "e.g. 17_ESCO.jpg = 17 E. coli colonies), "
-        "(2) \u03bcKount detects and counts colonies with bounding boxes, "
-        "(3) \u03bcDetect classifies each colony by species, "
-        "(4) results are displayed in an interactive dashboard with charts and metrics."
-    ),
-    "faq.q3.question": "What is YOLO?",
-    "faq.q3.answer": (
-        "YOLO (You Only Look Once) is a real-time object detection algorithm. "
-        "It divides the image into a grid and predicts bounding boxes and class probabilities "
-        "in a single pass. \u03bcKount uses a YOLO model fine-tuned on the AGAR dataset "
-        "for colony detection."
-    ),
-    "faq.q4.question": "What is a CNN?",
-    "faq.q4.answer": (
-        "A CNN (Convolutional Neural Network) is a deep learning architecture specialized "
-        "for image analysis. \u03bcDetect uses a CNN trained to classify microbial species "
-        "(S. aureus, E. coli, P. aeruginosa, B. subtilis, C. albicans) from colony crops."
-    ),
+
     "faq.q5.question": "What image types can I upload?",
     "faq.q5.answer": (
         "You can upload PNG, JPG, and JPEG images of agar plates. "
