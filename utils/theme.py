@@ -65,21 +65,33 @@ _DARK_CSS = """
 """
 
 
-_SIDEBAR_CSS = """
-button[data-testid*="sidebarViewMore"] {
-    display: none !important;
-}
-div[data-testid="stSidebar"] > div:last-child {
-    display: none !important;
-}
-section[data-testid="stSidebar"] > div:first-child {
-    overflow-y: auto !important;
-}
+_SIDEBAR_JS = """
+<script>
+(function() {
+    const KEY = '__sidebarFixed';
+    if (window[KEY]) return;
+    window[KEY] = true;
+    const fix = () => {
+        const sb = document.querySelector('[data-testid="stSidebar"]');
+        if (!sb) return;
+        const inner = sb.firstElementChild;
+        if (inner) {
+            inner.style.maxHeight = 'none';
+            inner.style.overflow = 'visible';
+            inner.style.height = 'auto';
+        }
+        const fade = sb.querySelector('[data-testid*="sidebarViewMore"]');
+        if (fade) fade.remove();
+    };
+    fix();
+    new MutationObserver(fix).observe(document.body, { childList: true, subtree: true });
+})();
+</script>
 """
 
 
 def inject_theme_css():
-    st.markdown(f"<style>{_SIDEBAR_CSS}</style>", unsafe_allow_html=True)
+    st.markdown(_SIDEBAR_JS, unsafe_allow_html=True)
     if st.get_option("theme.base") == "dark":
         st.markdown(f"<style>{_DARK_CSS}</style>", unsafe_allow_html=True)
     else:
