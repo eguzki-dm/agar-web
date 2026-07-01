@@ -328,9 +328,7 @@ TRANSLATIONS = {
         "after \u03bcKount processing.",
     "future.feature.optimize_sahi": "Optimize SAHI slicing processing",
     "future.feature.optimize_sahi.desc": "Improve performance of the SAHI sliced inference pipeline for dense agar plates. Optimize slice overlap, batch processing, and post-processing to reduce detection time while maintaining sensitivity for small colonies.",
-    "future.feature.improve_cnn": "Improve CNN for bacteria classification",
-    "future.feature.improve_cnn.desc": "Retrain the model with more species, varied culture "
-        "media and lighting conditions to improve generalisation.",
+
 
     # ─── Disclaimer page ────────────────────────────────────────
     "disclaimer.title": "\u26a0\ufe0f Disclaimer \u2014 Ethical and Scientific Notice",

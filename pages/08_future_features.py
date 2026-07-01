@@ -20,8 +20,3 @@ future_feature_card(
     "planned",
 )
 
-future_feature_card(
-    t("future.feature.improve_cnn"),
-    t("future.feature.improve_cnn.desc"),
-    "planned",
-)

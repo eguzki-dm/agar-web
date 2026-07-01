@@ -334,9 +334,7 @@ TRANSLATIONS = {
         "detecci\u00f3n manualmente tras el procesamiento de \u03bcKount.",
     "future.feature.optimize_sahi": "Optimizar procesamiento SAHI slicing",
     "future.feature.optimize_sahi.desc": "Mejorar el rendimiento del pipeline de inferencia SAHI slicing para placas densas. Optimizar solapamiento de slices, procesamiento por lotes y post-procesado para reducir el tiempo de detecci\u00f3n manteniendo la sensibilidad para colonias peque\u00f1as.",
-    "future.feature.improve_cnn": "Mejorar CNN para clasificaci\u00f3n de bacterias",
-    "future.feature.improve_cnn.desc": "Reentrenar el modelo con m\u00e1s especies, distintos "
-        "medios de cultivo y condiciones de iluminaci\u00f3n para mejorar la generalizaci\u00f3n.",
+
 
     # ─── Disclaimer page ────────────────────────────────────────
     "disclaimer.title": "\u26a0\ufe0f Aviso Legal \u2014 Aviso \u00e9tico y cient\u00edfico",
