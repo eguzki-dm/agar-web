@@ -221,6 +221,16 @@ TRANSLATIONS = {
     "detect.probabilities.title": "View detailed probabilities",
     "detect.info.run": "Press 'Run \u03bcDetect' to classify the colonies.",
     "detect.button.results": "\U0001f4ca Go to Results",
+    "detect.mode.title": "Classification Mode",
+    "detect.mode.flash": "\u26a1 Flash (Fast)",
+    "detect.mode.robust": "\U0001f9ea Robust (Multimodal)",
+    "detect.mode.flash.desc": "Fast classification using CNN only (current default).",
+    "detect.mode.robust.desc": "Precise classification using plate detection + multimodal CNN with area data.",
+    "detect.step.plate": "Plate Detection & Measurement",
+    "detect.warning.plate_not_found": "Plate not detected. Falling back to Flash mode.",
+    "detect.status.fallback": "Falling back to Flash mode...",
+    "detect.mm_per_pixel": "Scale (mm/pixel)",
+    "detect.plate_debug": "Detected plate contour",
 
     # ─── Results page ───────────────────────────────────────────
     "results.title": "\U0001f4ca Results \u2014 Global Results",

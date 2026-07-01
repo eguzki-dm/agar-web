@@ -226,6 +226,16 @@ TRANSLATIONS = {
     "detect.probabilities.title": "Ver probabilidades detalladas",
     "detect.info.run": "Presiona 'Ejecutar \u03bcDetect' para clasificar las colonias.",
     "detect.button.results": "\U0001f4ca Ir a Resultados",
+    "detect.mode.title": "Modo de Clasificaci\u00f3n",
+    "detect.mode.flash": "\u26a1 Flash (R\u00e1pido)",
+    "detect.mode.robust": "\U0001f9ea Robusto (Multimodal)",
+    "detect.mode.flash.desc": "Clasificaci\u00f3n r\u00e1pida usando solo CNN (actual por defecto).",
+    "detect.mode.robust.desc": "Clasificaci\u00f3n precisa usando detecci\u00f3n de placa + CNN multimodal con \u00e1rea.",
+    "detect.step.plate": "Detecci\u00f3n de Placa y Medici\u00f3n",
+    "detect.warning.plate_not_found": "No se detect\u00f3 la placa. Haciendo fallback a modo Flash.",
+    "detect.status.fallback": "Haciendo fallback a modo Flash...",
+    "detect.mm_per_pixel": "Escala (mm/p\u00edxel)",
+    "detect.plate_debug": "Contorno de placa detectado",
 
     # ─── Results page ───────────────────────────────────────────
     "results.title": "\U0001f4ca Resultados \u2014 Resultados Globales",

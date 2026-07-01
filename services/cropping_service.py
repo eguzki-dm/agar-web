@@ -56,3 +56,24 @@ class CroppingService:
             crops_rgba.append(rgba_img)
 
         return crops_rgba, crops_rgb
+
+    def raw_crops(self, image: Image.Image, detections: list[dict]) -> list[Image.Image]:
+        img_array = np.array(image.convert("RGB"))
+        crops = []
+
+        for det in detections:
+            box = det["box"]
+            x1, y1, x2, y2 = map(int, box)
+
+            x1 = max(0, x1)
+            y1 = max(0, y1)
+            x2 = min(img_array.shape[1], x2)
+            y2 = min(img_array.shape[0], y2)
+
+            if (x2 - x1) < self.MIN_SIZE_BBOX or (y2 - y1) < self.MIN_SIZE_BBOX:
+                continue
+
+            patch = img_array[y1:y2, x1:x2]
+            crops.append(Image.fromarray(patch, "RGB"))
+
+        return crops

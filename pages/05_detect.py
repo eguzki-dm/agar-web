@@ -5,7 +5,11 @@ import streamlit as st
 
 from services.cropping_service import CroppingService
 from services.classification_service import ClassificationService
-from services.pendiente_de_validar.crop_measurement_service import CropMeasurementService
+from services.crop_measurement_service import CropMeasurementService
+from services.padding_service import PaddingService
+from services.plate_detection_service import PlateDetectionService
+from services.area_scaling_service import AreaScalingService
+from services.multimodal_classification_service import MultimodalClassificationService
 from components.image_viewer import show_image_with_boxes, display_crop_pipeline_step
 from components.cards import species_card
 from utils.i18n import t
@@ -44,11 +48,55 @@ show_image_with_boxes(image, detections, caption=t("detect.status.ready").format
 
 st.divider()
 
+st.markdown(f"### {t('detect.mode.title')}")
+
+mode_options = ["flash", "robust"]
+mode_labels = {
+    "flash": t("detect.mode.flash"),
+    "robust": t("detect.mode.robust"),
+}
+mode_descriptions = {
+    "flash": t("detect.mode.flash.desc"),
+    "robust": t("detect.mode.robust.desc"),
+}
+
+selected_mode = st.radio(
+    t("detect.mode.title"),
+    options=mode_options,
+    format_func=lambda x: mode_labels[x],
+    index=0,
+    label_visibility="collapsed",
+)
+st.caption(mode_descriptions[selected_mode])
+
 cropper = CroppingService()
 classifier = ClassificationService()
+padder = PaddingService()
+
+st.divider()
 
 if st.button(t("detect.process.button"), type="primary", width="stretch"):
     with st.status(t("pipeline.title"), expanded=True) as status:
+
+        if selected_mode == "robust":
+            # ── Plate detection ──
+            status.update(label=t("detect.step.plate"), state="running")
+            plate_result = PlateDetectionService().detect_plate(image)
+
+            if not plate_result.get("detected"):
+                st.warning(t("detect.warning.plate_not_found"))
+                status.update(label=t("detect.status.fallback"), state="running")
+                use_robust = False
+            else:
+                mm_per_pixel = plate_result["mm_per_pixel"]
+                st.markdown(f"**{t('detect.mm_per_pixel')}:** {mm_per_pixel:.6f}")
+                if plate_result.get("debug_image"):
+                    st.image(plate_result["debug_image"], width=300, caption=t("detect.plate_debug"))
+                use_robust = True
+        else:
+            use_robust = False
+
+        # ── Crop extraction ──
         status.update(label=t("detect.step1.title"), state="running")
 
         display_crop_pipeline_step(
@@ -57,14 +105,19 @@ if st.button(t("detect.process.button"), type="primary", width="stretch"):
             t("detect.step1.desc"),
         )
 
-        crops, processed_crops = cropper.process_crops(image, detections)
-        st.session_state.processed_crops = processed_crops
+        if use_robust:
+            raw_crops = cropper.raw_crops(image, detections)
+            padded_crops = padder.pad_crops(raw_crops)
+            st.session_state.processed_crops = padded_crops
+            display_crops = padded_crops
+        else:
+            crops, processed_crops = cropper.process_crops(image, detections)
+            st.session_state.processed_crops = processed_crops
+            display_crops = processed_crops
 
-        measurements = CropMeasurementService().measure_crops(processed_crops)
-        st.session_state.crop_measurements = measurements
+        st.markdown(t("detect.status.crops_extracted").format(count=len(display_crops)))
 
-        st.markdown(t("detect.status.crops_extracted").format(count=len(crops)))
-
+        # ── Show crop previews ──
         status.update(label=t("detect.step2.title"), state="running")
 
         display_crop_pipeline_step(
@@ -73,19 +126,36 @@ if st.button(t("detect.process.button"), type="primary", width="stretch"):
             t("detect.step2.desc"),
         )
 
-        cols = st.columns(min(4, len(processed_crops)))
+        cols = st.columns(min(4, len(display_crops)))
         for i, col in enumerate(cols):
-            if i < len(processed_crops):
+            if i < len(display_crops):
                 with col:
-                    st.image(processed_crops[i], width=100, caption=t("detect.colony.label").format(number=i + 1))
+                    st.image(display_crops[i], width=100, caption=t("detect.colony.label").format(number=i + 1))
 
         st.divider()
 
+        # ── Classification ──
         status.update(label=t("detect.title"), state="running")
 
-        t0 = time.perf_counter()
-        classifications = classifier.classify(processed_crops)
-        t1 = time.perf_counter()
+        if use_robust:
+            measurements = CropMeasurementService().measure_crops(padded_crops)
+            area_scaler = AreaScalingService()
+            measurements = area_scaler.process_crops(measurements, mm_per_pixel)
+            scaled_areas = [m["area_scaled"] for m in measurements]
+            st.session_state.crop_measurements = measurements
+
+            multimodal = MultimodalClassificationService()
+            t0 = time.perf_counter()
+            classifications = multimodal.classify(padded_crops, scaled_areas)
+            t1 = time.perf_counter()
+        else:
+            measurements = CropMeasurementService().measure_crops(processed_crops)
+            st.session_state.crop_measurements = measurements
+
+            t0 = time.perf_counter()
+            classifications = classifier.classify(processed_crops)
+            t1 = time.perf_counter()
+
         st.session_state.classifications = classifications
         st.session_state.run_metadata["classification_time_s"] = round(t1 - t0, 2)
 
