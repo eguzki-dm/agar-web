@@ -47,12 +47,13 @@ def render_login_page():
                 revoke_token_endpoint="https://oauth2.googleapis.com/revoke",
             )
 
-            result = oauth2.authorize_button(
-                name=t("cuora.login_button"),
-                redirect_uri=cfg["redirect_uri"],
-                scope="openid email profile",
-                width="stretch",
-            )
+            inner = st.columns([1, 2, 1])
+            with inner[1]:
+                result = oauth2.authorize_button(
+                    name=t("cuora.login_button"),
+                    redirect_uri=cfg["redirect_uri"],
+                    scope="openid email profile",
+                )
 
             if result and "token" in result:
                 _process_oauth_result(result)
