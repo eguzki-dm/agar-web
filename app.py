@@ -59,7 +59,10 @@ with st.sidebar:
     st.markdown(f"<p style='text-align: center;'><em>v{APP_VERSION}</em></p>", unsafe_allow_html=True)
     st.markdown(
         '<p style="text-align: center; font-size: 0.85rem;">'
-        'by <a href="https://github.com/eguzki-dm" target="_blank">Eguzkiñe</a>'
+        'by Eguzkiñe<br>'
+        '<a href="https://github.com/eguzki-dm" target="_blank"><img src="https://img.shields.io/badge/GitHub-eguzki--dm-181717?style=flat-square&logo=github" alt="GitHub"></a> '
+        '<a href="https://orcid.org/0000-0002-7151-1639" target="_blank"><img src="https://img.shields.io/badge/ORCID-0000--0002--7151--1639-A6CE39?style=flat-square&logo=orcid&logoColor=white" alt="ORCID"></a> '
+        '<a href="https://es.linkedin.com/in/eguzkine-dm" target="_blank"><img src="https://img.shields.io/badge/LinkedIn-eguzkine--dm-0A66C2?style=flat-square&logo=linkedin" alt="LinkedIn"></a>'
         '</p>',
         unsafe_allow_html=True,
     )

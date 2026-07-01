@@ -3,7 +3,10 @@
   <h1>μKount & μDetect</h1>
   <p><em>AI-Assisted Microbiological Colony Analysis</em></p>
   <p>
-    <a href="https://github.com/eguzki-dm">Eguzkiñe</a>
+    Eguzkiñe<br>
+    <a href="https://github.com/eguzki-dm"><img src="https://img.shields.io/badge/GitHub-eguzki--dm-181717?style=flat-square&logo=github" alt="GitHub"></a>
+    <a href="https://orcid.org/0000-0002-7151-1639"><img src="https://img.shields.io/badge/ORCID-0000--0002--7151--1639-A6CE39?style=flat-square&logo=orcid&logoColor=white" alt="ORCID"></a>
+    <a href="https://es.linkedin.com/in/eguzkine-dm"><img src="https://img.shields.io/badge/LinkedIn-eguzkine--dm-0A66C2?style=flat-square&logo=linkedin" alt="LinkedIn"></a>
   </p>
 </div>
 
@@ -21,14 +24,14 @@
 Upload Image → μKount (Detection) → Crop & Preprocess → μDetect (Classification) → Results → Cuora (AI Assistant)
 ```
 
-| Step | Description |
-|------|-------------|
-| **📤 Upload** | Drag & drop an agar plate image |
-| **🔍 μKount** | YOLO-based colony detection with SAHI slicing inference |
-| **✂️ Crop + Prep** | Isolate each colony and apply Chan-Vese black background |
-| **🧪 μDetect** | MobileNetV2 CNN species classification (5 bacteria/fungi) |
-| **📊 Results** | Metrics dashboard, charts, species knowledge base, JSON/PDF export |
-| **🧠 Cuora** | AI assistant powered by Groq API — ask about your results |
+| Step               | Description                                                        |
+| ------------------ | ------------------------------------------------------------------ |
+| **📤 Upload**      | Drag & drop an agar plate image                                    |
+| **🔍 μKount**      | YOLO-based colony detection with SAHI slicing inference            |
+| **✂️ Crop + Prep** | Isolate each colony and apply Chan-Vese black background           |
+| **🧪 μDetect**     | MobileNetV2 CNN species classification (5 bacteria/fungi)          |
+| **📊 Results**     | Metrics dashboard, charts, species knowledge base, JSON/PDF export |
+| **🧠 Cuora**       | AI assistant powered by Groq API — ask about your results          |
 
 ---
 
@@ -48,7 +51,7 @@ Upload Image → μKount (Detection) → Crop & Preprocess → μDetect (Classif
 ## Features
 
 - **🎯 Colony Detection** — Real YOLOv8 detection via SAHI (Slicing Aided Hyper Inference)
-- **🔬 Species Classification** — MobileNetV2 CNN trained on 5 species: *S. aureus*, *B. subtilis*, *P. aeruginosa*, *E. coli*, *C. albicans*
+- **🔬 Species Classification** — MobileNetV2 CNN trained on 5 species: _S. aureus_, _B. subtilis_, _P. aeruginosa_, _E. coli_, _C. albicans_
 - **🎚️ Confidence Slider** — Adjust detection threshold before running μKount
 - **🔍 Colony Zoom** — Expandable crop viewer per detected colony
 - **📄 Export Results** — Download detections as JSON or full report as PDF
@@ -62,17 +65,17 @@ Upload Image → μKount (Detection) → Crop & Preprocess → μDetect (Classif
 
 ## Tech Stack
 
-| Technology | Purpose |
-|------------|---------|
-| **[Streamlit](https://streamlit.io)** (≥1.36) | Web framework |
-| **[Ultralytics YOLOv8](https://github.com/ultralytics/ultralytics)** | Colony detection model |
-| **[SAHI](https://github.com/obss/sahi)** | Slicing Aided Hyper Inference for small object detection |
-| **[TensorFlow](https://www.tensorflow.org)** / MobileNetV2 | Species classification CNN |
-| **[OpenCV](https://opencv.org)** | Image preprocessing (Chan-Vese, Otsu, morphological ops) |
-| **[Plotly](https://plotly.com)** | Interactive charts and heatmaps |
-| **[fpdf2](https://github.com/PyFPDF/fpdf2)** | PDF report generation |
-| **[Groq API](https://groq.com)** | Cuora conversational AI backend |
-| **Python** (≥3.11) | Language |
+| Technology                                                           | Purpose                                                  |
+| -------------------------------------------------------------------- | -------------------------------------------------------- |
+| **[Streamlit](https://streamlit.io)** (≥1.36)                        | Web framework                                            |
+| **[Ultralytics YOLOv8](https://github.com/ultralytics/ultralytics)** | Colony detection model                                   |
+| **[SAHI](https://github.com/obss/sahi)**                             | Slicing Aided Hyper Inference for small object detection |
+| **[TensorFlow](https://www.tensorflow.org)** / MobileNetV2           | Species classification CNN                               |
+| **[OpenCV](https://opencv.org)**                                     | Image preprocessing (Chan-Vese, Otsu, morphological ops) |
+| **[Plotly](https://plotly.com)**                                     | Interactive charts and heatmaps                          |
+| **[fpdf2](https://github.com/PyFPDF/fpdf2)**                         | PDF report generation                                    |
+| **[Groq API](https://groq.com)**                                     | Cuora conversational AI backend                          |
+| **Python** (≥3.11)                                                   | Language                                                 |
 
 ---
 
@@ -149,27 +152,27 @@ agar-web/
 
 ## Roadmap
 
-| Phase | Status |
-|-------|--------|
-| **1 — MVP** Streamlit + mock services | ✅ Complete |
-| **2 — μKount** Real YOLO detection | ✅ Complete |
-| **3 — μDetect** Real CNN classification | ✅ Complete |
-| **4 — Detection Filtering** Confidence threshold + zoom | ✅ Complete |
-| **5 — Cuora** AI assistant with Groq API | ✅ Complete |
-| **6 — Export** JSON + PDF report download | ✅ Complete |
-| **7 — More Species** Retrain model with additional organisms | 🔜 Planned |
-| **8 — Box Editing** Manual adjustment of bounding boxes | 🔜 Planned |
+| Phase                                                        | Status      |
+| ------------------------------------------------------------ | ----------- |
+| **1 — MVP** Streamlit + mock services                        | ✅ Complete |
+| **2 — μKount** Real YOLO detection                           | ✅ Complete |
+| **3 — μDetect** Real CNN classification                      | ✅ Complete |
+| **4 — Detection Filtering** Confidence threshold + zoom      | ✅ Complete |
+| **5 — Cuora** AI assistant with Groq API                     | ✅ Complete |
+| **6 — Export** JSON + PDF report download                    | ✅ Complete |
+| **7 — More Species** Retrain model with additional organisms | 🔜 Planned  |
+| **8 — Box Editing** Manual adjustment of bounding boxes      | 🔜 Planned  |
 
 ---
 
 ## Resources
 
-| Resource | Reference |
-|----------|-----------|
-| **AGAR dataset** | Majchrowska et al. 2021 · [DOI: 10.1038/s41598-021-02912-2](https://doi.org/10.1038/s41598-021-02912-2) |
-| **Patch preprocessing** | Pawłowski et al. 2022 · [GitHub](https://github.com/jarek-pawlowski/microbial-dataset-generation) |
-| **YOLOv8** | Ultralytics · [GitHub](https://github.com/ultralytics/ultralytics) |
-| **SAHI** | Slicing Aided Hyper Inference · [GitHub](https://github.com/obss/sahi) |
+| Resource                | Reference                                                                                               |
+| ----------------------- | ------------------------------------------------------------------------------------------------------- |
+| **AGAR dataset**        | Majchrowska et al. 2021 · [DOI: 10.1038/s41598-021-02912-2](https://doi.org/10.1038/s41598-021-02912-2) |
+| **Patch preprocessing** | Pawłowski et al. 2022 · [GitHub](https://github.com/jarek-pawlowski/microbial-dataset-generation)       |
+| **YOLOv8**              | Ultralytics · [GitHub](https://github.com/ultralytics/ultralytics)                                      |
+| **SAHI**                | Slicing Aided Hyper Inference · [GitHub](https://github.com/obss/sahi)                                  |
 
 ---
 
@@ -185,7 +188,10 @@ We also thank the teaching staff, mentors, and organizers of LABORLAN 2026 for t
 
 ## Author
 
-**Eguzkiñe** — [@eguzki-dm](https://github.com/eguzki-dm)
+**Eguzkiñe Diez-Martin** — 
+[![GitHub](https://img.shields.io/badge/GitHub-eguzki--dm-181717?style=flat-square&logo=github)](https://github.com/eguzki-dm)
+[![ORCID](https://img.shields.io/badge/ORCID-0000--0002--7151--1639-A6CE39?style=flat-square&logo=orcid&logoColor=white)](https://orcid.org/0000-0002-7151-1639)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-eguzkine--dm-0A66C2?style=flat-square&logo=linkedin)](https://es.linkedin.com/in/eguzkine-dm)
 
 ---
 
