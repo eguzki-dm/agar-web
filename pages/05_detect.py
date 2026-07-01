@@ -3,8 +3,9 @@ import time
 from collections import Counter
 import streamlit as st
 
-from services.preprocessing_service import PreprocessingService
+from services.cropping_service import CroppingService
 from services.classification_service import ClassificationService
+from services.pendiente_de_validar.crop_measurement_service import CropMeasurementService
 from components.image_viewer import show_image_with_boxes, display_crop_pipeline_step
 from components.cards import species_card
 from utils.i18n import t
@@ -43,7 +44,7 @@ show_image_with_boxes(image, detections, caption=t("detect.status.ready").format
 
 st.divider()
 
-preprocessor = PreprocessingService()
+cropper = CroppingService()
 classifier = ClassificationService()
 
 if st.button(t("detect.process.button"), type="primary", width="stretch"):
@@ -56,8 +57,11 @@ if st.button(t("detect.process.button"), type="primary", width="stretch"):
             t("detect.step1.desc"),
         )
 
-        crops, processed_crops = preprocessor.process_crops(image, detections)
+        crops, processed_crops = cropper.process_crops(image, detections)
         st.session_state.processed_crops = processed_crops
+
+        measurements = CropMeasurementService().measure_crops(processed_crops)
+        st.session_state.crop_measurements = measurements
 
         st.markdown(t("detect.status.crops_extracted").format(count=len(crops)))
 

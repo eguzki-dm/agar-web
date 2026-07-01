@@ -151,6 +151,7 @@ with tab_detect:
                 width="stretch",
             )
 
+        crop_measurements = st.session_state.get("crop_measurements", [])
         export_data = {
             "session_id": st.session_state.session_id,
             "detections": [
@@ -164,6 +165,7 @@ with tab_detect:
                 for i, d in enumerate(st.session_state.detections)
                 if i < len(st.session_state.classifications)
             ],
+            "crop_measurements": crop_measurements,
             "summary": {
                 "total_detections": len(st.session_state.detections),
                 "total_classified": len(st.session_state.classifications),

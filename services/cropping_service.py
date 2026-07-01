@@ -2,7 +2,7 @@ import numpy as np
 from PIL import Image
 
 
-class PreprocessingService:
+class CroppingService:
 
     TARGET_SIZE = 224
     PADDING_RATIO = 0.08
