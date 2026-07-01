@@ -24,20 +24,29 @@ st.set_page_config(
 init_session_state()
 inject_theme_css()
 
-pages = [
-    st.Page("pages/01_home.py", title=t("nav.home"), icon="🏠"),
-    st.Page("pages/02_fundamentals.py", title=t("nav.fundamentals"), icon="📖"),
-    st.Page("pages/03_pipeline.py", title=t("nav.pipeline"), icon="🔬"),
-    st.Page("pages/04_kount.py", title=t("nav.kount"), icon="🔍"),
-    st.Page("pages/05_detect.py", title=t("nav.detect"), icon="🧪"),
-    st.Page("pages/06_results.py", title=t("nav.results"), icon="📊"),
-    st.Page("pages/11_cuora.py", title=t("nav.cuora"), icon="🧠"),
-    st.Page("pages/08_future_features.py", title=t("nav.future"), icon="🚀"),
-    st.Page("pages/09_disclaimer.py", title=t("nav.disclaimer"), icon="⚠️"),
-    st.Page("pages/12_faq.py", title=t("nav.faq"), icon="❓"),
-    st.Page("pages/10_acknowledgments.py", title=t("nav.acknowledgments"), icon="🙏"),
-    st.Page("pages/13_about.py", title=t("nav.about"), icon="⚙️"),
-]
+pages = {
+    t("nav.section.home"): [
+        st.Page("pages/01_home.py", title=t("nav.home"), icon="🏠"),
+    ],
+    t("nav.section.learn"): [
+        st.Page("pages/02_fundamentals.py", title=t("nav.fundamentals"), icon="📖"),
+        st.Page("pages/03_pipeline.py", title=t("nav.how_it_works"), icon="🔬"),
+        st.Page("pages/14_learn_ai.py", title=t("learn.nav"), icon="🧠"),
+    ],
+    "\u03bcKount & \u03bcDetect": [
+        st.Page("pages/04_kount.py", title=t("nav.kount"), icon="🔍"),
+        st.Page("pages/05_detect.py", title=t("nav.detect"), icon="🧪"),
+        st.Page("pages/06_results.py", title=t("nav.results"), icon="📊"),
+    ],
+    t("nav.section.more"): [
+        st.Page("pages/11_cuora.py", title=t("nav.cuora"), icon="🧠"),
+        st.Page("pages/08_future_features.py", title=t("nav.future"), icon="🚀"),
+        st.Page("pages/09_disclaimer.py", title=t("nav.disclaimer"), icon="⚠️"),
+        st.Page("pages/12_faq.py", title=t("nav.faq"), icon="❓"),
+        st.Page("pages/10_acknowledgments.py", title=t("nav.acknowledgments"), icon="🙏"),
+        st.Page("pages/13_about.py", title=t("nav.about"), icon="⚙️"),
+    ],
+}
 
 with st.sidebar:
     pg = st.navigation(pages)
@@ -59,7 +68,10 @@ with st.sidebar:
     st.markdown(f"<p style='text-align: center;'><em>v{APP_VERSION}</em></p>", unsafe_allow_html=True)
     st.markdown(
         '<p style="text-align: center; font-size: 0.85rem;">'
-        'by <a href="https://github.com/eguzki-dm" target="_blank">Eguzkiñe</a>'
+        'by Eguzkiñe<br>'
+        '<a href="https://github.com/eguzki-dm" target="_blank"><img src="https://img.shields.io/badge/GitHub-eguzki--dm-181717?style=flat-square&logo=github" alt="GitHub"></a> '
+        '<a href="https://orcid.org/0000-0002-7151-1639" target="_blank"><img src="https://img.shields.io/badge/ORCID-0000--0002--7151--1639-A6CE39?style=flat-square&logo=orcid&logoColor=white" alt="ORCID"></a> '
+        '<a href="https://es.linkedin.com/in/eguzkine-dm" target="_blank"><img src="https://img.shields.io/badge/LinkedIn-eguzkine--dm-0A66C2?style=flat-square&logo=linkedin" alt="LinkedIn"></a>'
         '</p>',
         unsafe_allow_html=True,
     )

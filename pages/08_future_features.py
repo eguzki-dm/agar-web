@@ -21,7 +21,8 @@ future_feature_card(
 )
 
 future_feature_card(
-    t("future.feature.improve_cnn"),
-    t("future.feature.improve_cnn.desc"),
+    t("future.feature.patch_preprocessing"),
+    t("future.feature.patch_preprocessing.desc"),
     "planned",
 )
+

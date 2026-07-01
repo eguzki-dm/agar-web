@@ -1,7 +1,10 @@
 TRANSLATIONS = {
     # ─── Navigation ─────────────────────────────────────────────
+    "nav.section.home": "Inicio",
+    "nav.section.learn": "Aprender",
+    "nav.section.more": "M\u00e1s",
     "nav.home": "Inicio",
-    "nav.pipeline": "Pipeline",
+    "nav.how_it_works": "\u00bfC\u00f3mo funciona?",
     "nav.kount": "\u03bcKount",
     "nav.detect": "\u03bcDetect",
     "nav.results": "Resultados",
@@ -88,8 +91,9 @@ TRANSLATIONS = {
         "Las predicciones fuera de estas condiciones pueden no ser fiables."
     ),
     "home.dataset.content": (
-        "Aproximadamente **18.000 im\u00e1genes de placas de agar** y **337.000 anotaciones "
-        "de colonias** de m\u00faltiples configuraciones de captura y condiciones de iluminaci\u00f3n.\n\n"
+        "El modelo fue entrenado con un subconjunto del **10% de las im\u00e1genes de placas AGAR** "
+        "(~1.800 im\u00e1genes) y **6.000 recortes individuales de colonias**, "
+        "no con el dataset completo de 18.000 im\u00e1genes y 337.000 anotaciones.\n\n"
         "Dataset: **AGAR Dataset** (Majchrowska et al., 2021)"
     ),
     "home.notice.title": "Aviso Cient\u00edfico",
@@ -107,6 +111,31 @@ TRANSLATIONS = {
     # ─── Pipeline page ──────────────────────────────────────────
     "pipeline.title": "\U0001f52c Pipeline de Procesamiento",
     "pipeline.show_tutorial": "\U0001f4a1 Mostrar tutorial",
+    "tutorial.demo.title": "Demo Interactivo",
+    "tutorial.demo.desc": "Observa el pipeline de IA ejecut\u00e1ndose en vivo sobre una imagen de placa de agar, paso a paso.",
+    "tutorial.demo.button": "Ejecutar demo con 11_CAAL.jpg",
+    "tutorial.next": "Siguiente \u2192",
+    "tutorial.restart": "Reiniciar demo",
+    "tutorial.step1.label": "Paso 1: Imagen de Entrada",
+    "tutorial.step1.detail": "El usuario sube una imagen de placa de agar. Aqu\u00ed usamos **11_CAAL.jpg**, que contiene 11 colonias de *Candida albicans* en agar TSA.",
+    "tutorial.step2.label": "Paso 2: Detecci\u00f3n de Placa",
+    "tutorial.step2.detail": "OpenCV detecta el contorno circular de la placa de Petri. El di\u00e1metro conocido de 90 mm nos da la **escala px/mm** para medidas del mundo real.",
+    "tutorial.step3.label": "Paso 3: Detecci\u00f3n de Colonias",
+    "tutorial.step3.detail": "YOLOv8 escanea la imagen y dibuja bounding boxes alrededor de cada colonia. Cada caja incluye un **nivel de confianza** (0\u20131).",
+    "tutorial.step4.label": "Paso 4: Recorte y Padding",
+    "tutorial.step4.detail": "Cada colonia se recorta (raw bbox) y luego se **padded** sobre un lienzo negro de 224\u00d7224. Esto preserva los p\u00edxeles originales sin distorsi\u00f3n.",
+    "tutorial.step5.label": "Paso 5: Resultado de la Predicci\u00f3n",
+    "tutorial.step5.detail": "La predicci\u00f3n final combina la imagen padded con el \u00e1rea real de la colonia (mm\u00b2) a trav\u00e9s de una **CNN multimodal** para clasificaci\u00f3n consciente de la escala.",
+    "tutorial.plate.detected": "Contorno de placa detectado",
+    "tutorial.plate.diameter": "Di\u00e1metro detectado",
+    "tutorial.plate.mm_per_px": "Escala",
+    "tutorial.plate.area": "\u00c1rea de placa",
+    "tutorial.plate.not_found": "Placa no detectada",
+    "tutorial.detect.count": "{count} colonias detectadas",
+    "tutorial.crop.count": "{count} recortes extra\u00eddos \u2014 mostrando los 3 primeros:",
+    "tutorial.crop.raw": "Recorte raw",
+    "tutorial.crop.padded": "Padded (224\u00d7224)",
+
     "pipeline.tutorial.title": "Gu\u00eda paso a paso",
     "pipeline.tutorial.0": "**Sube una imagen de placa de agar** \u2014 El proceso "
         "comienza cuando subes una foto de una placa de agar. La app acepta "
@@ -196,6 +225,7 @@ TRANSLATIONS = {
     "kount.upload.guide.desc": "Antes de subir, asegúrate de que tus imágenes sean **de alta calidad y estén bien enfocadas**.",
     "kount.upload.guide.example": "🔎 Búsqueda de ejemplo en Google:",
     "kount.upload.guide.example_query": "agar plate triptona soya agar",
+    "kount.upload.guide.search_button": "🔍 Google Imágenes",
     "kount.upload.guide.tip_size": "📏 Tamaño de imagen: **Grande**",
     "kount.upload.guide.tip_clarity": "🧫 Placa de Petri clara / agar visible",
     "kount.upload.guide.tip_compression": "📸 Sin compresión pesada",
@@ -225,6 +255,16 @@ TRANSLATIONS = {
     "detect.probabilities.title": "Ver probabilidades detalladas",
     "detect.info.run": "Presiona 'Ejecutar \u03bcDetect' para clasificar las colonias.",
     "detect.button.results": "\U0001f4ca Ir a Resultados",
+    "detect.mode.title": "Modo de Clasificaci\u00f3n",
+    "detect.mode.flash": "\u26a1 Flash (solo imagen - r\u00e1pido)",
+    "detect.mode.robust": "\U0001f9ea Robusto (multimodal - recomendado)",
+    "detect.mode.flash.desc": "Clasificaci\u00f3n r\u00e1pida usando solo CNN (actual por defecto).",
+    "detect.mode.robust.desc": "Clasificaci\u00f3n precisa usando detecci\u00f3n de placa + CNN multimodal con \u00e1rea.",
+    "detect.step.plate": "Detecci\u00f3n de Placa y Medici\u00f3n",
+    "detect.warning.plate_not_found": "No se detect\u00f3 la placa. Haciendo fallback a modo Flash.",
+    "detect.status.fallback": "Haciendo fallback a modo Flash...",
+    "detect.mm_per_pixel": "Escala (mm/p\u00edxel)",
+    "detect.plate_debug": "Contorno de placa detectado",
 
     # ─── Results page ───────────────────────────────────────────
     "results.title": "\U0001f4ca Resultados \u2014 Resultados Globales",
@@ -322,9 +362,8 @@ TRANSLATIONS = {
         "detecci\u00f3n manualmente tras el procesamiento de \u03bcKount.",
     "future.feature.optimize_sahi": "Optimizar procesamiento SAHI slicing",
     "future.feature.optimize_sahi.desc": "Mejorar el rendimiento del pipeline de inferencia SAHI slicing para placas densas. Optimizar solapamiento de slices, procesamiento por lotes y post-procesado para reducir el tiempo de detecci\u00f3n manteniendo la sensibilidad para colonias peque\u00f1as.",
-    "future.feature.improve_cnn": "Mejorar CNN para clasificaci\u00f3n de bacterias",
-    "future.feature.improve_cnn.desc": "Reentrenar el modelo con m\u00e1s especies, distintos "
-        "medios de cultivo y condiciones de iluminaci\u00f3n para mejorar la generalizaci\u00f3n.",
+    "future.feature.patch_preprocessing": "Parcheado y preprocesamiento (Paw\u0142owski et al. 2022)",
+    "future.feature.patch_preprocessing.desc": "Explorar parcheado y preprocesamiento de colonias del enfoque de Paw\u0142owski para mejorar la calidad de los recortes.",
 
     # ─── Disclaimer page ────────────────────────────────────────
     "disclaimer.title": "\u26a0\ufe0f Aviso Legal \u2014 Aviso \u00e9tico y cient\u00edfico",
@@ -519,9 +558,185 @@ TRANSLATIONS = {
     "fundamentals.cuora_caption": "Asistente de IA",
     "fundamentals.detection_strategies.title": "Estrategias de Detecci\u00f3n",
     "fundamentals.detection_strategies.intro": "\u03bcKount ofrece dos estrategias de detecci\u00f3n que pueden seleccionarse antes de ejecutar el an\u00e1lisis:",
-    "fundamentals.detection_strategies.sahi": "**\U0001f52c SAHI + YOLO** \u2014 Dise\u00f1ado para im\u00e1genes de alta resoluci\u00f3n. Excelente para colonias peque\u00f1as en placas densas. Utiliza slicing para aumentar la sensibilidad de detecci\u00f3n.",
-    "fundamentals.detection_strategies.full": "**\U0001f9eb YOLO a Imagen Completa** \u2014 Procesa la imagen completa sin slicing. Recomendado para placas con pocas colonias grandes. Evita duplicaciones derivadas del slicing.",
+    "fundamentals.detection_strategies.sahi": (
+        "**\U0001f52c SAHI + YOLO** \u2014 Modo de alta precisi\u00f3n para placas exigentes. "
+        "Divide la imagen en teselas solapadas, permitiendo que YOLO detecte colonias "
+        "diminutas o muy densas que de otro modo pasar\u00edan desapercibidas. "
+        "Ideal para im\u00e1genes de alta resoluci\u00f3n y placas densas con colonias peque\u00f1as."
+    ),
+    "fundamentals.detection_strategies.full": (
+        "**\U0001f9eb YOLO a Imagen Completa** \u2014 Modo r\u00e1pido y eficiente para placas limpias. "
+        "Procesa toda la imagen de una sola vez, perfecto cuando hay pocas colonias grandes "
+        "y bien separadas. Evita las duplicaciones ocasionales que pueden aparecer "
+        "con la inferencia por teselas."
+    ),
+    "fundamentals.classification_strategies.title": "Estrategias de Clasificaci\u00f3n",
+    "fundamentals.classification_strategies.intro": "\u03bcDetect ofrece dos estrategias de clasificaci\u00f3n que equilibran velocidad y precisi\u00f3n:",
+    "fundamentals.classification_strategies.flash": (
+        "**\u26a1 Flash** \u2014 Modo r\u00e1pido usando solo el modelo CNN de imagen. "
+        "Clasifica cada recorte puramente por morfolog\u00eda visual. No necesita calibraci\u00f3n "
+        "de placa, ideal para an\u00e1lisis r\u00e1pidos o cuando la placa de Petri no es completamente visible."
+    ),
+    "fundamentals.classification_strategies.robust": (
+        "**\U0001f9ea Robusto (multimodal)** \u2014 Modo de precisi\u00f3n que fusiona caracter\u00edsticas "
+        "de imagen con el \u00e1rea real de la colonia en mm\u00b2. Primero detecta la placa de Petri "
+        "para calcular la escala px/mm, luego pasa el recorte padded junto con el \u00e1rea normalizada "
+        "a una CNN multimodal. Este enfoque consciente de la escala mejora significativamente "
+        "la discriminaci\u00f3n de especies. **Recomendado para resultados fiables.**"
+    ),
 
+    # ─── Learn AI ─────────────────────────────────────────────────
+    "learn.nav": "Aprende IA",
+    "learn.title": "\U0001f9e0 Aprende IA \u2014 Entiende c\u00f3mo funciona la Inteligencia Artificial",
+    "learn.subtitle": "Explicaciones sencillas de los conceptos de IA detr\u00e1s de \u03bcKount & \u03bcDetect, desde redes neuronales hasta Grad-CAM.",
+    "learn.concept_1.title": "\U0001f9e0 \u00bfQu\u00e9 es la Inteligencia Artificial (IA)?",
+    "learn.concept_1.content": (
+        "La Inteligencia Artificial (IA) es un conjunto de t\u00e9cnicas que permiten a un ordenador "
+        "aprender a realizar tareas que normalmente requieren inteligencia humana, como reconocer "
+        "im\u00e1genes, comprender texto o tomar decisiones.\n\n"
+        "En este proyecto, la IA aprende a reconocer diferentes tipos de colonias bacterianas "
+        "observando miles de ejemplos previamente etiquetados. En lugar de ser programada con "
+        "reglas expl\u00edcitas, descubre los patrones por s\u00ed sola."
+    ),
+    "learn.concept_2.title": "\U0001f9f0 \u00bfQu\u00e9 es una Red Neuronal?",
+    "learn.concept_2.content": (
+        "Una red neuronal es un modelo matem\u00e1tico inspirado en la forma en que funciona el "
+        "cerebro humano.\n\n"
+        "Est\u00e1 formada por muchas \u201cneuronas\u201d artificiales conectadas entre s\u00ed. Cada una aprende "
+        "peque\u00f1os patrones y, trabajando juntas, pueden reconocer objetos complejos.\n\n"
+        "En lugar de seguir reglas programadas, una red neuronal aprende autom\u00e1ticamente a "
+        "partir de ejemplos.\n\n"
+        "**Ejemplo:**\n"
+        "- Una persona aprende a distinguir un perro de un gato viendo muchos animales.\n"
+        "- Una red neuronal aprende exactamente igual: viendo muchas im\u00e1genes etiquetadas."
+    ),
+    "learn.concept_3.title": "\U0001f5bc\ufe0f \u00bfQu\u00e9 es una CNN?",
+    "learn.concept_3.content": (
+        "CNN significa **Red Neuronal Convolucional**.\n\n"
+        "Es un tipo de red neuronal especializada en im\u00e1genes. En lugar de analizar todos "
+        "los p\u00edxeles a la vez, una CNN aprende paso a paso:\n\n"
+        "1. Detecta **bordes**\n"
+        "2. Detecta **formas**\n"
+        "3. Detecta **texturas**\n"
+        "4. Reconoce **objetos completos**\n\n"
+        "En este proyecto, la CNN aprende caracter\u00edsticas como:\n"
+        "- Tama\u00f1o de la colonia\n"
+        "- Forma\n"
+        "- Textura\n"
+        "- Color\n"
+        "- Bordes\n"
+        "- Distribuci\u00f3n\n\n"
+        "Todo sin que nadie le diga expl\u00edcitamente qu\u00e9 debe buscar."
+    ),
+    "learn.concept_4.title": "\U0001f3af \u00bfQu\u00e9 es YOLO?",
+    "learn.concept_4.content": (
+        "YOLO significa **You Only Look Once** (solo miras una vez).\n\n"
+        "Es un modelo de IA dise\u00f1ado para detectar objetos en im\u00e1genes de forma muy r\u00e1pida. "
+        "Mientras que otros modelos primero buscan posibles objetos y luego los clasifican, "
+        "YOLO hace ambas tareas al mismo tiempo, en un solo paso.\n\n"
+        "En este proyecto, YOLO se utiliza para localizar autom\u00e1ticamente las colonias "
+        "bacterianas presentes en una placa de agar. Cada colonia detectada puede analizarse "
+        "individualmente."
+    ),
+    "learn.concept_5.title": "\U0001f7e6 \u00bfC\u00f3mo funciona nuestro Detector de Placa?",
+    "learn.concept_5.content": (
+        "La placa de Petri tiene un di\u00e1metro real conocido de **90 mm**. Nuestro detector "
+        "de placa usa OpenCV (una librer\u00eda de visi\u00f3n por ordenador) para encontrarla "
+        "autom\u00e1ticamente:\n\n"
+        "1. Convierte la imagen a **escala de grises** y aplica un **desenfoque** suave "
+        "para reducir el ruido\n"
+        "2. Aplica un **gradiente morfol\u00f3gico** para resaltar los bordes\n"
+        "3. Detecta bordes con el algoritmo **Canny**\n"
+        "4. Encuentra **contornos circulares** en la imagen\n"
+        "5. Selecciona el contorno m\u00e1s grande que cumpla las proporciones esperadas de una placa\n"
+        "6. Calcula la escala real: **mm_por_pixel** = 90 mm \u00f7 di\u00e1metro_en_p\u00edxeles\n\n"
+        "Gracias a esto podemos medir el tama\u00f1o de las colonias en mil\u00edmetros reales "
+        "independientemente de la distancia de la c\u00e1mara o el nivel de zoom."
+    ),
+    "learn.concept_6.title": "\U0001f4e6 \u00bfQu\u00e9 hace YOLO en este proyecto?",
+    "learn.concept_6.content": (
+        "YOLO analiza la imagen completa y:\n\n"
+        "- Encuentra todas las colonias en la placa\n"
+        "- Dibuja un recuadro alrededor de cada una\n"
+        "- Devuelve la posici\u00f3n y el tama\u00f1o de cada colonia\n"
+        "- Asigna un **nivel de confianza** (0\u20131) a cada detecci\u00f3n\n\n"
+        "Despu\u00e9s de esta fase de detecci\u00f3n, comienza la fase de clasificaci\u00f3n."
+    ),
+    "learn.concept_7.title": "\U0001f9ea \u00bfQu\u00e9 hace la CNN en este proyecto?",
+    "learn.concept_7.content": (
+        "Una vez que YOLO ha detectado una colonia, la CNN toma el control:\n\n"
+        "1. La imagen de la colonia se **recorta** de la imagen original\n"
+        "2. Se **rellena** sobre un lienzo negro de 224\u00d7224 (sin distorsi\u00f3n)\n"
+        "3. La CNN **analiza** la colonia\n"
+        "4. **Predice** la especie bacteriana\n\n"
+        "En resumen:\n\n"
+        "**Imagen \u2192 YOLO detecta colonias \u2192 Cada colonia se recorta \u2192 CNN analiza \u2192 Predicci\u00f3n**"
+    ),
+    "learn.concept_8.title": "\U0001f4cf \u00bfQu\u00e9 es el \u00e1rea de la colonia y por qu\u00e9 es importante?",
+    "learn.concept_8.content": (
+        "Adem\u00e1s de la imagen, el modelo tambi\u00e9n usa una caracter\u00edstica num\u00e9rica: "
+        "**el \u00e1rea de la colonia**.\n\n"
+        "El \u00e1rea indica el tama\u00f1o aproximado de la colonia en **mm\u00b2** (mil\u00edmetros "
+        "cuadrados reales). Esto proporciona informaci\u00f3n adicional que puede ayudar a "
+        "distinguir especies con una apariencia muy similar.\n\n"
+        "Por eso, el modelo combina:\n"
+        "- Informaci\u00f3n visual (imagen)\n"
+        "- Informaci\u00f3n num\u00e9rica (\u00e1rea)\n\n"
+        "Este tipo de modelo se conoce como **modelo multimodal**."
+    ),
+    "learn.concept_9.title": "\U0001f91d \u00bfQu\u00e9 es un modelo multimodal?",
+    "learn.concept_9.content": (
+        "Un modelo multimodal utiliza varios tipos de informaci\u00f3n al mismo tiempo.\n\n"
+        "En este proyecto usa dos fuentes:\n\n"
+        "- \U0001f5bc\ufe0f **Imagen** de la colonia (recorte padded)\n"
+        "- \U0001f4cf **\u00c1rea** de la colonia (en mm\u00b2, normalizada)\n\n"
+        "Al combinar ambas, el modelo puede tomar decisiones m\u00e1s precisas que usando "
+        "solo la imagen. Es como un m\u00e9dico que mira tanto la erupci\u00f3n como la temperatura "
+        "del paciente antes de hacer un diagn\u00f3stico."
+    ),
+    "learn.concept_10.title": "\U0001f525 \u00bfQu\u00e9 es Grad-CAM?",
+    "learn.concept_10.content": (
+        "Grad-CAM significa **Gradient-weighted Class Activation Mapping**.\n\n"
+        "Es una t\u00e9cnica que permite visualizar qu\u00e9 partes de la imagen han sido m\u00e1s "
+        "importantes para que la IA tome una decisi\u00f3n.\n\n"
+        "En lugar de ser una \u201ccaja negra\u201d, Grad-CAM muestra **d\u00f3nde mir\u00f3 la red neuronal**:\n\n"
+        "- \U0001f7e5 Zonas **rojas** \u2192 muy importantes\n"
+        "- \U0001f7e1 Zonas **amarillas** \u2192 importantes\n"
+        "- \U0001f535 Zonas **azules** \u2192 poco importantes\n\n"
+        "Esto nos permite verificar si la IA realmente est\u00e1 mirando la colonia y no "
+        "el fondo de la imagen."
+    ),
+    "learn.concept_11.title": "\U0001f4ca \u00bfQu\u00e9 es una probabilidad?",
+    "learn.concept_11.content": (
+        "Cuando el modelo hace una predicci\u00f3n, no solo responde con una especie. "
+        "Tambi\u00e9n indica cu\u00e1n seguro est\u00e1.\n\n"
+        "Por ejemplo:\n\n"
+        "| Especie | Probabilidad |\n"
+        "|---|---|\n"
+        "| E. coli | **94%** |\n"
+        "| S. aureus | 3% |\n"
+        "| P. aeruginosa | 2% |\n"
+        "| B. subtilis | 1% |\n\n"
+        "Cuanto mayor es la probabilidad, mayor es la confianza del modelo en esa predicci\u00f3n."
+    ),
+    "learn.concept_13.title": "🧬 What is μKount & μDetect?",
+    "learn.concept_13.content": (
+        "μKount & μDetect is an AI system for agar plate analysis.\n\n"
+        "μKount performs colony detection and counting using YOLO.\n"
+        "μDetect performs species classification using a CNN.\n\n"
+        "Together they form a pipeline that automates microbiological image analysis."
+    ),
+
+    "learn.concept_14.title": "🔬 How does the pipeline work?",
+    "learn.concept_14.content": (
+        "The pipeline works in sequential steps:\n\n"
+        "1. Upload agar plate image\n"
+        "2. μKount detects colonies using YOLO\n"
+        "3. Each colony is cropped\n"
+        "4. μDetect classifies each colony\n"
+        "5. Results are visualized\n\n"
+        "This allows full automation from image to biological interpretation."
+    ),
     # ─── FAQ ─────────────────────────────────────────────────────
     "faq.title": "Preguntas Frecuentes",
     "faq.q1.question": "\u00bfQu\u00e9 es \u03bcKount & \u03bcDetect?",

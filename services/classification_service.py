@@ -28,7 +28,7 @@ class ClassificationService:
         for crop in processed_crops:
             img = np.array(crop.convert("RGB"))
             img_resized = cv2.resize(img, (CLASSIFICATION_IMG_SIZE, CLASSIFICATION_IMG_SIZE))
-            img_array = img_resized.astype(np.float32) / 255.0
+            img_array = img_resized.astype(np.float32)
             img_batch = np.expand_dims(img_array, axis=0)
 
             preds = model.predict(img_batch, verbose=0)[0]

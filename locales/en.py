@@ -1,7 +1,10 @@
 TRANSLATIONS = {
     # ─── Navigation ─────────────────────────────────────────────
+    "nav.section.home": "Home",
+    "nav.section.learn": "Learn",
+    "nav.section.more": "More",
     "nav.home": "Home",
-    "nav.pipeline": "Pipeline",
+    "nav.how_it_works": "How it works?",
     "nav.kount": "\u03bcKount",
     "nav.detect": "\u03bcDetect",
     "nav.results": "Results",
@@ -87,8 +90,9 @@ TRANSLATIONS = {
         "Predictions outside these conditions may be unreliable."
     ),
     "home.dataset.content": (
-        "Approximately **18,000 agar plate images** and **337,000 colony annotations** "
-        "from multiple acquisition setups and lighting conditions.\n\n"
+        "The model was trained on a subset of **10% of the AGAR plate images** "
+        "(~1,800 images) and **6,000 individual colony crops**, "
+        "not the full dataset of 18,000 images and 337,000 annotations.\n\n"
         "Dataset: **AGAR Dataset** (Majchrowska et al., 2021)"
     ),
     "home.notice.title": "Scientific Notice",
@@ -106,6 +110,31 @@ TRANSLATIONS = {
     # ─── Pipeline page ──────────────────────────────────────────
     "pipeline.title": "\U0001f52c Processing Pipeline",
     "pipeline.show_tutorial": "\U0001f4a1 Show tutorial",
+    "tutorial.demo.title": "Interactive Demo",
+    "tutorial.demo.desc": "Watch the AI pipeline run live on an example agar plate image, step by step.",
+    "tutorial.demo.button": "Run live demo with 11_CAAL.jpg",
+    "tutorial.next": "Next \u2192",
+    "tutorial.restart": "Restart demo",
+    "tutorial.step1.label": "Step 1: Input Image",
+    "tutorial.step1.detail": "The user uploads an agar plate image. Here we use **11_CAAL.jpg**, which contains 11 colonies of *Candida albicans* on TSA agar.",
+    "tutorial.step2.label": "Step 2: Plate Detection",
+    "tutorial.step2.detail": "OpenCV detects the Petri dish circular contour. The known 90 mm diameter gives us the **pixel-to-mm scale** for real-world measurements.",
+    "tutorial.step3.label": "Step 3: Colony Detection",
+    "tutorial.step3.detail": "YOLOv8 scans the image and draws bounding boxes around each colony. Each box includes a **confidence score** (0\u20131) indicating how sure the model is.",
+    "tutorial.step4.label": "Step 4: Crop & Padding",
+    "tutorial.step4.detail": "Each colony is cropped (raw bounding box) and then **padded** onto a black 224\u00d7224 canvas. This preserves the colony\u2019s original pixels without distortion.",
+    "tutorial.step5.label": "Step 5: Prediction Result",
+    "tutorial.step5.detail": "The final prediction combines the padded crop image with the colony\u2019s real area (mm\u00b2) through a **multimodal CNN** for scale-aware species classification.",
+    "tutorial.plate.detected": "Detected plate contour",
+    "tutorial.plate.diameter": "Detected diameter",
+    "tutorial.plate.mm_per_px": "Scale",
+    "tutorial.plate.area": "Plate area",
+    "tutorial.plate.not_found": "Plate not detected",
+    "tutorial.detect.count": "{count} colonies detected",
+    "tutorial.crop.count": "{count} crops extracted \u2014 showing first 3:",
+    "tutorial.crop.raw": "Raw crop",
+    "tutorial.crop.padded": "Padded (224\u00d7224)",
+
     "pipeline.tutorial.title": "Step-by-step guide",
     "pipeline.tutorial.0": "**Upload an agar plate image** \u2014 The process "
         "starts when you upload a photo of an agar plate. The app accepts "
@@ -191,6 +220,7 @@ TRANSLATIONS = {
     "kount.upload.guide.desc": "Before uploading, make sure your images are **high quality and well-focused**.",
     "kount.upload.guide.example": "🔎 Example Google search:",
     "kount.upload.guide.example_query": "agar plate triptona soya agar",
+    "kount.upload.guide.search_button": "🔍 Google Images",
     "kount.upload.guide.tip_size": "📏 Image size: **Large**",
     "kount.upload.guide.tip_clarity": "🧫 Clear Petri dish / agar visibility",
     "kount.upload.guide.tip_compression": "📸 No heavy compression",
@@ -220,6 +250,16 @@ TRANSLATIONS = {
     "detect.probabilities.title": "View detailed probabilities",
     "detect.info.run": "Press 'Run \u03bcDetect' to classify the colonies.",
     "detect.button.results": "\U0001f4ca Go to Results",
+    "detect.mode.title": "Classification Mode",
+    "detect.mode.flash": "\u26a1 Flash (just image data - fast)",
+    "detect.mode.robust": "\U0001f9ea Robust (multimodal - recommended)",
+    "detect.mode.flash.desc": "Fast classification using CNN only (current default).",
+    "detect.mode.robust.desc": "Precise classification using plate detection + multimodal CNN with area data.",
+    "detect.step.plate": "Plate Detection & Measurement",
+    "detect.warning.plate_not_found": "Plate not detected. Falling back to Flash mode.",
+    "detect.status.fallback": "Falling back to Flash mode...",
+    "detect.mm_per_pixel": "Scale (mm/pixel)",
+    "detect.plate_debug": "Detected plate contour",
 
     # ─── Results page ───────────────────────────────────────────
     "results.title": "\U0001f4ca Results \u2014 Global Results",
@@ -316,9 +356,8 @@ TRANSLATIONS = {
         "after \u03bcKount processing.",
     "future.feature.optimize_sahi": "Optimize SAHI slicing processing",
     "future.feature.optimize_sahi.desc": "Improve performance of the SAHI sliced inference pipeline for dense agar plates. Optimize slice overlap, batch processing, and post-processing to reduce detection time while maintaining sensitivity for small colonies.",
-    "future.feature.improve_cnn": "Improve CNN for bacteria classification",
-    "future.feature.improve_cnn.desc": "Retrain the model with more species, varied culture "
-        "media and lighting conditions to improve generalisation.",
+    "future.feature.patch_preprocessing": "Patch preprocessing (Paw\u0142owski et al. 2022)",
+    "future.feature.patch_preprocessing.desc": "Explore colony patching and preprocessing from Paw\u0142owski\u2019s microbial dataset generation to improve crop quality.",
 
     # ─── Disclaimer page ────────────────────────────────────────
     "disclaimer.title": "\u26a0\ufe0f Disclaimer \u2014 Ethical and Scientific Notice",
@@ -510,9 +549,192 @@ TRANSLATIONS = {
     "fundamentals.cuora_caption": "AI Assistant",
     "fundamentals.detection_strategies.title": "Detection Strategies",
     "fundamentals.detection_strategies.intro": "\u03bcKount offers two detection strategies that can be selected before running the analysis:",
-    "fundamentals.detection_strategies.sahi": "**\U0001f52c SAHI + YOLO** \u2014 Designed for high-resolution images. Excellent for small colonies on dense agar plates. Uses image slicing to increase detection sensitivity.",
-    "fundamentals.detection_strategies.full": "**\U0001f9eb Full Image YOLO** \u2014 Processes the complete image without slicing. Recommended for plates with few large colonies. Avoids duplications derived from slicing.",
+    "fundamentals.detection_strategies.sahi": (
+        "**\U0001f52c SAHI + YOLO** \u2014 High-precision mode for demanding plates. "
+        "Slices the image into smaller overlapping tiles, allowing YOLO to detect "
+        "tiny or densely packed colonies that would otherwise go unnoticed. "
+        "Best for high-resolution images and crowded agar plates with small colonies."
+    ),
+    "fundamentals.detection_strategies.full": (
+        "**\U0001f9eb Full Image YOLO** \u2014 Fast and efficient mode for clean plates. "
+        "Processes the entire image in one pass, ideal when colonies are few, large, "
+        "and well-separated. Avoids the occasional duplication artifacts that can appear "
+        "with sliced inference."
+    ),
+    "fundamentals.classification_strategies.title": "Classification Strategies",
+    "fundamentals.classification_strategies.intro": "\u03bcDetect offers two classification strategies that trade off speed for precision:",
+    "fundamentals.classification_strategies.flash": (
+        "**\u26a1 Flash** \u2014 Quick mode using only the CNN image model. "
+        "Classifies each crop purely by visual morphology. No plate calibration needed, "
+        "making it ideal for rapid screening or when the Petri dish is not fully visible."
+    ),
+    "fundamentals.classification_strategies.robust": (
+        "**\U0001f9ea Robust (multimodal)** \u2014 Precision mode that fuses image features "
+        "with real colony area in mm\u00b2. First detects the Petri dish to calculate "
+        "the pixel-to-mm scale, then passes the padded crop together with the normalized "
+        "area into a multimodal CNN. This scale-aware approach significantly improves "
+        "species discrimination. **Recommended for reliable results.**"
+    ),
 
+    # ─── Learn AI ─────────────────────────────────────────────────
+    "learn.nav": "Learn AI",
+    "learn.title": "\U0001f9e0 Learn AI \u2014 Understand how the Artificial Intelligence works",
+    "learn.subtitle": "Simple explanations of the AI concepts behind \u03bcKount & \u03bcDetect, from neural networks to Grad-CAM.",
+    "learn.concept_1.title": "\U0001f9e0 What is Artificial Intelligence (AI)?",
+    "learn.concept_1.content": (
+        "Artificial Intelligence (AI) is a set of techniques that allow a computer to learn "
+        "how to perform tasks that normally require human intelligence, such as recognising "
+        "images, understanding text or making decisions.\n\n"
+        "In this project, the AI learns to recognise different types of bacterial colonies "
+        "by observing thousands of previously labelled examples. Instead of being programmed "
+        "with explicit rules, it discovers the patterns on its own."
+    ),
+    "learn.concept_2.title": "\U0001f9f0 What is a Neural Network?",
+    "learn.concept_2.content": (
+        "A neural network is a mathematical model inspired by the way the human brain works.\n\n"
+        "It is made up of many artificial \u201cneurons\u201d connected to each other. Each one learns "
+        "small patterns and, working together, they can recognise complex objects.\n\n"
+        "Instead of following programmed rules, a neural network learns automatically "
+        "from examples.\n\n"
+        "**Example:**\n"
+        "- A person learns to tell a dog from a cat by seeing many animals.\n"
+        "- A neural network learns exactly the same way: by seeing many labelled images."
+    ),
+    "learn.concept_3.title": "\U0001f5bc\ufe0f What is a CNN?",
+    "learn.concept_3.content": (
+        "CNN stands for **Convolutional Neural Network**.\n\n"
+        "It is a type of neural network specialised in images. Instead of analysing all "
+        "the pixels at once, a CNN learns step by step:\n\n"
+        "1. Detects **edges**\n"
+        "2. Detects **shapes**\n"
+        "3. Detects **textures**\n"
+        "4. Recognises **complete objects**\n\n"
+        "In this project, the CNN learns features such as:\n"
+        "- Colony size\n"
+        "- Shape\n"
+        "- Texture\n"
+        "- Colour\n"
+        "- Edges\n"
+        "- Distribution\n\n"
+        "All without anyone explicitly telling it what to look for."
+    ),
+    "learn.concept_4.title": "\U0001f3af What is YOLO?",
+    "learn.concept_4.content": (
+        "YOLO stands for **You Only Look Once**.\n\n"
+        "It is an AI model designed to detect objects in images very quickly. While other "
+        "models first look for possible objects and then classify them, YOLO does both "
+        "tasks at the same time, in a single pass.\n\n"
+        "In this project, YOLO is used to automatically locate bacterial colonies "
+        "present on an agar plate. Each detected colony can then be analysed individually."
+    ),
+    "learn.concept_5.title": "\U0001f7e6 How does our Plate Detector work?",
+    "learn.concept_5.content": (
+        "The Petri dish has a known real diameter of **90 mm**. Our plate detector uses "
+        "OpenCV (a computer vision library) to find it automatically:\n\n"
+        "1. Convert the image to **greyscale** and apply a light **blur** to reduce noise\n"
+        "2. Apply a **morphological gradient** to highlight edges\n"
+        "3. Detect edges with the **Canny** algorithm\n"
+        "4. Find **circular contours** in the image\n"
+        "5. Select the largest contour that matches the expected proportions of a plate\n"
+        "6. Calculate the real-world scale: **mm_per_pixel** = 90 mm \u00f7 diameter_in_pixels\n\n"
+        "Thanks to this, we can measure colony sizes in real millimetres regardless of "
+        "the camera distance or zoom level."
+    ),
+    "learn.concept_6.title": "\U0001f4e6 What does YOLO do in this project?",
+    "learn.concept_6.content": (
+        "YOLO analyses the complete image and:\n\n"
+        "- Finds all colonies on the plate\n"
+        "- Draws a bounding box around each one\n"
+        "- Returns the position and size of each colony\n"
+        "- Assigns a **confidence score** (0\u20131) to each detection\n\n"
+        "After this detection phase, the classification phase begins."
+    ),
+    "learn.concept_7.title": "\U0001f9ea What does the CNN do in this project?",
+    "learn.concept_7.content": (
+        "Once YOLO has detected a colony, the CNN takes over:\n\n"
+        "1. The colony image is **cropped** from the original\n"
+        "2. It is **padded** onto a black 224\u00d7224 canvas (no distortion)\n"
+        "3. The CNN **analyses** the colony\n"
+        "4. It **predicts** the bacterial species\n\n"
+        "In short:\n\n"
+        "**Image \u2192 YOLO detects colonies \u2192 Each colony is cropped \u2192 CNN analyses \u2192 Prediction**"
+    ),
+    "learn.concept_8.title": "\U0001f4cf What is colony area and why does it matter?",
+    "learn.concept_8.content": (
+        "In addition to the image, the model also uses a numerical feature: **the area of the colony**.\n\n"
+        "The area indicates the approximate size of the colony in **mm\u00b2** (real square millimetres). "
+        "This provides additional information that can help distinguish species with a very similar appearance.\n\n"
+        "For this reason, the model combines:\n"
+        "- Visual information (image)\n"
+        "- Numerical information (area)\n\n"
+        "This type of model is known as a **multimodal model**."
+    ),
+    "learn.concept_9.title": "\U0001f91d What is a multimodal model?",
+    "learn.concept_9.content": (
+        "A multimodal model uses several types of information at the same time.\n\n"
+        "In this project it uses two sources:\n\n"
+        "- \U0001f5bc\ufe0f **Image** of the colony (padded crop)\n"
+        "- \U0001f4cf **Area** of the colony (in mm\u00b2, normalised)\n\n"
+        "By combining both, the model can make more accurate decisions than using "
+        "only the image. It is like a doctor who looks at both the rash and the "
+        "patient\u2019s temperature before making a diagnosis."
+    ),
+    "learn.concept_10.title": "\U0001f525 What is Grad-CAM?",
+    "learn.concept_10.content": (
+        "Grad-CAM stands for **Gradient-weighted Class Activation Mapping**.\n\n"
+        "It is a technique that allows you to visualise which parts of the image "
+        "have been most important for the AI to make a decision.\n\n"
+        "Instead of being a \u201cblack box\u201d, Grad-CAM shows **where the neural network looked**:\n\n"
+        "- \U0001f7e5 **Red** zones \u2192 very important\n"
+        "- \U0001f7e1 **Yellow** zones \u2192 important\n"
+        "- \U0001f535 **Blue** zones \u2192 not very important\n\n"
+        "This allows us to check whether the AI is really looking at the colony "
+        "and not at the background of the image."
+    ),
+    "learn.concept_11.title": "\U0001f4ca What is a probability?",
+    "learn.concept_11.content": (
+        "When the model makes a prediction, it does not simply answer with a species. "
+        "It also indicates how confident it is.\n\n"
+        "For example:\n\n"
+        "| Species | Probability |\n"
+        "|---|---|\n"
+        "| E. coli | **94%** |\n"
+        "| S. aureus | 3% |\n"
+        "| P. aeruginosa | 2% |\n"
+        "| B. subtilis | 1% |\n\n"
+        "The higher the probability, the greater the model\u2019s confidence in that prediction."
+    ),
+    "learn.concept_12.title": "\U0001f393 How does AI learn?",
+    "learn.concept_12.content": (
+        "During training:\n\n"
+        "1. Thousands of images are shown to the model\n"
+        "2. The model makes a prediction\n"
+        "3. The prediction is compared with the correct answer\n"
+        "4. If it is wrong, millions of internal parameters are **automatically adjusted**\n"
+        "5. This process is repeated thousands of times\n\n"
+        "Over time, the AI progressively improves until it learns to recognise "
+        "complex patterns. This process is called **training**."
+    ),
+
+
+        "learn.concept_13.title": "🧬 What is μKount & μDetect?",
+        "learn.concept_13.content": (
+            "μKount & μDetect is an AI system for agar plate analysis.\n\n"
+            "μKount performs colony detection and counting using YOLO.\n"
+            "μDetect performs species classification using a CNN.\n\n"
+            "Together they form a pipeline that automates microbiological image analysis."
+        ),
+
+        "learn.concept_14.title": "🔬 How does the pipeline work?",
+        "learn.concept_14.content": (
+            "The pipeline works in sequential steps:\n\n"
+            "1. Upload agar plate image\n"
+            "2. μKount detects colonies using YOLO\n"
+            "3. Each colony is cropped\n"
+            "4. μDetect classifies each colony\n"
+            "5. Results are visualized\n\n"
+            "This allows full automation from image to biological interpretation."
+        ),
     # ─── FAQ ─────────────────────────────────────────────────────
     "faq.title": "Frequently Asked Questions",
     "faq.q1.question": "What is \u03bcKount & \u03bcDetect?",
