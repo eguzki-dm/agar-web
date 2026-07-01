@@ -65,7 +65,21 @@ _DARK_CSS = """
 """
 
 
+_SIDEBAR_CSS = """
+button[data-testid*="sidebarViewMore"] {
+    display: none !important;
+}
+div[data-testid="stSidebar"] > div:last-child {
+    display: none !important;
+}
+section[data-testid="stSidebar"] > div:first-child {
+    overflow-y: auto !important;
+}
+"""
+
+
 def inject_theme_css():
+    st.markdown(f"<style>{_SIDEBAR_CSS}</style>", unsafe_allow_html=True)
     if st.get_option("theme.base") == "dark":
         st.markdown(f"<style>{_DARK_CSS}</style>", unsafe_allow_html=True)
     else:
