@@ -69,17 +69,19 @@ if show_tutorial:
                             st.session_state.tutorial_data = data
                         plate = data["plate"]
                         if step == 2:
-                            col_plate_img, col_plate_info = st.columns([2, 3])
-                            with col_plate_info:
+                            col1, col2 = st.columns([3, 2])
+                            with col1:
+                                if plate.get("debug_image"):
+                                    st.image(plate["debug_image"],
+                                             caption=t("tutorial.plate_detected"),
+                                             use_container_width=True)
+                            with col2:
                                 if plate["detected"]:
-                                    st.markdown(f"**{t('tutorial.plate.diameter')}:** {plate['diameter_px']} px")
-                                    st.markdown(f"**{t('tutorial.plate.mm_per_px')}:** {plate['mm_per_pixel']:.6f}")
-                                    st.markdown(f"**{t('tutorial.plate.area')}:** {plate['area_px']:.0f} px\u00b2")
+                                    st.metric(t("tutorial.plate.diameter"), f"{plate['diameter_px']} px")
+                                    st.metric(t("tutorial.plate.mm_per_px"), f"{plate['mm_per_pixel']:.6f}")
+                                    st.metric(t("tutorial.plate.area"), f"{plate['area_px']:.0f} px\u00b2")
                                 else:
                                     st.warning(t("tutorial.plate.not_found"))
-                            with col_plate_img:
-                                if plate.get("debug_image"):
-                                    st.image(plate["debug_image"], width=300, caption=t("tutorial.plate_detected"))
                             st.markdown(t("tutorial.step2.detail"))
                             if st.button(t("tutorial.next"), key="next2", use_container_width=True):
                                 st.session_state.tutorial_step = 3

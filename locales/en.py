@@ -113,7 +113,7 @@ TRANSLATIONS = {
     "tutorial.next": "Next \u2192",
     "tutorial.restart": "Restart demo",
     "tutorial.step1.label": "Step 1: Input Image",
-    "tutorial.step1.detail": "The user uploads an agar plate image. Here we use **11_CAAL.jpg**, which contains 17 colonies of *Candida albicans* on TSA agar.",
+    "tutorial.step1.detail": "The user uploads an agar plate image. Here we use **11_CAAL.jpg**, which contains 11 colonies of *Candida albicans* on TSA agar.",
     "tutorial.step2.label": "Step 2: Plate Detection",
     "tutorial.step2.detail": "OpenCV detects the Petri dish circular contour. The known 90 mm diameter gives us the **pixel-to-mm scale** for real-world measurements.",
     "tutorial.step3.label": "Step 3: Colony Detection",
@@ -717,21 +717,6 @@ TRANSLATIONS = {
         "Over time, the AI progressively improves until it learns to recognise "
         "complex patterns. This process is called **training**."
     ),
-    "learn.pipeline.title": "\U0001f3af Full Pipeline Diagram",
-    "learn.pipeline.intro": "This is how \u03bcKount & \u03bcDetect works, from the original image to the final prediction:",
-    "learn.pipeline.step1": "Input Image",
-    "learn.pipeline.step2": "YOLO Detects",
-    "learn.pipeline.step3": "Crop + Pad",
-    "learn.pipeline.step4": "Measure Area",
-    "learn.pipeline.step5": "Multimodal CNN",
-    "learn.pipeline.step6": "Prediction",
-    "learn.pipeline.step7": "Grad-CAM",
-    "learn.pipeline.detail": (
-        "The multimodal CNN receives both the padded image **and** the normalised colony area. "
-        "Grad-CAM then highlights which parts of the image were decisive for the prediction. "
-        "This combination makes the classification **scale-aware** and more robust."
-    ),
-
     # ─── FAQ ─────────────────────────────────────────────────────
     "faq.title": "Frequently Asked Questions",
     "faq.q1.question": "What is \u03bcKount & \u03bcDetect?",

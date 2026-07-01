@@ -114,7 +114,7 @@ TRANSLATIONS = {
     "tutorial.next": "Siguiente \u2192",
     "tutorial.restart": "Reiniciar demo",
     "tutorial.step1.label": "Paso 1: Imagen de Entrada",
-    "tutorial.step1.detail": "El usuario sube una imagen de placa de agar. Aqu\u00ed usamos **11_CAAL.jpg**, que contiene 17 colonias de *Candida albicans* en agar TSA.",
+    "tutorial.step1.detail": "El usuario sube una imagen de placa de agar. Aqu\u00ed usamos **11_CAAL.jpg**, que contiene 11 colonias de *Candida albicans* en agar TSA.",
     "tutorial.step2.label": "Paso 2: Detecci\u00f3n de Placa",
     "tutorial.step2.detail": "OpenCV detecta el contorno circular de la placa de Petri. El di\u00e1metro conocido de 90 mm nos da la **escala px/mm** para medidas del mundo real.",
     "tutorial.step3.label": "Paso 3: Detecci\u00f3n de Colonias",
@@ -732,22 +732,6 @@ TRANSLATIONS = {
         "Con el tiempo, la IA mejora progresivamente hasta aprender a reconocer patrones "
         "complejos. Este proceso se llama **entrenamiento**."
     ),
-    "learn.pipeline.title": "\U0001f3af Diagrama completo del Pipeline",
-    "learn.pipeline.intro": "As\u00ed funciona \u03bcKount & \u03bcDetect, desde la imagen original hasta la predicci\u00f3n final:",
-    "learn.pipeline.step1": "Imagen de entrada",
-    "learn.pipeline.step2": "YOLO detecta",
-    "learn.pipeline.step3": "Recorte + Padding",
-    "learn.pipeline.step4": "\u00c1rea en mm\u00b2",
-    "learn.pipeline.step5": "CNN Multimodal",
-    "learn.pipeline.step6": "Predicci\u00f3n",
-    "learn.pipeline.step7": "Grad-CAM",
-    "learn.pipeline.detail": (
-        "La CNN multimodal recibe tanto la imagen padded **como** el \u00e1rea normalizada de la "
-        "colonia. Grad-CAM resalta entonces qu\u00e9 partes de la imagen fueron decisivas para la "
-        "predicci\u00f3n. Esta combinaci\u00f3n hace que la clasificaci\u00f3n sea **consciente de la escala** "
-        "y m\u00e1s robusta."
-    ),
-
     # ─── FAQ ─────────────────────────────────────────────────────
     "faq.title": "Preguntas Frecuentes",
     "faq.q1.question": "\u00bfQu\u00e9 es \u03bcKount & \u03bcDetect?",
