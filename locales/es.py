@@ -121,8 +121,8 @@ TRANSLATIONS = {
     "tutorial.step3.detail": "YOLOv8 escanea la imagen y dibuja bounding boxes alrededor de cada colonia. Cada caja incluye un **nivel de confianza** (0\u20131).",
     "tutorial.step4.label": "Paso 4: Recorte y Padding",
     "tutorial.step4.detail": "Cada colonia se recorta (raw bbox) y luego se **padded** sobre un lienzo negro de 224\u00d7224. Esto preserva los p\u00edxeles originales sin distorsi\u00f3n.",
-    "tutorial.step5.label": "Paso 5: Explicaci\u00f3n Grad-CAM",
-    "tutorial.step5.detail": "**Grad-CAM** resalta las regiones de la imagen en las que la CNN se fija para su predicci\u00f3n. Las zonas rojas indican alta importancia \u2014 ah\u00ed es donde \u201cmira\u201d la IA.",
+    "tutorial.step5.label": "Paso 5: Predicci\u00f3n de la IA",
+    "tutorial.step5.detail": "La CNN analiza la colonia recortada y predice la especie bacteriana bas\u00e1ndose en sus caracter\u00edsticas visuales.",
     "tutorial.step6.label": "Paso 6: Resultado de Clasificaci\u00f3n",
     "tutorial.step6.detail": "La predicci\u00f3n final combina la imagen padded con el \u00e1rea real de la colonia (mm\u00b2) a trav\u00e9s de una **CNN multimodal** para clasificaci\u00f3n consciente de la escala.",
     "tutorial.plate.detected": "Contorno de placa detectado",
@@ -134,10 +134,7 @@ TRANSLATIONS = {
     "tutorial.crop.count": "{count} recortes extra\u00eddos \u2014 mostrando los 3 primeros:",
     "tutorial.crop.raw": "Recorte raw",
     "tutorial.crop.padded": "Padded (224\u00d7224)",
-    "tutorial.cam.input": "Entrada",
-    "tutorial.cam.heatmap": "Grad-CAM",
-    "tutorial.cam.overlay": "Superposici\u00f3n",
-    "tutorial.cam.unavailable": "Grad-CAM requiere TensorFlow. Estar\u00e1 disponible en la app desplegada.",
+
     "pipeline.tutorial.title": "Gu\u00eda paso a paso",
     "pipeline.tutorial.0": "**Sube una imagen de placa de agar** \u2014 El proceso "
         "comienza cuando subes una foto de una placa de agar. La app acepta "

@@ -11,7 +11,6 @@ from services.padding_service import PaddingService
 from services.crop_measurement_service import CropMeasurementService
 from services.area_scaling_service import AreaScalingService
 from services.classification_service import ClassificationService
-from services.gradcam_service import GradCAMService
 from app_config.settings import EXAMPLE_IMAGES_DIR
 
 st.title(t("pipeline.title"))
@@ -138,7 +137,7 @@ if show_tutorial:
                                 st.session_state.tutorial_step = 5
                                 st.rerun()
 
-                    # ── Step 5: Grad-CAM ──
+                    # ── Step 5: AI Prediction ──
                     if step >= 5:
                         st.success("\U00002705 " + t("tutorial.step5.label"))
                         if "classifications" not in data:
@@ -149,24 +148,15 @@ if show_tutorial:
                         classifications = data["classifications"]
                         demo_padded = data["demo_padded"]
                         if step == 5:
-                            gradcam = GradCAMService()
-                            explanations = gradcam.explain_multi(demo_padded, classifications)
                             n_show = min(3, len(classifications))
                             for i in range(n_show):
                                 st.markdown(f"**{t('detect.colony.label').format(number=i+1)}**")
-                                cols = st.columns(3)
-                                with cols[0]:
-                                    st.image(demo_padded[i], width=150, caption=t("tutorial.cam.input"))
-                                with cols[1]:
-                                    if explanations and i < len(explanations):
-                                        st.image(explanations[i]["heatmap"], width=150,
-                                                 caption=t("tutorial.cam.heatmap"))
-                                with cols[2]:
-                                    if explanations and i < len(explanations):
-                                        st.image(explanations[i]["overlay"], width=150,
-                                                 caption=t("tutorial.cam.overlay"))
-                            if not explanations:
-                                st.info(t("tutorial.cam.unavailable"))
+                                col_img, col_pred = st.columns([1, 2])
+                                with col_img:
+                                    st.image(demo_padded[i], width=150)
+                                with col_pred:
+                                    st.markdown(f"**{t('detect.species.label')}:** {classifications[i]['species']}")
+                                    st.markdown(f"**{t('detect.confidence.label')}:** {classifications[i]['confidence']:.2%}")
                             st.markdown(t("tutorial.step5.detail"))
                             if st.button(t("tutorial.next"), key="next5", use_container_width=True):
                                 st.session_state.tutorial_step = 6

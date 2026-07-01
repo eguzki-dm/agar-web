@@ -120,8 +120,8 @@ TRANSLATIONS = {
     "tutorial.step3.detail": "YOLOv8 scans the image and draws bounding boxes around each colony. Each box includes a **confidence score** (0\u20131) indicating how sure the model is.",
     "tutorial.step4.label": "Step 4: Crop & Padding",
     "tutorial.step4.detail": "Each colony is cropped (raw bounding box) and then **padded** onto a black 224\u00d7224 canvas. This preserves the colony\u2019s original pixels without distortion.",
-    "tutorial.step5.label": "Step 5: Grad-CAM Explanation",
-    "tutorial.step5.detail": "**Grad-CAM** highlights which regions of the image the CNN focuses on for its prediction. Red zones indicate high importance \u2014 this is where the AI \u201clooks\u201d to decide the species.",
+    "tutorial.step5.label": "Step 5: AI Prediction",
+    "tutorial.step5.detail": "The CNN analyses the cropped colony and predicts the bacterial species based on its visual features.",
     "tutorial.step6.label": "Step 6: Classification Result",
     "tutorial.step6.detail": "The final prediction combines the padded crop image with the colony\u2019s real area (mm\u00b2) through a **multimodal CNN** for scale-aware species classification.",
     "tutorial.plate.detected": "Detected plate contour",
@@ -133,10 +133,7 @@ TRANSLATIONS = {
     "tutorial.crop.count": "{count} crops extracted \u2014 showing first 3:",
     "tutorial.crop.raw": "Raw crop",
     "tutorial.crop.padded": "Padded (224\u00d7224)",
-    "tutorial.cam.input": "Input",
-    "tutorial.cam.heatmap": "Grad-CAM",
-    "tutorial.cam.overlay": "Overlay",
-    "tutorial.cam.unavailable": "Grad-CAM requires TensorFlow. It will be available in the deployed app.",
+
     "pipeline.tutorial.title": "Step-by-step guide",
     "pipeline.tutorial.0": "**Upload an agar plate image** \u2014 The process "
         "starts when you upload a photo of an agar plate. The app accepts "
