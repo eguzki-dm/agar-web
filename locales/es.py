@@ -1,5 +1,8 @@
 TRANSLATIONS = {
     # ─── Navigation ─────────────────────────────────────────────
+    "nav.section.home": "Inicio",
+    "nav.section.learn": "Aprender",
+    "nav.section.more": "M\u00e1s",
     "nav.home": "Inicio",
     "nav.how_it_works": "\u00bfC\u00f3mo funciona?",
     "nav.kount": "\u03bcKount",
