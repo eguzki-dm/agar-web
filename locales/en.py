@@ -191,6 +191,7 @@ TRANSLATIONS = {
     "kount.upload.guide.desc": "Before uploading, make sure your images are **high quality and well-focused**.",
     "kount.upload.guide.example": "🔎 Example Google search:",
     "kount.upload.guide.example_query": "agar plate triptona soya agar",
+    "kount.upload.guide.search_button": "🔍 Google Images",
     "kount.upload.guide.tip_size": "📏 Image size: **Large**",
     "kount.upload.guide.tip_clarity": "🧫 Clear Petri dish / agar visibility",
     "kount.upload.guide.tip_compression": "📸 No heavy compression",

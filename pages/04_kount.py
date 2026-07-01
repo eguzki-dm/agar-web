@@ -40,7 +40,19 @@ with upload_tab:
     st.markdown(f"### {t('kount.upload.guide.title')}")
     st.markdown(t("kount.upload.guide.desc"))
     st.markdown(t("kount.upload.guide.example"))
-    st.code(t("kount.upload.guide.example_query"), language="text")
+    col_q, col_btn = st.columns([4, 1])
+    with col_q:
+        st.code(t("kount.upload.guide.example_query"), language="text")
+    with col_btn:
+        query = t("kount.upload.guide.example_query").replace(" ", "+")
+        st.markdown(
+            f'<a href="https://www.google.com/search?tbm=isch&q={query}" target="_blank" '
+            f'style="display: inline-flex; align-items: center; justify-content: center; '
+            f'padding: 0.25em 0.6em; background-color: #4285F4; color: white; '
+            f'text-decoration: none; border-radius: 0.5rem; font-size: 0.8rem; '
+            f'font-weight: 500; height: 2.5em; margin-top: 4px;">{t("kount.upload.guide.search_button")}</a>',
+            unsafe_allow_html=True,
+        )
     st.markdown(t("kount.upload.guide.tip_size"))
     st.markdown(t("kount.upload.guide.tip_clarity"))
     st.markdown(t("kount.upload.guide.tip_compression"))
