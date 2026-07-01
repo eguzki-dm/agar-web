@@ -1,14 +1,14 @@
 import numpy as np
 import cv2
 from PIL import Image
+import tensorflow as tf
 
 
 class GradCAMService:
 
     def generate_heatmap(self, model, img_array: np.ndarray, class_idx: int = None) -> np.ndarray:
-        import tensorflow as tf
 
-        backbone = model.get_layer("mobilenetv2_1.00_224")
+        backbone = self._find_backbone(model)
         last_conv = self._find_last_conv(backbone)
 
         grad_model = tf.keras.models.Model(
@@ -40,6 +40,17 @@ class GradCAMService:
 
     def overlay(self, image: np.ndarray, heatmap: np.ndarray, alpha: float = 0.4) -> np.ndarray:
         return np.uint8(image * (1 - alpha) + heatmap * alpha)
+
+    def _find_backbone(self, model):
+        for layer in model.layers:
+            if isinstance(layer, tf.keras.Model) and "mobilenetv2" in layer.name.lower():
+                return layer
+        for layer in model.layers:
+            if isinstance(layer, tf.keras.Model) and len(layer.layers) > 20:
+                for sub in layer.layers:
+                    if isinstance(sub, (tf.keras.layers.Conv2D, tf.keras.layers.DepthwiseConv2D)):
+                        return layer
+        return model
 
     def _find_last_conv(self, submodel) -> str:
         last_conv = None

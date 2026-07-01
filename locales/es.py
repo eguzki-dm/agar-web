@@ -1,7 +1,7 @@
 TRANSLATIONS = {
     # ─── Navigation ─────────────────────────────────────────────
     "nav.home": "Inicio",
-    "nav.pipeline": "Pipeline",
+    "nav.how_it_works": "\u00bfC\u00f3mo funciona?",
     "nav.kount": "\u03bcKount",
     "nav.detect": "\u03bcDetect",
     "nav.results": "Resultados",
@@ -585,6 +585,167 @@ TRANSLATIONS = {
         "para calcular la escala px/mm, luego pasa el recorte padded junto con el \u00e1rea normalizada "
         "a una CNN multimodal. Este enfoque consciente de la escala mejora significativamente "
         "la discriminaci\u00f3n de especies. **Recomendado para resultados fiables.**"
+    ),
+
+    # ─── Learn AI ─────────────────────────────────────────────────
+    "learn.nav": "Aprende IA",
+    "learn.title": "\U0001f9e0 Aprende IA \u2014 Entiende c\u00f3mo funciona la Inteligencia Artificial",
+    "learn.subtitle": "Explicaciones sencillas de los conceptos de IA detr\u00e1s de \u03bcKount & \u03bcDetect, desde redes neuronales hasta Grad-CAM.",
+    "learn.concept_1.title": "\U0001f9e0 \u00bfQu\u00e9 es la Inteligencia Artificial (IA)?",
+    "learn.concept_1.content": (
+        "La Inteligencia Artificial (IA) es un conjunto de t\u00e9cnicas que permiten a un ordenador "
+        "aprender a realizar tareas que normalmente requieren inteligencia humana, como reconocer "
+        "im\u00e1genes, comprender texto o tomar decisiones.\n\n"
+        "En este proyecto, la IA aprende a reconocer diferentes tipos de colonias bacterianas "
+        "observando miles de ejemplos previamente etiquetados. En lugar de ser programada con "
+        "reglas expl\u00edcitas, descubre los patrones por s\u00ed sola."
+    ),
+    "learn.concept_2.title": "\U0001f9f0 \u00bfQu\u00e9 es una Red Neuronal?",
+    "learn.concept_2.content": (
+        "Una red neuronal es un modelo matem\u00e1tico inspirado en la forma en que funciona el "
+        "cerebro humano.\n\n"
+        "Est\u00e1 formada por muchas \u201cneuronas\u201d artificiales conectadas entre s\u00ed. Cada una aprende "
+        "peque\u00f1os patrones y, trabajando juntas, pueden reconocer objetos complejos.\n\n"
+        "En lugar de seguir reglas programadas, una red neuronal aprende autom\u00e1ticamente a "
+        "partir de ejemplos.\n\n"
+        "**Ejemplo:**\n"
+        "- Una persona aprende a distinguir un perro de un gato viendo muchos animales.\n"
+        "- Una red neuronal aprende exactamente igual: viendo muchas im\u00e1genes etiquetadas."
+    ),
+    "learn.concept_3.title": "\U0001f5bc\ufe0f \u00bfQu\u00e9 es una CNN?",
+    "learn.concept_3.content": (
+        "CNN significa **Red Neuronal Convolucional**.\n\n"
+        "Es un tipo de red neuronal especializada en im\u00e1genes. En lugar de analizar todos "
+        "los p\u00edxeles a la vez, una CNN aprende paso a paso:\n\n"
+        "1. Detecta **bordes**\n"
+        "2. Detecta **formas**\n"
+        "3. Detecta **texturas**\n"
+        "4. Reconoce **objetos completos**\n\n"
+        "En este proyecto, la CNN aprende caracter\u00edsticas como:\n"
+        "- Tama\u00f1o de la colonia\n"
+        "- Forma\n"
+        "- Textura\n"
+        "- Color\n"
+        "- Bordes\n"
+        "- Distribuci\u00f3n\n\n"
+        "Todo sin que nadie le diga expl\u00edcitamente qu\u00e9 debe buscar."
+    ),
+    "learn.concept_4.title": "\U0001f3af \u00bfQu\u00e9 es YOLO?",
+    "learn.concept_4.content": (
+        "YOLO significa **You Only Look Once** (solo miras una vez).\n\n"
+        "Es un modelo de IA dise\u00f1ado para detectar objetos en im\u00e1genes de forma muy r\u00e1pida. "
+        "Mientras que otros modelos primero buscan posibles objetos y luego los clasifican, "
+        "YOLO hace ambas tareas al mismo tiempo, en un solo paso.\n\n"
+        "En este proyecto, YOLO se utiliza para localizar autom\u00e1ticamente las colonias "
+        "bacterianas presentes en una placa de agar. Cada colonia detectada puede analizarse "
+        "individualmente."
+    ),
+    "learn.concept_5.title": "\U0001f7e6 \u00bfC\u00f3mo funciona nuestro Detector de Placa?",
+    "learn.concept_5.content": (
+        "La placa de Petri tiene un di\u00e1metro real conocido de **90 mm**. Nuestro detector "
+        "de placa usa OpenCV (una librer\u00eda de visi\u00f3n por ordenador) para encontrarla "
+        "autom\u00e1ticamente:\n\n"
+        "1. Convierte la imagen a **escala de grises** y aplica un **desenfoque** suave "
+        "para reducir el ruido\n"
+        "2. Aplica un **gradiente morfol\u00f3gico** para resaltar los bordes\n"
+        "3. Detecta bordes con el algoritmo **Canny**\n"
+        "4. Encuentra **contornos circulares** en la imagen\n"
+        "5. Selecciona el contorno m\u00e1s grande que cumpla las proporciones esperadas de una placa\n"
+        "6. Calcula la escala real: **mm_por_pixel** = 90 mm \u00f7 di\u00e1metro_en_p\u00edxeles\n\n"
+        "Gracias a esto podemos medir el tama\u00f1o de las colonias en mil\u00edmetros reales "
+        "independientemente de la distancia de la c\u00e1mara o el nivel de zoom."
+    ),
+    "learn.concept_6.title": "\U0001f4e6 \u00bfQu\u00e9 hace YOLO en este proyecto?",
+    "learn.concept_6.content": (
+        "YOLO analiza la imagen completa y:\n\n"
+        "- Encuentra todas las colonias en la placa\n"
+        "- Dibuja un recuadro alrededor de cada una\n"
+        "- Devuelve la posici\u00f3n y el tama\u00f1o de cada colonia\n"
+        "- Asigna un **nivel de confianza** (0\u20131) a cada detecci\u00f3n\n\n"
+        "Despu\u00e9s de esta fase de detecci\u00f3n, comienza la fase de clasificaci\u00f3n."
+    ),
+    "learn.concept_7.title": "\U0001f9ea \u00bfQu\u00e9 hace la CNN en este proyecto?",
+    "learn.concept_7.content": (
+        "Una vez que YOLO ha detectado una colonia, la CNN toma el control:\n\n"
+        "1. La imagen de la colonia se **recorta** de la imagen original\n"
+        "2. Se **rellena** sobre un lienzo negro de 224\u00d7224 (sin distorsi\u00f3n)\n"
+        "3. La CNN **analiza** la colonia\n"
+        "4. **Predice** la especie bacteriana\n\n"
+        "En resumen:\n\n"
+        "**Imagen \u2192 YOLO detecta colonias \u2192 Cada colonia se recorta \u2192 CNN analiza \u2192 Predicci\u00f3n**"
+    ),
+    "learn.concept_8.title": "\U0001f4cf \u00bfQu\u00e9 es el \u00e1rea de la colonia y por qu\u00e9 es importante?",
+    "learn.concept_8.content": (
+        "Adem\u00e1s de la imagen, el modelo tambi\u00e9n usa una caracter\u00edstica num\u00e9rica: "
+        "**el \u00e1rea de la colonia**.\n\n"
+        "El \u00e1rea indica el tama\u00f1o aproximado de la colonia en **mm\u00b2** (mil\u00edmetros "
+        "cuadrados reales). Esto proporciona informaci\u00f3n adicional que puede ayudar a "
+        "distinguir especies con una apariencia muy similar.\n\n"
+        "Por eso, el modelo combina:\n"
+        "- Informaci\u00f3n visual (imagen)\n"
+        "- Informaci\u00f3n num\u00e9rica (\u00e1rea)\n\n"
+        "Este tipo de modelo se conoce como **modelo multimodal**."
+    ),
+    "learn.concept_9.title": "\U0001f91d \u00bfQu\u00e9 es un modelo multimodal?",
+    "learn.concept_9.content": (
+        "Un modelo multimodal utiliza varios tipos de informaci\u00f3n al mismo tiempo.\n\n"
+        "En este proyecto usa dos fuentes:\n\n"
+        "- \U0001f5bc\ufe0f **Imagen** de la colonia (recorte padded)\n"
+        "- \U0001f4cf **\u00c1rea** de la colonia (en mm\u00b2, normalizada)\n\n"
+        "Al combinar ambas, el modelo puede tomar decisiones m\u00e1s precisas que usando "
+        "solo la imagen. Es como un m\u00e9dico que mira tanto la erupci\u00f3n como la temperatura "
+        "del paciente antes de hacer un diagn\u00f3stico."
+    ),
+    "learn.concept_10.title": "\U0001f525 \u00bfQu\u00e9 es Grad-CAM?",
+    "learn.concept_10.content": (
+        "Grad-CAM significa **Gradient-weighted Class Activation Mapping**.\n\n"
+        "Es una t\u00e9cnica que permite visualizar qu\u00e9 partes de la imagen han sido m\u00e1s "
+        "importantes para que la IA tome una decisi\u00f3n.\n\n"
+        "En lugar de ser una \u201ccaja negra\u201d, Grad-CAM muestra **d\u00f3nde mir\u00f3 la red neuronal**:\n\n"
+        "- \U0001f7e5 Zonas **rojas** \u2192 muy importantes\n"
+        "- \U0001f7e1 Zonas **amarillas** \u2192 importantes\n"
+        "- \U0001f535 Zonas **azules** \u2192 poco importantes\n\n"
+        "Esto nos permite verificar si la IA realmente est\u00e1 mirando la colonia y no "
+        "el fondo de la imagen."
+    ),
+    "learn.concept_11.title": "\U0001f4ca \u00bfQu\u00e9 es una probabilidad?",
+    "learn.concept_11.content": (
+        "Cuando el modelo hace una predicci\u00f3n, no solo responde con una especie. "
+        "Tambi\u00e9n indica cu\u00e1n seguro est\u00e1.\n\n"
+        "Por ejemplo:\n\n"
+        "| Especie | Probabilidad |\n"
+        "|---|---|\n"
+        "| E. coli | **94%** |\n"
+        "| S. aureus | 3% |\n"
+        "| P. aeruginosa | 2% |\n"
+        "| B. subtilis | 1% |\n\n"
+        "Cuanto mayor es la probabilidad, mayor es la confianza del modelo en esa predicci\u00f3n."
+    ),
+    "learn.concept_12.title": "\U0001f393 \u00bfC\u00f3mo aprende la IA?",
+    "learn.concept_12.content": (
+        "Durante el entrenamiento:\n\n"
+        "1. Se muestran miles de im\u00e1genes al modelo\n"
+        "2. El modelo hace una predicci\u00f3n\n"
+        "3. La predicci\u00f3n se compara con la respuesta correcta\n"
+        "4. Si se equivoca, millones de par\u00e1metros internos se **ajustan autom\u00e1ticamente**\n"
+        "5. Este proceso se repite miles de veces\n\n"
+        "Con el tiempo, la IA mejora progresivamente hasta aprender a reconocer patrones "
+        "complejos. Este proceso se llama **entrenamiento**."
+    ),
+    "learn.pipeline.title": "\U0001f3af Diagrama completo del Pipeline",
+    "learn.pipeline.intro": "As\u00ed funciona \u03bcKount & \u03bcDetect, desde la imagen original hasta la predicci\u00f3n final:",
+    "learn.pipeline.step1": "Imagen de entrada",
+    "learn.pipeline.step2": "YOLO detecta",
+    "learn.pipeline.step3": "Recorte + Padding",
+    "learn.pipeline.step4": "\u00c1rea en mm\u00b2",
+    "learn.pipeline.step5": "CNN Multimodal",
+    "learn.pipeline.step6": "Predicci\u00f3n",
+    "learn.pipeline.step7": "Grad-CAM",
+    "learn.pipeline.detail": (
+        "La CNN multimodal recibe tanto la imagen padded **como** el \u00e1rea normalizada de la "
+        "colonia. Grad-CAM resalta entonces qu\u00e9 partes de la imagen fueron decisivas para la "
+        "predicci\u00f3n. Esta combinaci\u00f3n hace que la clasificaci\u00f3n sea **consciente de la escala** "
+        "y m\u00e1s robusta."
     ),
 
     # ─── FAQ ─────────────────────────────────────────────────────

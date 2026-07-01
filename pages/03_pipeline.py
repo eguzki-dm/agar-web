@@ -54,7 +54,7 @@ if show_tutorial:
                     if step >= 1:
                         st.success("\U00002705 " + t("tutorial.step1.label"))
                         if step == 1:
-                            st.image(image, width=500, caption="11_CAAL.jpg — 17 C. albicans colonies")
+                            st.image(image, width=500, caption="11_CAAL.jpg — 11 C. albicans colonies")
                             st.markdown(t("tutorial.step1.detail"))
                             if st.button(t("tutorial.next"), key="next1", use_container_width=True):
                                 st.session_state.tutorial_step = 2
@@ -69,10 +69,7 @@ if show_tutorial:
                             st.session_state.tutorial_data = data
                         plate = data["plate"]
                         if step == 2:
-                            col_plate_img, col_plate_info = st.columns([1, 1])
-                            with col_plate_img:
-                                if plate.get("debug_image"):
-                                    st.image(plate["debug_image"], width=400, caption=t("tutorial.plate_detected"))
+                            col_plate_img, col_plate_info = st.columns([2, 3])
                             with col_plate_info:
                                 if plate["detected"]:
                                     st.markdown(f"**{t('tutorial.plate.diameter')}:** {plate['diameter_px']} px")
@@ -80,6 +77,9 @@ if show_tutorial:
                                     st.markdown(f"**{t('tutorial.plate.area')}:** {plate['area_px']:.0f} px\u00b2")
                                 else:
                                     st.warning(t("tutorial.plate.not_found"))
+                            with col_plate_img:
+                                if plate.get("debug_image"):
+                                    st.image(plate["debug_image"], width=300, caption=t("tutorial.plate_detected"))
                             st.markdown(t("tutorial.step2.detail"))
                             if st.button(t("tutorial.next"), key="next2", use_container_width=True):
                                 st.session_state.tutorial_step = 3

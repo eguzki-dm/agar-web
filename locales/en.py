@@ -1,7 +1,7 @@
 TRANSLATIONS = {
     # ─── Navigation ─────────────────────────────────────────────
     "nav.home": "Home",
-    "nav.pipeline": "Pipeline",
+    "nav.how_it_works": "How it works?",
     "nav.kount": "\u03bcKount",
     "nav.detect": "\u03bcDetect",
     "nav.results": "Results",
@@ -576,6 +576,160 @@ TRANSLATIONS = {
         "the pixel-to-mm scale, then passes the padded crop together with the normalized "
         "area into a multimodal CNN. This scale-aware approach significantly improves "
         "species discrimination. **Recommended for reliable results.**"
+    ),
+
+    # ─── Learn AI ─────────────────────────────────────────────────
+    "learn.nav": "Learn AI",
+    "learn.title": "\U0001f9e0 Learn AI \u2014 Understand how the Artificial Intelligence works",
+    "learn.subtitle": "Simple explanations of the AI concepts behind \u03bcKount & \u03bcDetect, from neural networks to Grad-CAM.",
+    "learn.concept_1.title": "\U0001f9e0 What is Artificial Intelligence (AI)?",
+    "learn.concept_1.content": (
+        "Artificial Intelligence (AI) is a set of techniques that allow a computer to learn "
+        "how to perform tasks that normally require human intelligence, such as recognising "
+        "images, understanding text or making decisions.\n\n"
+        "In this project, the AI learns to recognise different types of bacterial colonies "
+        "by observing thousands of previously labelled examples. Instead of being programmed "
+        "with explicit rules, it discovers the patterns on its own."
+    ),
+    "learn.concept_2.title": "\U0001f9f0 What is a Neural Network?",
+    "learn.concept_2.content": (
+        "A neural network is a mathematical model inspired by the way the human brain works.\n\n"
+        "It is made up of many artificial \u201cneurons\u201d connected to each other. Each one learns "
+        "small patterns and, working together, they can recognise complex objects.\n\n"
+        "Instead of following programmed rules, a neural network learns automatically "
+        "from examples.\n\n"
+        "**Example:**\n"
+        "- A person learns to tell a dog from a cat by seeing many animals.\n"
+        "- A neural network learns exactly the same way: by seeing many labelled images."
+    ),
+    "learn.concept_3.title": "\U0001f5bc\ufe0f What is a CNN?",
+    "learn.concept_3.content": (
+        "CNN stands for **Convolutional Neural Network**.\n\n"
+        "It is a type of neural network specialised in images. Instead of analysing all "
+        "the pixels at once, a CNN learns step by step:\n\n"
+        "1. Detects **edges**\n"
+        "2. Detects **shapes**\n"
+        "3. Detects **textures**\n"
+        "4. Recognises **complete objects**\n\n"
+        "In this project, the CNN learns features such as:\n"
+        "- Colony size\n"
+        "- Shape\n"
+        "- Texture\n"
+        "- Colour\n"
+        "- Edges\n"
+        "- Distribution\n\n"
+        "All without anyone explicitly telling it what to look for."
+    ),
+    "learn.concept_4.title": "\U0001f3af What is YOLO?",
+    "learn.concept_4.content": (
+        "YOLO stands for **You Only Look Once**.\n\n"
+        "It is an AI model designed to detect objects in images very quickly. While other "
+        "models first look for possible objects and then classify them, YOLO does both "
+        "tasks at the same time, in a single pass.\n\n"
+        "In this project, YOLO is used to automatically locate bacterial colonies "
+        "present on an agar plate. Each detected colony can then be analysed individually."
+    ),
+    "learn.concept_5.title": "\U0001f7e6 How does our Plate Detector work?",
+    "learn.concept_5.content": (
+        "The Petri dish has a known real diameter of **90 mm**. Our plate detector uses "
+        "OpenCV (a computer vision library) to find it automatically:\n\n"
+        "1. Convert the image to **greyscale** and apply a light **blur** to reduce noise\n"
+        "2. Apply a **morphological gradient** to highlight edges\n"
+        "3. Detect edges with the **Canny** algorithm\n"
+        "4. Find **circular contours** in the image\n"
+        "5. Select the largest contour that matches the expected proportions of a plate\n"
+        "6. Calculate the real-world scale: **mm_per_pixel** = 90 mm \u00f7 diameter_in_pixels\n\n"
+        "Thanks to this, we can measure colony sizes in real millimetres regardless of "
+        "the camera distance or zoom level."
+    ),
+    "learn.concept_6.title": "\U0001f4e6 What does YOLO do in this project?",
+    "learn.concept_6.content": (
+        "YOLO analyses the complete image and:\n\n"
+        "- Finds all colonies on the plate\n"
+        "- Draws a bounding box around each one\n"
+        "- Returns the position and size of each colony\n"
+        "- Assigns a **confidence score** (0\u20131) to each detection\n\n"
+        "After this detection phase, the classification phase begins."
+    ),
+    "learn.concept_7.title": "\U0001f9ea What does the CNN do in this project?",
+    "learn.concept_7.content": (
+        "Once YOLO has detected a colony, the CNN takes over:\n\n"
+        "1. The colony image is **cropped** from the original\n"
+        "2. It is **padded** onto a black 224\u00d7224 canvas (no distortion)\n"
+        "3. The CNN **analyses** the colony\n"
+        "4. It **predicts** the bacterial species\n\n"
+        "In short:\n\n"
+        "**Image \u2192 YOLO detects colonies \u2192 Each colony is cropped \u2192 CNN analyses \u2192 Prediction**"
+    ),
+    "learn.concept_8.title": "\U0001f4cf What is colony area and why does it matter?",
+    "learn.concept_8.content": (
+        "In addition to the image, the model also uses a numerical feature: **the area of the colony**.\n\n"
+        "The area indicates the approximate size of the colony in **mm\u00b2** (real square millimetres). "
+        "This provides additional information that can help distinguish species with a very similar appearance.\n\n"
+        "For this reason, the model combines:\n"
+        "- Visual information (image)\n"
+        "- Numerical information (area)\n\n"
+        "This type of model is known as a **multimodal model**."
+    ),
+    "learn.concept_9.title": "\U0001f91d What is a multimodal model?",
+    "learn.concept_9.content": (
+        "A multimodal model uses several types of information at the same time.\n\n"
+        "In this project it uses two sources:\n\n"
+        "- \U0001f5bc\ufe0f **Image** of the colony (padded crop)\n"
+        "- \U0001f4cf **Area** of the colony (in mm\u00b2, normalised)\n\n"
+        "By combining both, the model can make more accurate decisions than using "
+        "only the image. It is like a doctor who looks at both the rash and the "
+        "patient\u2019s temperature before making a diagnosis."
+    ),
+    "learn.concept_10.title": "\U0001f525 What is Grad-CAM?",
+    "learn.concept_10.content": (
+        "Grad-CAM stands for **Gradient-weighted Class Activation Mapping**.\n\n"
+        "It is a technique that allows you to visualise which parts of the image "
+        "have been most important for the AI to make a decision.\n\n"
+        "Instead of being a \u201cblack box\u201d, Grad-CAM shows **where the neural network looked**:\n\n"
+        "- \U0001f7e5 **Red** zones \u2192 very important\n"
+        "- \U0001f7e1 **Yellow** zones \u2192 important\n"
+        "- \U0001f535 **Blue** zones \u2192 not very important\n\n"
+        "This allows us to check whether the AI is really looking at the colony "
+        "and not at the background of the image."
+    ),
+    "learn.concept_11.title": "\U0001f4ca What is a probability?",
+    "learn.concept_11.content": (
+        "When the model makes a prediction, it does not simply answer with a species. "
+        "It also indicates how confident it is.\n\n"
+        "For example:\n\n"
+        "| Species | Probability |\n"
+        "|---|---|\n"
+        "| E. coli | **94%** |\n"
+        "| S. aureus | 3% |\n"
+        "| P. aeruginosa | 2% |\n"
+        "| B. subtilis | 1% |\n\n"
+        "The higher the probability, the greater the model\u2019s confidence in that prediction."
+    ),
+    "learn.concept_12.title": "\U0001f393 How does AI learn?",
+    "learn.concept_12.content": (
+        "During training:\n\n"
+        "1. Thousands of images are shown to the model\n"
+        "2. The model makes a prediction\n"
+        "3. The prediction is compared with the correct answer\n"
+        "4. If it is wrong, millions of internal parameters are **automatically adjusted**\n"
+        "5. This process is repeated thousands of times\n\n"
+        "Over time, the AI progressively improves until it learns to recognise "
+        "complex patterns. This process is called **training**."
+    ),
+    "learn.pipeline.title": "\U0001f3af Full Pipeline Diagram",
+    "learn.pipeline.intro": "This is how \u03bcKount & \u03bcDetect works, from the original image to the final prediction:",
+    "learn.pipeline.step1": "Input Image",
+    "learn.pipeline.step2": "YOLO Detects",
+    "learn.pipeline.step3": "Crop + Pad",
+    "learn.pipeline.step4": "Measure Area",
+    "learn.pipeline.step5": "Multimodal CNN",
+    "learn.pipeline.step6": "Prediction",
+    "learn.pipeline.step7": "Grad-CAM",
+    "learn.pipeline.detail": (
+        "The multimodal CNN receives both the padded image **and** the normalised colony area. "
+        "Grad-CAM then highlights which parts of the image were decisive for the prediction. "
+        "This combination makes the classification **scale-aware** and more robust."
     ),
 
     # ─── FAQ ─────────────────────────────────────────────────────

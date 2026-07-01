@@ -27,7 +27,7 @@ inject_theme_css()
 pages = [
     st.Page("pages/01_home.py", title=t("nav.home"), icon="🏠"),
     st.Page("pages/02_fundamentals.py", title=t("nav.fundamentals"), icon="📖"),
-    st.Page("pages/03_pipeline.py", title=t("nav.pipeline"), icon="🔬"),
+    st.Page("pages/03_pipeline.py", title=t("nav.how_it_works"), icon="🔬"),
     st.Page("pages/04_kount.py", title=t("nav.kount"), icon="🔍"),
     st.Page("pages/05_detect.py", title=t("nav.detect"), icon="🧪"),
     st.Page("pages/06_results.py", title=t("nav.results"), icon="📊"),
@@ -36,6 +36,7 @@ pages = [
     st.Page("pages/09_disclaimer.py", title=t("nav.disclaimer"), icon="⚠️"),
     st.Page("pages/12_faq.py", title=t("nav.faq"), icon="❓"),
     st.Page("pages/10_acknowledgments.py", title=t("nav.acknowledgments"), icon="🙏"),
+    st.Page("pages/14_learn_ai.py", title=t("learn.nav"), icon="🧠"),
     st.Page("pages/13_about.py", title=t("nav.about"), icon="⚙️"),
 ]
 
