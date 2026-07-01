@@ -328,7 +328,8 @@ TRANSLATIONS = {
         "after \u03bcKount processing.",
     "future.feature.optimize_sahi": "Optimize SAHI slicing processing",
     "future.feature.optimize_sahi.desc": "Improve performance of the SAHI sliced inference pipeline for dense agar plates. Optimize slice overlap, batch processing, and post-processing to reduce detection time while maintaining sensitivity for small colonies.",
-
+    "future.feature.patch_preprocessing": "Patch preprocessing (Paw\u0142owski et al. 2022)",
+    "future.feature.patch_preprocessing.desc": "Explore colony patching and preprocessing from Paw\u0142owski\u2019s microbial dataset generation to improve crop quality.",
 
     # ─── Disclaimer page ────────────────────────────────────────
     "disclaimer.title": "\u26a0\ufe0f Disclaimer \u2014 Ethical and Scientific Notice",

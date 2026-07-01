@@ -20,3 +20,9 @@ future_feature_card(
     "planned",
 )
 
+future_feature_card(
+    t("future.feature.patch_preprocessing"),
+    t("future.feature.patch_preprocessing.desc"),
+    "planned",
+)
+

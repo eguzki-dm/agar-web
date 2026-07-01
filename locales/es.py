@@ -334,7 +334,8 @@ TRANSLATIONS = {
         "detecci\u00f3n manualmente tras el procesamiento de \u03bcKount.",
     "future.feature.optimize_sahi": "Optimizar procesamiento SAHI slicing",
     "future.feature.optimize_sahi.desc": "Mejorar el rendimiento del pipeline de inferencia SAHI slicing para placas densas. Optimizar solapamiento de slices, procesamiento por lotes y post-procesado para reducir el tiempo de detecci\u00f3n manteniendo la sensibilidad para colonias peque\u00f1as.",
-
+    "future.feature.patch_preprocessing": "Parcheado y preprocesamiento (Paw\u0142owski et al. 2022)",
+    "future.feature.patch_preprocessing.desc": "Explorar parcheado y preprocesamiento de colonias del enfoque de Paw\u0142owski para mejorar la calidad de los recortes.",
 
     # ─── Disclaimer page ────────────────────────────────────────
     "disclaimer.title": "\u26a0\ufe0f Aviso Legal \u2014 Aviso \u00e9tico y cient\u00edfico",
