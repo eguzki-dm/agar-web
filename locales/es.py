@@ -530,8 +530,32 @@ TRANSLATIONS = {
     "fundamentals.cuora_caption": "Asistente de IA",
     "fundamentals.detection_strategies.title": "Estrategias de Detecci\u00f3n",
     "fundamentals.detection_strategies.intro": "\u03bcKount ofrece dos estrategias de detecci\u00f3n que pueden seleccionarse antes de ejecutar el an\u00e1lisis:",
-    "fundamentals.detection_strategies.sahi": "**\U0001f52c SAHI + YOLO** \u2014 Dise\u00f1ado para im\u00e1genes de alta resoluci\u00f3n. Excelente para colonias peque\u00f1as en placas densas. Utiliza slicing para aumentar la sensibilidad de detecci\u00f3n.",
-    "fundamentals.detection_strategies.full": "**\U0001f9eb YOLO a Imagen Completa** \u2014 Procesa la imagen completa sin slicing. Recomendado para placas con pocas colonias grandes. Evita duplicaciones derivadas del slicing.",
+    "fundamentals.detection_strategies.sahi": (
+        "**\U0001f52c SAHI + YOLO** \u2014 Modo de alta precisi\u00f3n para placas exigentes. "
+        "Divide la imagen en teselas solapadas, permitiendo que YOLO detecte colonias "
+        "diminutas o muy densas que de otro modo pasar\u00edan desapercibidas. "
+        "Ideal para im\u00e1genes de alta resoluci\u00f3n y placas densas con colonias peque\u00f1as."
+    ),
+    "fundamentals.detection_strategies.full": (
+        "**\U0001f9eb YOLO a Imagen Completa** \u2014 Modo r\u00e1pido y eficiente para placas limpias. "
+        "Procesa toda la imagen de una sola vez, perfecto cuando hay pocas colonias grandes "
+        "y bien separadas. Evita las duplicaciones ocasionales que pueden aparecer "
+        "con la inferencia por teselas."
+    ),
+    "fundamentals.classification_strategies.title": "Estrategias de Clasificaci\u00f3n",
+    "fundamentals.classification_strategies.intro": "\u03bcDetect ofrece dos estrategias de clasificaci\u00f3n que equilibran velocidad y precisi\u00f3n:",
+    "fundamentals.classification_strategies.flash": (
+        "**\u26a1 Flash** \u2014 Modo r\u00e1pido usando solo el modelo CNN de imagen. "
+        "Clasifica cada recorte puramente por morfolog\u00eda visual. No necesita calibraci\u00f3n "
+        "de placa, ideal para an\u00e1lisis r\u00e1pidos o cuando la placa de Petri no es completamente visible."
+    ),
+    "fundamentals.classification_strategies.robust": (
+        "**\U0001f9ea Robusto (multimodal)** \u2014 Modo de precisi\u00f3n que fusiona caracter\u00edsticas "
+        "de imagen con el \u00e1rea real de la colonia en mm\u00b2. Primero detecta la placa de Petri "
+        "para calcular la escala px/mm, luego pasa el recorte padded junto con el \u00e1rea normalizada "
+        "a una CNN multimodal. Este enfoque consciente de la escala mejora significativamente "
+        "la discriminaci\u00f3n de especies. **Recomendado para resultados fiables.**"
+    ),
 
     # ─── FAQ ─────────────────────────────────────────────────────
     "faq.title": "Preguntas Frecuentes",

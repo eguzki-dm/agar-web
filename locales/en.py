@@ -521,8 +521,32 @@ TRANSLATIONS = {
     "fundamentals.cuora_caption": "AI Assistant",
     "fundamentals.detection_strategies.title": "Detection Strategies",
     "fundamentals.detection_strategies.intro": "\u03bcKount offers two detection strategies that can be selected before running the analysis:",
-    "fundamentals.detection_strategies.sahi": "**\U0001f52c SAHI + YOLO** \u2014 Designed for high-resolution images. Excellent for small colonies on dense agar plates. Uses image slicing to increase detection sensitivity.",
-    "fundamentals.detection_strategies.full": "**\U0001f9eb Full Image YOLO** \u2014 Processes the complete image without slicing. Recommended for plates with few large colonies. Avoids duplications derived from slicing.",
+    "fundamentals.detection_strategies.sahi": (
+        "**\U0001f52c SAHI + YOLO** \u2014 High-precision mode for demanding plates. "
+        "Slices the image into smaller overlapping tiles, allowing YOLO to detect "
+        "tiny or densely packed colonies that would otherwise go unnoticed. "
+        "Best for high-resolution images and crowded agar plates with small colonies."
+    ),
+    "fundamentals.detection_strategies.full": (
+        "**\U0001f9eb Full Image YOLO** \u2014 Fast and efficient mode for clean plates. "
+        "Processes the entire image in one pass, ideal when colonies are few, large, "
+        "and well-separated. Avoids the occasional duplication artifacts that can appear "
+        "with sliced inference."
+    ),
+    "fundamentals.classification_strategies.title": "Classification Strategies",
+    "fundamentals.classification_strategies.intro": "\u03bcDetect offers two classification strategies that trade off speed for precision:",
+    "fundamentals.classification_strategies.flash": (
+        "**\u26a1 Flash** \u2014 Quick mode using only the CNN image model. "
+        "Classifies each crop purely by visual morphology. No plate calibration needed, "
+        "making it ideal for rapid screening or when the Petri dish is not fully visible."
+    ),
+    "fundamentals.classification_strategies.robust": (
+        "**\U0001f9ea Robust (multimodal)** \u2014 Precision mode that fuses image features "
+        "with real colony area in mm\u00b2. First detects the Petri dish to calculate "
+        "the pixel-to-mm scale, then passes the padded crop together with the normalized "
+        "area into a multimodal CNN. This scale-aware approach significantly improves "
+        "species discrimination. **Recommended for reliable results.**"
+    ),
 
     # ─── FAQ ─────────────────────────────────────────────────────
     "faq.title": "Frequently Asked Questions",
