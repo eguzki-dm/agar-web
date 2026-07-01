@@ -88,8 +88,9 @@ TRANSLATIONS = {
         "Las predicciones fuera de estas condiciones pueden no ser fiables."
     ),
     "home.dataset.content": (
-        "Aproximadamente **18.000 im\u00e1genes de placas de agar** y **337.000 anotaciones "
-        "de colonias** de m\u00faltiples configuraciones de captura y condiciones de iluminaci\u00f3n.\n\n"
+        "El modelo fue entrenado con un subconjunto del **10% de las im\u00e1genes de placas AGAR** "
+        "(~1.800 im\u00e1genes) y **6.000 recortes individuales de colonias**, "
+        "no con el dataset completo de 18.000 im\u00e1genes y 337.000 anotaciones.\n\n"
         "Dataset: **AGAR Dataset** (Majchrowska et al., 2021)"
     ),
     "home.notice.title": "Aviso Cient\u00edfico",
@@ -227,8 +228,8 @@ TRANSLATIONS = {
     "detect.info.run": "Presiona 'Ejecutar \u03bcDetect' para clasificar las colonias.",
     "detect.button.results": "\U0001f4ca Ir a Resultados",
     "detect.mode.title": "Modo de Clasificaci\u00f3n",
-    "detect.mode.flash": "\u26a1 Flash (R\u00e1pido)",
-    "detect.mode.robust": "\U0001f9ea Robusto (Multimodal)",
+    "detect.mode.flash": "\u26a1 Flash (solo imagen - r\u00e1pido)",
+    "detect.mode.robust": "\U0001f9ea Robusto (multimodal - recomendado)",
     "detect.mode.flash.desc": "Clasificaci\u00f3n r\u00e1pida usando solo CNN (actual por defecto).",
     "detect.mode.robust.desc": "Clasificaci\u00f3n precisa usando detecci\u00f3n de placa + CNN multimodal con \u00e1rea.",
     "detect.step.plate": "Detecci\u00f3n de Placa y Medici\u00f3n",

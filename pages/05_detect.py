@@ -64,7 +64,7 @@ selected_mode = st.radio(
     t("detect.mode.title"),
     options=mode_options,
     format_func=lambda x: mode_labels[x],
-    index=0,
+    index=1,
     label_visibility="collapsed",
 )
 st.caption(mode_descriptions[selected_mode])

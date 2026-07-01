@@ -87,8 +87,9 @@ TRANSLATIONS = {
         "Predictions outside these conditions may be unreliable."
     ),
     "home.dataset.content": (
-        "Approximately **18,000 agar plate images** and **337,000 colony annotations** "
-        "from multiple acquisition setups and lighting conditions.\n\n"
+        "The model was trained on a subset of **10% of the AGAR plate images** "
+        "(~1,800 images) and **6,000 individual colony crops**, "
+        "not the full dataset of 18,000 images and 337,000 annotations.\n\n"
         "Dataset: **AGAR Dataset** (Majchrowska et al., 2021)"
     ),
     "home.notice.title": "Scientific Notice",
@@ -222,8 +223,8 @@ TRANSLATIONS = {
     "detect.info.run": "Press 'Run \u03bcDetect' to classify the colonies.",
     "detect.button.results": "\U0001f4ca Go to Results",
     "detect.mode.title": "Classification Mode",
-    "detect.mode.flash": "\u26a1 Flash (Fast)",
-    "detect.mode.robust": "\U0001f9ea Robust (Multimodal)",
+    "detect.mode.flash": "\u26a1 Flash (just image data - fast)",
+    "detect.mode.robust": "\U0001f9ea Robust (multimodal - recommended)",
     "detect.mode.flash.desc": "Fast classification using CNN only (current default).",
     "detect.mode.robust.desc": "Precise classification using plate detection + multimodal CNN with area data.",
     "detect.step.plate": "Plate Detection & Measurement",

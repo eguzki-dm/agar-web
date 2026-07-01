@@ -50,7 +50,7 @@ YOLO_IOU_THRESHOLD = 0.45
 LETTERBOX_SIZE = 2048
 
 # ── μDetect settings ──
-CLASSIFICATION_MODEL_PATH = "model/Detect/best_model_cnn.keras"
+CLASSIFICATION_MODEL_PATH = "model/Detect/best_model_transfer.keras"
 MULTIMODAL_MODEL_PATH = "model/Detect/best_model_multimodal_transfer.keras"
 CLASSIFICATION_IMG_SIZE = 224
 CLASSIFICATION_CONF_THRESHOLD = 0.50
