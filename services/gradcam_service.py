@@ -7,25 +7,21 @@ import tensorflow as tf
 class GradCAMService:
 
     def generate_heatmap(self, model, img_array: np.ndarray, class_idx: int = None) -> np.ndarray:
-
-        backbone = self._find_backbone(model)
-        last_conv = self._find_last_conv(backbone)
-
+        gap = model.get_layer("global_average_pooling2d")
         grad_model = tf.keras.models.Model(
-            [model.inputs],
-            [backbone.get_layer(last_conv).output, model.output]
+            inputs=model.input,
+            outputs=[gap.input, model.output]
         )
 
         with tf.GradientTape() as tape:
-            conv_output, preds = grad_model(img_array[np.newaxis, ...])
+            conv_output, preds = grad_model(img_array[np.newaxis, ...], training=False)
             if class_idx is None:
                 class_idx = tf.argmax(preds[0])
             loss = preds[:, class_idx]
 
         grads = tape.gradient(loss, conv_output)
         pooled_grads = tf.reduce_mean(grads, axis=(0, 1, 2))
-        conv_output = conv_output[0]
-        heatmap = tf.reduce_sum(tf.multiply(pooled_grads, conv_output), axis=-1)
+        heatmap = tf.reduce_sum(tf.multiply(pooled_grads, conv_output[0]), axis=-1)
 
         heatmap = tf.maximum(heatmap, 0).numpy()
         if np.max(heatmap) > 0:
@@ -40,26 +36,6 @@ class GradCAMService:
 
     def overlay(self, image: np.ndarray, heatmap: np.ndarray, alpha: float = 0.4) -> np.ndarray:
         return np.uint8(image * (1 - alpha) + heatmap * alpha)
-
-    def _find_backbone(self, model):
-        for layer in model.layers:
-            if isinstance(layer, tf.keras.Model) and "mobilenetv2" in layer.name.lower():
-                return layer
-        for layer in model.layers:
-            if isinstance(layer, tf.keras.Model) and len(layer.layers) > 20:
-                for sub in layer.layers:
-                    if isinstance(sub, (tf.keras.layers.Conv2D, tf.keras.layers.DepthwiseConv2D)):
-                        return layer
-        return model
-
-    def _find_last_conv(self, submodel) -> str:
-        last_conv = None
-        for layer in submodel.layers:
-            if isinstance(layer, tf.keras.layers.Conv2D) or isinstance(layer, tf.keras.layers.DepthwiseConv2D):
-                last_conv = layer.name
-        if last_conv is None:
-            last_conv = submodel.layers[-1].name
-        return last_conv
 
     def explain_multi(self, images: list[Image.Image], classifications: list[dict]) -> list[dict]:
         from services.classification_service import _load_classifier
