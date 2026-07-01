@@ -137,7 +137,7 @@ if show_tutorial:
                                 st.session_state.tutorial_step = 5
                                 st.rerun()
 
-                    # ── Step 5: AI Prediction ──
+                    # ── Step 5: Prediction Result (final step) ──
                     if step >= 5:
                         st.success("\U00002705 " + t("tutorial.step5.label"))
                         if "classifications" not in data:
@@ -157,29 +157,12 @@ if show_tutorial:
                                 with col_pred:
                                     st.markdown(f"**{t('detect.species.label')}:** {classifications[i]['species']}")
                                     st.markdown(f"**{t('detect.confidence.label')}:** {classifications[i]['confidence']:.2%}")
-                            st.markdown(t("tutorial.step5.detail"))
-                            if st.button(t("tutorial.next"), key="next5", use_container_width=True):
-                                st.session_state.tutorial_step = 6
-                                st.rerun()
-
-                    # ── Step 6: Classification result ──
-                    if step >= 6:
-                        st.success("\U00002705 " + t("tutorial.step6.label"))
-                        classifications = data.get("classifications", [])
-                        if step == 6:
-                            from collections import Counter
-                            n_show = min(3, len(classifications))
-                            for i in range(n_show):
-                                cls = classifications[i]
-                                st.markdown(f"**{t('detect.colony.label').format(number=i+1)}**")
-                                st.markdown(f"- {t('detect.species.label')}: **{cls['species']}**")
-                                st.markdown(f"- {t('detect.confidence.label')}: {cls['confidence']:.2%}")
-                                if cls.get("probabilities"):
-                                    with st.expander(t("detect.probabilities.title")):
-                                        for sp, prob in cls["probabilities"].items():
-                                            st.markdown(f"{sp}: `{prob:.4f}`")
+                                    if classifications[i].get("probabilities"):
+                                        with st.expander(t("detect.probabilities.title")):
+                                            for sp, prob in classifications[i]["probabilities"].items():
+                                                st.markdown(f"{sp}: `{prob:.4f}`")
                                 st.divider()
-                            st.markdown(t("tutorial.step6.detail"))
+                            st.markdown(t("tutorial.step5.detail"))
                             st.balloons()
                             if st.button("\U0001f504 " + t("tutorial.restart"), use_container_width=True):
                                 st.session_state.tutorial_step = 0
@@ -187,7 +170,7 @@ if show_tutorial:
                                 st.rerun()
 
                     if step >= 1:
-                        st.progress(min(step / 6, 1.0))
+                        st.progress(min(step / 5, 1.0))
 
 st.divider()
 
