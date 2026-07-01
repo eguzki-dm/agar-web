@@ -162,6 +162,7 @@ agar-web/
 | **6 — Export** JSON + PDF report download                    | ✅ Complete |
 | **7 — More Species** Retrain model with additional organisms | 🔜 Planned  |
 | **8 — Box Editing** Manual adjustment of bounding boxes      | 🔜 Planned  |
+| **9 — Optimize SAHI** Improve slicing performance for dense agar plates | 🔜 Planned  |
 
 ---
 
