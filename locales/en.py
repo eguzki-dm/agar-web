@@ -640,8 +640,22 @@ TRANSLATIONS = {
         "Thanks to this, we can measure colony sizes in real millimetres regardless of "
         "the camera distance or zoom level."
     ),
-    "learn.concept_6.title": "\U0001f4e6 What does YOLO do in this project?",
+    "learn.concept_6.title": "\u2699\ufe0f What is the Canny algorithm?",
     "learn.concept_6.content": (
+        "The Canny algorithm is an edge detection method for images. "
+        "It identifies areas where colour or intensity changes sharply \u2014 "
+        "in other words, the contours of objects.\n\n"
+        "It works as follows:\n\n"
+        "1. Smooths the image to reduce noise.\n"
+        "2. Finds strong intensity changes (gradients).\n"
+        "3. Removes weak or false edges.\n"
+        "4. Marks the most important edges in the image.\n\n"
+        "The result is an image where only the contour lines of objects appear. "
+        "It is widely used in computer vision, for example to detect shapes, "
+        "objects or features in an image."
+    ),
+    "learn.concept_7.title": "\U0001f4e6 What does YOLO do in this project?",
+    "learn.concept_7.content": (
         "YOLO analyses the complete image and:\n\n"
         "- Finds all colonies on the plate\n"
         "- Draws a bounding box around each one\n"
@@ -649,8 +663,8 @@ TRANSLATIONS = {
         "- Assigns a **confidence score** (0\u20131) to each detection\n\n"
         "After this detection phase, the classification phase begins."
     ),
-    "learn.concept_7.title": "\U0001f9ea What does the CNN do in this project?",
-    "learn.concept_7.content": (
+    "learn.concept_8.title": "\U0001f9ea What does the CNN do in this project?",
+    "learn.concept_8.content": (
         "Once YOLO has detected a colony, the CNN takes over:\n\n"
         "1. The colony image is **cropped** from the original\n"
         "2. It is **padded** onto a black 224\u00d7224 canvas (no distortion)\n"
@@ -659,8 +673,8 @@ TRANSLATIONS = {
         "In short:\n\n"
         "**Image \u2192 YOLO detects colonies \u2192 Each colony is cropped \u2192 CNN analyses \u2192 Prediction**"
     ),
-    "learn.concept_8.title": "\U0001f4cf What is colony area and why does it matter?",
-    "learn.concept_8.content": (
+    "learn.concept_9.title": "\U0001f4cf What is colony area and why does it matter?",
+    "learn.concept_9.content": (
         "In addition to the image, the model also uses a numerical feature: **the area of the colony**.\n\n"
         "The area indicates the approximate size of the colony in **mm\u00b2** (real square millimetres). "
         "This provides additional information that can help distinguish species with a very similar appearance.\n\n"
@@ -669,8 +683,8 @@ TRANSLATIONS = {
         "- Numerical information (area)\n\n"
         "This type of model is known as a **multimodal model**."
     ),
-    "learn.concept_9.title": "\U0001f91d What is a multimodal model?",
-    "learn.concept_9.content": (
+    "learn.concept_10.title": "\U0001f91d What is a multimodal model?",
+    "learn.concept_10.content": (
         "A multimodal model uses several types of information at the same time.\n\n"
         "In this project it uses two sources:\n\n"
         "- \U0001f5bc\ufe0f **Image** of the colony (padded crop)\n"
@@ -679,8 +693,8 @@ TRANSLATIONS = {
         "only the image. It is like a doctor who looks at both the rash and the "
         "patient\u2019s temperature before making a diagnosis."
     ),
-    "learn.concept_10.title": "\U0001f525 What is Grad-CAM?",
-    "learn.concept_10.content": (
+    "learn.concept_11.title": "\U0001f525 What is Grad-CAM?",
+    "learn.concept_11.content": (
         "Grad-CAM stands for **Gradient-weighted Class Activation Mapping**.\n\n"
         "It is a technique that allows you to visualise which parts of the image "
         "have been most important for the AI to make a decision.\n\n"
@@ -691,8 +705,8 @@ TRANSLATIONS = {
         "This allows us to check whether the AI is really looking at the colony "
         "and not at the background of the image."
     ),
-    "learn.concept_11.title": "\U0001f4ca What is a probability?",
-    "learn.concept_11.content": (
+    "learn.concept_12.title": "\U0001f4ca What is a probability?",
+    "learn.concept_12.content": (
         "When the model makes a prediction, it does not simply answer with a species. "
         "It also indicates how confident it is.\n\n"
         "For example:\n\n"
@@ -704,8 +718,8 @@ TRANSLATIONS = {
         "| B. subtilis | 1% |\n\n"
         "The higher the probability, the greater the model\u2019s confidence in that prediction."
     ),
-    "learn.concept_12.title": "\U0001f393 How does AI learn?",
-    "learn.concept_12.content": (
+    "learn.concept_13.title": "\U0001f393 How does AI learn?",
+    "learn.concept_13.content": (
         "During training:\n\n"
         "1. Thousands of images are shown to the model\n"
         "2. The model makes a prediction\n"
@@ -717,16 +731,16 @@ TRANSLATIONS = {
     ),
 
 
-    "learn.concept_13.title": "🧬 What is μKount & μDetect?",
-    "learn.concept_13.content": (
+    "learn.concept_14.title": "🧬 What is μKount & μDetect?",
+    "learn.concept_14.content": (
         "μKount & μDetect is an AI system for agar plate analysis.\n\n"
         "μKount performs colony detection and counting using YOLO.\n"
         "μDetect performs species classification using a CNN.\n\n"
         "Together they form a pipeline that automates microbiological image analysis."
     ),
 
-    "learn.concept_14.title": "🔬 How does the pipeline work?",
-    "learn.concept_14.content": (
+    "learn.concept_15.title": "🔬 How does the pipeline work?",
+    "learn.concept_15.content": (
         "The pipeline works in sequential steps:\n\n"
         "1. Upload agar plate image\n"
         "2. μKount detects colonies using YOLO\n"

@@ -638,7 +638,7 @@ TRANSLATIONS = {
         "bacterianas presentes en una placa de agar. Cada colonia detectada puede analizarse "
         "individualmente."
     ),
-    "learn.concept_5.title": "\U0001f7e6 \u00bfC\u00f3mo funciona nuestro Detector de Placa?",
+    "learn.concept_5.title": "\U0001f7e6 \u00bfC\u00f3mo funciona nuestro detector de placas de Petri?",
     "learn.concept_5.content": (
         "La placa de Petri tiene un di\u00e1metro real conocido de **90 mm**. Nuestro detector "
         "de placa usa OpenCV (una librer\u00eda de visi\u00f3n por ordenador) para encontrarla "
@@ -653,8 +653,22 @@ TRANSLATIONS = {
         "Gracias a esto podemos medir el tama\u00f1o de las colonias en mil\u00edmetros reales "
         "independientemente de la distancia de la c\u00e1mara o el nivel de zoom."
     ),
-    "learn.concept_6.title": "\U0001f4e6 \u00bfQu\u00e9 hace YOLO en este proyecto?",
+    "learn.concept_6.title": "\u2699\ufe0f \u00bfQu\u00e9 es el algoritmo Canny?",
     "learn.concept_6.content": (
+        "El algoritmo de Canny es un m\u00e9todo de detecci\u00f3n de bordes en im\u00e1genes. "
+        "Sirve para encontrar d\u00f3nde cambian mucho los colores o la intensidad, "
+        "es decir, los contornos de los objetos.\n\n"
+        "Funciona b\u00e1sicamente as\u00ed:\n\n"
+        "1. Suaviza la imagen para reducir ruido.\n"
+        "2. Busca cambios fuertes de intensidad (gradientes).\n"
+        "3. Elimina bordes d\u00e9biles o falsos.\n"
+        "4. Marca los bordes m\u00e1s importantes de la imagen.\n\n"
+        "El resultado es una imagen donde normalmente solo aparecen las l\u00edneas "
+        "que forman los contornos de los objetos. Se usa mucho en visi\u00f3n artificial, "
+        "por ejemplo para detectar formas, objetos o caracter\u00edsticas de una imagen."
+    ),
+    "learn.concept_7.title": "\U0001f4e6 \u00bfQu\u00e9 hace YOLO en este proyecto?",
+    "learn.concept_7.content": (
         "YOLO analiza la imagen completa y:\n\n"
         "- Encuentra todas las colonias en la placa\n"
         "- Dibuja un recuadro alrededor de cada una\n"
@@ -662,8 +676,8 @@ TRANSLATIONS = {
         "- Asigna un **nivel de confianza** (0\u20131) a cada detecci\u00f3n\n\n"
         "Despu\u00e9s de esta fase de detecci\u00f3n, comienza la fase de clasificaci\u00f3n."
     ),
-    "learn.concept_7.title": "\U0001f9ea \u00bfQu\u00e9 hace la CNN en este proyecto?",
-    "learn.concept_7.content": (
+    "learn.concept_8.title": "\U0001f9ea \u00bfQu\u00e9 hace la CNN en este proyecto?",
+    "learn.concept_8.content": (
         "Una vez que YOLO ha detectado una colonia, la CNN toma el control:\n\n"
         "1. La imagen de la colonia se **recorta** de la imagen original\n"
         "2. Se **rellena** sobre un lienzo negro de 224\u00d7224 (sin distorsi\u00f3n)\n"
@@ -672,8 +686,8 @@ TRANSLATIONS = {
         "En resumen:\n\n"
         "**Imagen \u2192 YOLO detecta colonias \u2192 Cada colonia se recorta \u2192 CNN analiza \u2192 Predicci\u00f3n**"
     ),
-    "learn.concept_8.title": "\U0001f4cf \u00bfQu\u00e9 es el \u00e1rea de la colonia y por qu\u00e9 es importante?",
-    "learn.concept_8.content": (
+    "learn.concept_9.title": "\U0001f4cf \u00bfQu\u00e9 es el \u00e1rea de la colonia y por qu\u00e9 es importante?",
+    "learn.concept_9.content": (
         "Adem\u00e1s de la imagen, el modelo tambi\u00e9n usa una caracter\u00edstica num\u00e9rica: "
         "**el \u00e1rea de la colonia**.\n\n"
         "El \u00e1rea indica el tama\u00f1o aproximado de la colonia en **mm\u00b2** (mil\u00edmetros "
@@ -684,8 +698,8 @@ TRANSLATIONS = {
         "- Informaci\u00f3n num\u00e9rica (\u00e1rea)\n\n"
         "Este tipo de modelo se conoce como **modelo multimodal**."
     ),
-    "learn.concept_9.title": "\U0001f91d \u00bfQu\u00e9 es un modelo multimodal?",
-    "learn.concept_9.content": (
+    "learn.concept_10.title": "\U0001f91d \u00bfQu\u00e9 es un modelo multimodal?",
+    "learn.concept_10.content": (
         "Un modelo multimodal utiliza varios tipos de informaci\u00f3n al mismo tiempo.\n\n"
         "En este proyecto usa dos fuentes:\n\n"
         "- \U0001f5bc\ufe0f **Imagen** de la colonia (recorte padded)\n"
@@ -694,8 +708,8 @@ TRANSLATIONS = {
         "solo la imagen. Es como un m\u00e9dico que mira tanto la erupci\u00f3n como la temperatura "
         "del paciente antes de hacer un diagn\u00f3stico."
     ),
-    "learn.concept_10.title": "\U0001f525 \u00bfQu\u00e9 es Grad-CAM?",
-    "learn.concept_10.content": (
+    "learn.concept_11.title": "\U0001f525 \u00bfQu\u00e9 es Grad-CAM?",
+    "learn.concept_11.content": (
         "Grad-CAM significa **Gradient-weighted Class Activation Mapping**.\n\n"
         "Es una t\u00e9cnica que permite visualizar qu\u00e9 partes de la imagen han sido m\u00e1s "
         "importantes para que la IA tome una decisi\u00f3n.\n\n"
@@ -706,8 +720,8 @@ TRANSLATIONS = {
         "Esto nos permite verificar si la IA realmente est\u00e1 mirando la colonia y no "
         "el fondo de la imagen."
     ),
-    "learn.concept_11.title": "\U0001f4ca \u00bfQu\u00e9 es una probabilidad?",
-    "learn.concept_11.content": (
+    "learn.concept_12.title": "\U0001f4ca \u00bfQu\u00e9 es una probabilidad?",
+    "learn.concept_12.content": (
         "Cuando el modelo hace una predicci\u00f3n, no solo responde con una especie. "
         "Tambi\u00e9n indica cu\u00e1n seguro est\u00e1.\n\n"
         "Por ejemplo:\n\n"
@@ -719,8 +733,8 @@ TRANSLATIONS = {
         "| B. subtilis | 1% |\n\n"
         "Cuanto mayor es la probabilidad, mayor es la confianza del modelo en esa predicci\u00f3n."
     ),
-    "learn.concept_12.title": "\U0001f393 \u00bfC\u00f3mo aprende la IA?",
-    "learn.concept_12.content": (
+    "learn.concept_13.title": "\U0001f393 \u00bfC\u00f3mo aprende la IA?",
+    "learn.concept_13.content": (
         "Durante el entrenamiento:\n\n"
         "1. Se muestran miles de im\u00e1genes al modelo\n"
         "2. El modelo hace una predicci\u00f3n\n"
@@ -730,16 +744,16 @@ TRANSLATIONS = {
         "Con el tiempo, la IA mejora progresivamente hasta aprender a reconocer "
         "patrones complejos. A este proceso se le llama **entrenamiento**."
     ),
-    "learn.concept_13.title": "\U0001f9ec \u00bfQu\u00e9 es \u03bcKount & \u03bcDetect?",
-    "learn.concept_13.content": (
+    "learn.concept_14.title": "\U0001f9ec \u00bfQu\u00e9 es \u03bcKount & \u03bcDetect?",
+    "learn.concept_14.content": (
         "μKount & μDetect es un sistema de IA para el análisis de placas de agar.\n\n"
         "μKount realiza la detección y el recuento de colonias usando YOLO.\n"
         "μDetect realiza la clasificación de especies usando una CNN.\n\n"
         "Juntos forman un pipeline que automatiza el análisis microbiológico de imágenes."
     ),
 
-    "learn.concept_14.title": "🔬 ¿Cómo funciona el pipeline?",
-    "learn.concept_14.content": (
+    "learn.concept_15.title": "🔬 ¿Cómo funciona el pipeline?",
+    "learn.concept_15.content": (
         "El pipeline funciona en pasos secuenciales:\n\n"
         "1. Subir la imagen de la placa de agar\n"
         "2. μKount detecta colonias usando YOLO\n"
